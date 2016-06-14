@@ -12,7 +12,7 @@ import fr.adaming.model.ClasseStandard;
 @Table(name="clients")
 public class Client extends Personne{
 	
-	@OneToMany(mappedBy="client")
+	@OneToMany
 	private List<ClasseStandard> bienRecherche;
 	
 	/**

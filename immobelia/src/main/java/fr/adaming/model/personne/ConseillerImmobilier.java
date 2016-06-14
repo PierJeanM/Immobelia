@@ -23,7 +23,7 @@ public class ConseillerImmobilier extends Personne {
 	private String motDePasse;
 
 	/*************************** Declaration_associations *************************/
-	@OneToMany(mappedBy="visite")
+	@OneToMany(mappedBy="conseiller")
 	private List<Visite> listVisites;
 	
 	/****************************************************************************/

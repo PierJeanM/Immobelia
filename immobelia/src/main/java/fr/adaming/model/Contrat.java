@@ -24,15 +24,15 @@ public class Contrat {
 
 	@OneToOne
 	@JoinColumn(name="conseiller_id", referencedColumnName="id")
-	private ConseillerImmobilier conseillerId;
+	private ConseillerImmobilier conseiller;
 
 	@OneToOne
 	@JoinColumn(name="client_id", referencedColumnName="id")
-	private Client clientId;
+	private Client client;
 
 	@OneToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id")
-	private BienImmobilier bienImmobilierId;
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	private BienImmobilier bienImmobilier;
 
 	@Column(name = "validationContrat")
 	private boolean validationContrat;
@@ -44,46 +44,29 @@ public class Contrat {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * ctor chargé avec id
-	 * @param idContrat
-	 * @param conseillerId
-	 * @param clientId
-	 * @param bienImmobilierId
-	 * @param validationContrat
-	 */
-	public Contrat(int idContrat, ConseillerImmobilier conseillerId,
-			Client clientId, BienImmobilier bienImmobilierId,
+	
+	public Contrat(int idContrat, ConseillerImmobilier conseiller,
+			Client client, BienImmobilier bienImmobilier,
 			boolean validationContrat) {
 		super();
 		this.idContrat = idContrat;
-		this.conseillerId = conseillerId;
-		this.clientId = clientId;
-		this.bienImmobilierId = bienImmobilierId;
+		this.conseiller = conseiller;
+		this.client = client;
+		this.bienImmobilier = bienImmobilier;
 		this.validationContrat = validationContrat;
 	}
 
-	/**
-	 * ctor chargé sans id
-	 * @param conseillerId
-	 * @param clientId
-	 * @param bienImmobilierId
-	 * @param validationContrat
-	 */
-	public Contrat(ConseillerImmobilier conseillerId, Client clientId,
-			BienImmobilier bienImmobilierId, boolean validationContrat) {
+
+
+	public Contrat(ConseillerImmobilier conseiller, Client client,
+			BienImmobilier bienImmobilier, boolean validationContrat) {
 		super();
-		this.conseillerId = conseillerId;
-		this.clientId = clientId;
-		this.bienImmobilierId = bienImmobilierId;
+		this.conseiller = conseiller;
+		this.client = client;
+		this.bienImmobilier = bienImmobilier;
 		this.validationContrat = validationContrat;
 	}
 
-	/**************************
-	 * GETTERS & SETTERS
-	 *
-	 *************************/	
-	
 	public int getIdContrat() {
 		return idContrat;
 	}
@@ -92,28 +75,28 @@ public class Contrat {
 		this.idContrat = idContrat;
 	}
 
-	public ConseillerImmobilier getConseillerId() {
-		return conseillerId;
+	public ConseillerImmobilier getConseiller() {
+		return conseiller;
 	}
 
-	public void setConseillerId(ConseillerImmobilier conseillerId) {
-		this.conseillerId = conseillerId;
+	public void setConseiller(ConseillerImmobilier conseiller) {
+		this.conseiller = conseiller;
 	}
 
-	public Client getClientId() {
-		return clientId;
+	public Client getClient() {
+		return client;
 	}
 
-	public void setClientId(Client clientId) {
-		this.clientId = clientId;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
-	public BienImmobilier getBienImmobilierId() {
-		return bienImmobilierId;
+	public BienImmobilier getBienImmobilier() {
+		return bienImmobilier;
 	}
 
-	public void setBienImmobilierId(BienImmobilier bienImmobilierId) {
-		this.bienImmobilierId = bienImmobilierId;
+	public void setBienImmobilier(BienImmobilier bienImmobilier) {
+		this.bienImmobilier = bienImmobilier;
 	}
 
 	public boolean isValidationContrat() {
@@ -123,11 +106,4 @@ public class Contrat {
 	public void setValidationContrat(boolean validationContrat) {
 		this.validationContrat = validationContrat;
 	}
-	
-	
-	
-	
-
-	
-
 }

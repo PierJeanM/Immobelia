@@ -1,6 +1,11 @@
 package fr.adaming.model.bienImmobilier;
 
-public class ALouer implements Offre{
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity(name = "aLouer")
+@Table(name = "aLouer")
+public class ALouer extends Offre{
 
 	private Double montantCaution;
 	private Double montantCharges;
@@ -11,6 +16,13 @@ public class ALouer implements Offre{
 	 */
 	public ALouer() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public ALouer(Integer id, Double montantCaution, Double montantCharges, boolean meuble) {
+		super(id);
+		this.montantCaution = montantCaution;
+		this.montantCharges = montantCharges;
+		this.meuble = meuble;
 	}
 
 	/**

@@ -9,8 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import fr.adaming.model.bienImmobilier.BienImmobilier;
+import fr.adaming.model.personne.Client;
 import fr.adaming.model.personne.ConseillerImmobilier;
 
 @Entity(name = "visite")
@@ -25,24 +28,23 @@ public class Visite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_visite")
-	private int id_visite;
+	private int idVisite;
 
 	@Column(name = "date")
 	private Date dateVisite;
 
-	@Column(name = "client_id")
-	private int client_id;
+	@OneToOne
+	@JoinColumn(name = "client_id", referencedColumnName="id")
+	private Client client;
 
-	@Column(name = "bienImmobilier_id")
-	private int bienImmobilier_id;
+	@OneToOne
+	@JoinColumn(name = "bien_id", referencedColumnName = "id_bien")
+	private BienImmobilier bienImmobilier;
 
-	@Column(name = "conseiller_id")
-	private int conseiller_id;
-
-	/*************************** Declaration_associations *************************/
 	@ManyToOne
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id")
-	private ConseillerImmobilier conseillerImmobilier;
+	private ConseillerImmobilier conseiller;
+
 
 	/****************************************************************************/
 	/****************************** CONSTRUCTEURS *******************************/
@@ -55,108 +57,75 @@ public class Visite {
 		super();
 	}
 
-	/**
-	 * Constructeur sans id
-	 * 
-	 * @param dateVisite
-	 * @param client_id
-	 * @param bienImmobilier_id
-	 * @param conseiller_id
-	 */
-	public Visite(Date dateVisite, int client_id, int bienImmobilier_id,
-			int conseiller_id) {
+
+	public Visite(int idVisite, Date dateVisite, Client client,
+			BienImmobilier bienImmobilier, ConseillerImmobilier conseiller) {
+		super();
+		this.idVisite = idVisite;
+		this.dateVisite = dateVisite;
+		this.client = client;
+		this.bienImmobilier = bienImmobilier;
+		this.conseiller = conseiller;
+	}
+
+
+	public Visite(Date dateVisite, Client client,
+			BienImmobilier bienImmobilier, ConseillerImmobilier conseiller) {
 		super();
 		this.dateVisite = dateVisite;
-		this.client_id = client_id;
-		this.bienImmobilier_id = bienImmobilier_id;
-		this.conseiller_id = conseiller_id;
+		this.client = client;
+		this.bienImmobilier = bienImmobilier;
+		this.conseiller = conseiller;
 	}
 
-	/**
-	 * Constructeur chargé
-	 * 
-	 * @param dateVisite
-	 * @param id_visite
-	 * @param client_id
-	 * @param bienImmobilier_id
-	 * @param conseiller_id
-	 */
-	public Visite(Date dateVisite, int id_visite, int client_id,
-			int bienImmobilier_id, int conseiller_id) {
-		super();
-		this.dateVisite = dateVisite;
-		this.id_visite = id_visite;
-		this.client_id = client_id;
-		this.bienImmobilier_id = bienImmobilier_id;
-		this.conseiller_id = conseiller_id;
+
+	public int getIdVisite() {
+		return idVisite;
 	}
 
-	/****************************************************************************/
-	/********************************* METHODES *********************************/
-	/****************************************************************************/
 
-	@Override
-	public String toString() {
-		return "Visite [dateVisite=" + dateVisite + ", id_visite=" + id_visite
-				+ ", client_id=" + client_id + ", bienImmobilier_id="
-				+ bienImmobilier_id + ", conseiller_id=" + conseiller_id + "]";
+	public void setIdVisite(int id_visite) {
+		this.idVisite = id_visite;
 	}
 
-	/****************************************************************************/
-	/****************************** GETTERS_SETTERS *****************************/
-	/****************************************************************************/
-
-	/****************************************************************************/
 
 	public Date getDateVisite() {
 		return dateVisite;
 	}
 
+
 	public void setDateVisite(Date dateVisite) {
 		this.dateVisite = dateVisite;
 	}
 
-	public int getId_visite() {
-		return id_visite;
+
+	public Client getClient() {
+		return client;
 	}
 
-	public void setId_visite(int id_visite) {
-		this.id_visite = id_visite;
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
-	public int getClient_id() {
-		return client_id;
+
+	public BienImmobilier getBienImmobilier() {
+		return bienImmobilier;
 	}
 
-	public void setClient_id(int client_id) {
-		this.client_id = client_id;
+
+	public void setBienImmobilier(BienImmobilier bienImmobilier) {
+		this.bienImmobilier = bienImmobilier;
 	}
 
-	public int getBienImmobilier_id() {
-		return bienImmobilier_id;
+
+	public ConseillerImmobilier getConseiller() {
+		return conseiller;
 	}
 
-	public void setBienImmobilier_id(int bienImmobilier_id) {
-		this.bienImmobilier_id = bienImmobilier_id;
-	}
 
-	public int getConseiller_id() {
-		return conseiller_id;
-	}
-
-	public void setConseiller_id(int conseiller_id) {
-		this.conseiller_id = conseiller_id;
-	}
-
-	/******************** Getters_Setters pour associations *******************/
-
-	public ConseillerImmobilier getConseillerImmobilier() {
-		return conseillerImmobilier;
-	}
-
-	public void setConseillerImmobilier(
-			ConseillerImmobilier conseillerImmobilier) {
-		this.conseillerImmobilier = conseillerImmobilier;
+	public void setConseiller(ConseillerImmobilier conseiller) {
+		this.conseiller = conseiller;
 	}
 
 } // Fin classe Visite

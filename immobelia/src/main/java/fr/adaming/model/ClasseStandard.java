@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import fr.adaming.model.bienImmobilier.Offre;
@@ -23,7 +25,9 @@ public class ClasseStandard {
 	private Double prixMax;
 	@Column(name="nombre_chambres")
 	private int nombreChambres;
-	@Column(name="type_offre")
+
+	@ManyToOne
+	@JoinColumn(name = "type_offre", referencedColumnName = "id_offre")
 	private Offre typeOffre;
 	@Column(name="type_bien")
 	private Class<?> typeBien;

@@ -1,11 +1,21 @@
 package fr.adaming.model.bienImmobilier;
 
-public class AAcheter implements Offre{
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity(name = "aAcheter")
+@Table(name = "aAcheter")
+public class AAcheter extends Offre{
 
 	private String etat;
 	
 	public AAcheter() {
-		// TODO Auto-generated constructor stub
+		super();
+	}
+	
+	public AAcheter(Integer id, String etat) {
+		super(id);
+		this.etat = etat;
 	}
 
 	/**

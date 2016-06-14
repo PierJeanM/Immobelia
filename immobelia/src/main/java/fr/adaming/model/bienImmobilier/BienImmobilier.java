@@ -1,7 +1,6 @@
 package fr.adaming.model.bienImmobilier;
 
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -17,8 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import fr.adaming.model.ClasseStandard;
-import fr.adaming.model.personne.Client;
-import fr.adaming.model.personne.Personne;
+import fr.adaming.model.personne.Proprietaire;
 
 /**
  * 
@@ -45,8 +43,7 @@ public abstract class BienImmobilier {
 	private GregorianCalendar dateMiseDisposition;
 	@Column(name = "revenu_cadastral")
 	private Double revenuCadastral;
-	@Column(name = "liste_visiteurs")
-	private List<Client> listeVisiteurs;
+	
 	@Column(name = "date_visite")
 	private GregorianCalendar dateVisite;
 	@Column(name = "tel_client")
@@ -57,8 +54,10 @@ public abstract class BienImmobilier {
 	@Column(name = "prix")
 	private Double prix;
 	@Column(name = "type_bail")
-	private Bail typeBail;
-	@Column(name = "type_offre")
+	private String typeBail;
+	
+	@OneToOne
+	@JoinColumn(name = "type_offre", referencedColumnName = "id_offre")
 	private Offre typeOffre;
 	@Column(name = "superficie")
 	private Double superficie;
@@ -69,7 +68,7 @@ public abstract class BienImmobilier {
 	
 	@OneToOne
 	@JoinColumn(name = "proprietaire_id", referencedColumnName = "id")
-	private Personne proprio;
+	private Proprietaire proprio;
 
 	public BienImmobilier() {
 
@@ -96,9 +95,8 @@ public abstract class BienImmobilier {
 	 */
 	public BienImmobilier(boolean statut, ClasseStandard classeStandard,
 			GregorianCalendar dateSoumission,
-			GregorianCalendar dateMiseDisposition, Double revenuCadastral,
-			List<Client> listeVisiteurs, GregorianCalendar dateVisite,
-			String telClient, String telConseiller, Double prix, Bail typeBail,
+			GregorianCalendar dateMiseDisposition, Double revenuCadastral, GregorianCalendar dateVisite,
+			String telClient, String telConseiller, Double prix, String typeBail,
 			Offre typeOffre, Double superficie) {
 		super();
 		this.statut = statut;
@@ -106,7 +104,6 @@ public abstract class BienImmobilier {
 		this.dateSoumission = dateSoumission;
 		this.dateMiseDisposition = dateMiseDisposition;
 		this.revenuCadastral = revenuCadastral;
-		this.listeVisiteurs = listeVisiteurs;
 		this.dateVisite = dateVisite;
 		this.telClient = telClient;
 		this.telConseiller = telConseiller;
@@ -137,9 +134,8 @@ public abstract class BienImmobilier {
 	 */
 	public BienImmobilier(Integer idBien, boolean statut,
 			ClasseStandard classeStandard, GregorianCalendar dateSoumission,
-			GregorianCalendar dateMiseDisposition, Double revenuCadastral,
-			List<Client> listeVisiteurs, GregorianCalendar dateVisite,
-			String telClient, String telConseiller, Double prix, Bail typeBail,
+			GregorianCalendar dateMiseDisposition, Double revenuCadastral, GregorianCalendar dateVisite,
+			String telClient, String telConseiller, Double prix, String typeBail,
 			Offre typeOffre, Double superficie) {
 		super();
 		this.idBien = idBien;
@@ -148,7 +144,6 @@ public abstract class BienImmobilier {
 		this.dateSoumission = dateSoumission;
 		this.dateMiseDisposition = dateMiseDisposition;
 		this.revenuCadastral = revenuCadastral;
-		this.listeVisiteurs = listeVisiteurs;
 		this.dateVisite = dateVisite;
 		this.telClient = telClient;
 		this.telConseiller = telConseiller;
@@ -210,14 +205,6 @@ public abstract class BienImmobilier {
 		this.revenuCadastral = revenuCadastral;
 	}
 
-	public List<Client> getListeVisiteurs() {
-		return listeVisiteurs;
-	}
-
-	public void setListeVisiteurs(List<Client> listeVisiteurs) {
-		this.listeVisiteurs = listeVisiteurs;
-	}
-
 	public GregorianCalendar getDateVisite() {
 		return dateVisite;
 	}
@@ -250,11 +237,11 @@ public abstract class BienImmobilier {
 		this.prix = prix;
 	}
 
-	public Bail getTypeBail() {
+	public String getTypeBail() {
 		return typeBail;
 	}
 
-	public void setTypeBail(Bail typeBail) {
+	public void setTypeBail(String typeBail) {
 		this.typeBail = typeBail;
 	}
 
