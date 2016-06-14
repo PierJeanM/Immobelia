@@ -1,6 +1,5 @@
 package fr.adaming.model;
 
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -16,6 +15,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * 
+ * Classe de reference des bien immobiliers
+ * @author INTI-0247
+ *
+ */
 @Entity(name="bienImmobilier")
 @Table(name="bienImmobiliers")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
