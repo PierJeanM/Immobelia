@@ -21,57 +21,58 @@ import fr.adaming.model.personne.Client;
 /**
  * 
  * Classe de reference des bien immobiliers
+ * 
  * @author INTI-0247
  *
  */
-@Entity(name="bienImmobilier")
-@Table(name="bienImmobiliers")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_bien")
+@Entity(name = "bienImmobilier")
+@Table(name = "bienImmobiliers")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type_bien")
 public abstract class BienImmobilier {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_bien")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_bien")
 	private Integer idBien;
-	@Column(name="statut")
+	@Column(name = "statut")
 	private boolean statut;
-	@Column(name="date_soumission")
+	@Column(name = "date_soumission")
 	private GregorianCalendar dateSoumission;
-	@Column(name="date_mise_disposition")
+	@Column(name = "date_mise_disposition")
 	private GregorianCalendar dateMiseDisposition;
-	@Column(name="revenu_cadastral")
+	@Column(name = "revenu_cadastral")
 	private Double revenuCadastral;
-	@Column(name="liste_visiteurs")
+	@Column(name = "liste_visiteurs")
 	private List<Client> listeVisiteurs;
-	@Column(name="date_visite")
+	@Column(name = "date_visite")
 	private GregorianCalendar dateVisite;
-	@Column(name="tel_client")
-	private String telClient; // Client acquereur ou locataire, a instancier avec creation contrat
-	@Column(name="tel_conseiller")
+	@Column(name = "tel_client")
+	private String telClient; // Client acquereur ou locataire, a instancier
+								// avec creation contrat
+	@Column(name = "tel_conseiller")
 	private String telConseiller;
-	@Column(name="prix")
+	@Column(name = "prix")
 	private Double prix;
-	@Column(name="type_bail")
+	@Column(name = "type_bail")
 	private Bail typeBail;
-	@Column(name="type_offre")
+	@Column(name = "type_offre")
 	private Offre typeOffre;
-	@Column(name="superficie")
+	@Column(name = "superficie")
 	private Double superficie;
-	
+
 	@ManyToOne
-	@JoinColumn(name="classe_standard_id", referencedColumnName="")
+	@JoinColumn(name = "classe_standard_id", referencedColumnName = "")
 	private ClasseStandard classeStandard;
-	
 
 	public BienImmobilier() {
-		
-		
+
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * Constructeur Sans ID
+	 * 
 	 * @param statut
 	 * @param classeStandard
 	 * @param dateSoumission
@@ -90,9 +91,9 @@ public abstract class BienImmobilier {
 	public BienImmobilier(boolean statut, ClasseStandard classeStandard,
 			GregorianCalendar dateSoumission,
 			GregorianCalendar dateMiseDisposition, Double revenuCadastral,
-			List<Client> listeVisiteurs, GregorianCalendar dateVisite, String telClient,
-			String telConseiller, Double prix, Bail typeBail, Offre typeOffre,
-			Double superficie) {
+			List<Client> listeVisiteurs, GregorianCalendar dateVisite,
+			String telClient, String telConseiller, Double prix, Bail typeBail,
+			Offre typeOffre, Double superficie) {
 		super();
 		this.statut = statut;
 		this.classeStandard = classeStandard;
@@ -131,9 +132,9 @@ public abstract class BienImmobilier {
 	public BienImmobilier(Integer idBien, boolean statut,
 			ClasseStandard classeStandard, GregorianCalendar dateSoumission,
 			GregorianCalendar dateMiseDisposition, Double revenuCadastral,
-			List<Client> listeVisiteurs, GregorianCalendar dateVisite, String telClient,
-			String telConseiller, Double prix, Bail typeBail, Offre typeOffre,
-			Double superficie) {
+			List<Client> listeVisiteurs, GregorianCalendar dateVisite,
+			String telClient, String telConseiller, Double prix, Bail typeBail,
+			Offre typeOffre, Double superficie) {
 		super();
 		this.idBien = idBien;
 		this.statut = statut;
@@ -151,9 +152,8 @@ public abstract class BienImmobilier {
 		this.superficie = superficie;
 	}
 
-	
 	/**********************************/
-	/*********GETTER AND SETTER********/
+	/********* GETTER AND SETTER ********/
 	/**********************************/
 
 	public Integer getIdBien() {
@@ -220,8 +220,6 @@ public abstract class BienImmobilier {
 		this.dateVisite = dateVisite;
 	}
 
-
-
 	public String getTelClient() {
 		return telClient;
 	}
@@ -269,16 +267,5 @@ public abstract class BienImmobilier {
 	public void setSuperficie(Double superficie) {
 		this.superficie = superficie;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

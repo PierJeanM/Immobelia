@@ -1,11 +1,12 @@
 package fr.adaming.model.bienImmobilier;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 
 @DiscriminatorValue("entrepot")
 public class Entrepot extends BienImmobilier{
 
-	
+	@Column(name = "preau")
 	private boolean preau;
 
 	/**

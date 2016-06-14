@@ -1,10 +1,12 @@
 package fr.adaming.model.bienImmobilier;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 
 @DiscriminatorValue("maison")
-public class Maison extends BienImmobilier{
+public class Maison extends BienImmobilier {
 
+	@Column(name = "jardin")
 	private boolean jardin;
 
 	/**
@@ -23,12 +25,11 @@ public class Maison extends BienImmobilier{
 	}
 
 	/**
-	 * @param jardin the jardin to set
+	 * @param jardin
+	 *            the jardin to set
 	 */
 	public void setJardin(boolean jardin) {
 		this.jardin = jardin;
 	}
-	
-	
-	
+
 }
