@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity(name="personne")
@@ -32,6 +34,10 @@ public abstract class Personne {
 	
 	@Column(name="adresse")
 	private Adresse adresse;
+	
+	@ManyToOne
+	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
+	private Personne personne;
 
 	/****************************************************************************/
 	/****************************** CONSTRUCTEURS *******************************/
