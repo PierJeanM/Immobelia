@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,11 +18,7 @@ public class ConseillerImmobilier extends Personne {
 	/****************************************************************************/
 	
 	/****************************************************************************/
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_conseiller")
-	private int id_conseiller;
-	
+
 	@Column(name="password")
 	private String motDePasse;
 
@@ -47,12 +40,12 @@ public class ConseillerImmobilier extends Personne {
 	 * @param id_conseiller
 	 * @param motDePasse
 	 */
-	public ConseillerImmobilier(String nom, String prenom, int id_personne,
+	public ConseillerImmobilier(int id_personne, String nom, String prenom, 
 			String telephone, Adresse adresse, int id_conseiller,
-			String motDePasse) {
-		super(nom, prenom, id_personne, telephone, adresse);
-		this.id_conseiller = id_conseiller;
+			String motDePasse, List<Visite> listVisites) {
+		super(id_personne, nom, prenom, telephone, adresse);
 		this.motDePasse = motDePasse;
+		this.listVisites = listVisites;
 	}
 
 	/**
@@ -64,10 +57,11 @@ public class ConseillerImmobilier extends Personne {
 	 * @param adresse
 	 * @param motDePasse
 	 */
-	public ConseillerImmobilier(String nom, String prenom, int id_personne,
-			String telephone, Adresse adresse, String motDePasse) {
-		super(nom, prenom, id_personne, telephone, adresse);
+	public ConseillerImmobilier(String nom, String prenom,
+			String telephone, Adresse adresse, String motDePasse, List<Visite> listVisites) {
+		super(nom, prenom, telephone, adresse);
 		this.motDePasse = motDePasse;
+		this.listVisites = listVisites;
 	}
 
 	/**
@@ -79,26 +73,9 @@ public class ConseillerImmobilier extends Personne {
 	}
 
 	/****************************************************************************/
-	/********************************* METHODES *********************************/
-	/****************************************************************************/
-	
-	@Override
-	public String toString() {
-		return "ConseillerImmobilier [id_conseiller=" + id_conseiller
-				+ ", motDePasse=" + motDePasse + "]";
-	} // Fin methode toString
-
-	/****************************************************************************/
 	/****************************** GETTERS_SETTERS *****************************/
 	/****************************************************************************/
 	
-	public int getId_conseiller() {
-		return id_conseiller;
-	}
-
-	public void setId_conseiller(int id_conseiller) {
-		this.id_conseiller = id_conseiller;
-	}
 
 	public String getMotDePasse() {
 		return motDePasse;

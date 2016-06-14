@@ -2,11 +2,7 @@ package fr.adaming.model.personne;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,20 +11,6 @@ import fr.adaming.model.ClasseStandard;
 @Entity(name="client")
 @Table(name="clients")
 public class Client extends Personne{
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_client")
-	private int id_client;
-	
-	@Column(name="nom")
-	private String nom;
-	
-	@Column(name="telephone")
-	private String telephone;
-	
-	@Column(name="adresse")
-	private Adresse adresse;
 	
 	@OneToMany(mappedBy="client")
 	private List<ClasseStandard> bienRecherche;
@@ -48,13 +30,9 @@ public class Client extends Personne{
 	 * @param adresse
 	 * @param bienRecherche
 	 */
-	public Client(int id_client, String nom, String telephone,
-			Adresse adresse, List<ClasseStandard> bienRecherche) {
-		super();
-		this.id_client = id_client;
-		this.nom = nom;
-		this.telephone = telephone;
-		this.adresse = adresse;
+	public Client(int id_client, String nom, String prenom,
+			String telephone, Adresse adresse, List<ClasseStandard> bienRecherche) {
+		super(id_client, nom, prenom, telephone, adresse);
 		this.bienRecherche = bienRecherche;
 	}
 
@@ -65,12 +43,9 @@ public class Client extends Personne{
 	 * @param adresse
 	 * @param bienRecherche
 	 */
-	public Client(String nom, String telephone, Adresse adresse,
+	public Client(String nom, String prenom, String telephone, Adresse adresse,
 			List<ClasseStandard> bienRecherche) {
-		super();
-		this.nom = nom;
-		this.telephone = telephone;
-		this.adresse = adresse;
+		super(nom, prenom, telephone, adresse);
 		this.bienRecherche = bienRecherche;
 	}
 
@@ -79,37 +54,6 @@ public class Client extends Personne{
 	 *
 	 *************************/	
 	
-	public int getId_client() {
-		return id_client;
-	}
-
-	public void setId_client(int id_client) {
-		this.id_client = id_client;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
 
 	public List<ClasseStandard> getBienRecherche() {
 		return bienRecherche;

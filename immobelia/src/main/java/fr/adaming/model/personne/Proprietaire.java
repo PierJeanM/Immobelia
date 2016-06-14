@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,29 +12,6 @@ import fr.adaming.model.bienImmobilier.BienImmobilier;
 @Entity(name = "proprietaire")
 @Table(name = "proprietaires")
 public class Proprietaire extends Personne{
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_proprietaire")
-	private int idProprietaire;
-
-	@Column(name = "nom")
-	private String nom;
-
-	@Column(name = "rue")
-	private String rue;
-
-	@Column(name = "numRue")
-	private String numRue;
-
-	@Column(name = "codePostal")
-	private int codePostal;
-
-	@Column(name = "ville")
-	private String ville;
-
-	@Column(name = "telPrive")
-	private String telPrive;
 
 	@Column(name = "telTravail")
 	private String telTravail;
@@ -65,17 +39,10 @@ public class Proprietaire extends Personne{
 	 * @param telTravail
 	 * @param biensImmos
 	 */
-	public Proprietaire(int idProprietaire, String nom, String rue,
-			String numRue, int codePostal, String ville, String telPrive,
-			String telTravail, List<BienImmobilier> biensImmos) {
-		super();
-		this.idProprietaire = idProprietaire;
-		this.nom = nom;
-		this.rue = rue;
-		this.numRue = numRue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.telPrive = telPrive;
+	public Proprietaire(int idProprietaire, String nom, String prenom,
+			String telPrive, String telTravail, Adresse adresse,
+			List<BienImmobilier> biensImmos) {
+		super(idProprietaire, nom, prenom, telPrive, adresse);
 		this.telTravail = telTravail;
 		this.biensImmos = biensImmos;
 	}
@@ -92,16 +59,9 @@ public class Proprietaire extends Personne{
 	 * @param telTravail
 	 * @param biensImmos
 	 */
-	public Proprietaire(String nom, String rue, String numRue, int codePostal,
-			String ville, String telPrive, String telTravail,
-			List<BienImmobilier> biensImmos) {
-		super();
-		this.nom = nom;
-		this.rue = rue;
-		this.numRue = numRue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.telPrive = telPrive;
+	public Proprietaire(String nom, String prenom, String telephone, Adresse adresse, 
+			String telTravail, List<BienImmobilier> biensImmos) {
+		super(nom, prenom, telephone, adresse);
 		this.telTravail = telTravail;
 		this.biensImmos = biensImmos;
 	}
@@ -112,61 +72,6 @@ public class Proprietaire extends Personne{
 	 *
 	 *************************/	
 	
-	public int getIdProprietaire() {
-		return idProprietaire;
-	}
-
-	public void setIdProprietaire(int idProprietaire) {
-		this.idProprietaire = idProprietaire;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getRue() {
-		return rue;
-	}
-
-	public void setRue(String rue) {
-		this.rue = rue;
-	}
-
-	public String getNumRue() {
-		return numRue;
-	}
-
-	public void setNumRue(String numRue) {
-		this.numRue = numRue;
-	}
-
-	public int getCodePostal() {
-		return codePostal;
-	}
-
-	public void setCodePostal(int codePostal) {
-		this.codePostal = codePostal;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-	public String getTelPrive() {
-		return telPrive;
-	}
-
-	public void setTelPrive(String telPrive) {
-		this.telPrive = telPrive;
-	}
 
 	public String getTelTravail() {
 		return telTravail;

@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -35,8 +34,6 @@ public class Adresse {
 	@Column(name = "ville")
 	private String ville;
 
-	@OneToMany(mappedBy="adresse")
-	private Personne personne;
 	
 	/**
 	 * ctor vide

@@ -20,8 +20,8 @@ public abstract class Personne {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_personne")
-	private int id_personne;
+	@Column(name = "id")
+	private int id;
 
 	@Column(name = "nom")
 	private String nom;
@@ -49,12 +49,12 @@ public abstract class Personne {
 	 * @param telephone
 	 * @param adresse
 	 */
-	public Personne(String nom, String prenom, int id_personne,
+	public Personne(int id, String nom, String prenom,
 			String telephone, Adresse adresse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.id_personne = id_personne;
+		this.id = id;
 		this.telephone = telephone;
 		this.adresse = adresse;
 	} // Fin constructeur chargé
@@ -89,7 +89,7 @@ public abstract class Personne {
 	@Override
 	public String toString() {
 		return "Personne [nom=" + nom + ", prenom=" + prenom + ", id_personne="
-				+ id_personne + ", telephone=" + telephone + "]";
+				+ id + ", telephone=" + telephone + "]";
 	} // Fin methode toString
 
 	/****************************************************************************/
@@ -113,11 +113,11 @@ public abstract class Personne {
 	}
 
 	public int getId_personne() {
-		return id_personne;
+		return id;
 	}
 
 	public void setId_personne(int id_personne) {
-		this.id_personne = id_personne;
+		this.id = id_personne;
 	}
 
 	public String getTelephone() {
