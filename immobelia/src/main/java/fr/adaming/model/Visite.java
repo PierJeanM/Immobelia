@@ -41,7 +41,7 @@ public class Visite {
 
 	/*************************** Declaration_associations *************************/
 	@ManyToOne
-	@JoinColumn(name = "conseiller_id", referencedColumnName = "id_conseiller")
+	@JoinColumn(name = "conseiller_id", referencedColumnName = "id")
 	private ConseillerImmobilier conseillerImmobilier;
 
 	/****************************************************************************/

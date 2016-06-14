@@ -23,15 +23,15 @@ public class Contrat {
 	private int idContrat;
 
 	@OneToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
+	@JoinColumn(name="conseiller_id", referencedColumnName="id")
 	private ConseillerImmobilier conseillerId;
 
 	@OneToOne
-	@JoinColumn(name="client_id", referencedColumnName="id_client")
+	@JoinColumn(name="client_id", referencedColumnName="id")
 	private Client clientId;
 
 	@OneToOne
-	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
+	@JoinColumn(name="conseiller_id", referencedColumnName="id")
 	private BienImmobilier bienImmobilierId;
 
 	@Column(name = "validationContrat")

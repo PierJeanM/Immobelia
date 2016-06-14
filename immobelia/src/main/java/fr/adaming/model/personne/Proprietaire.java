@@ -16,7 +16,7 @@ public class Proprietaire extends Personne{
 	@Column(name = "telTravail")
 	private String telTravail;
 
-	@OneToMany(mappedBy = "proprietaire")
+	@OneToMany(mappedBy = "proprio")
 	private List<BienImmobilier> biensImmos;
 
 	/**

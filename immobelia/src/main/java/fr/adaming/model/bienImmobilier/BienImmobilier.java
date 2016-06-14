@@ -13,10 +13,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.personne.Client;
+import fr.adaming.model.personne.Personne;
 
 /**
  * 
@@ -62,8 +64,12 @@ public abstract class BienImmobilier {
 	private Double superficie;
 
 	@ManyToOne
-	@JoinColumn(name = "classe_standard_id", referencedColumnName = "")
+	@JoinColumn(name = "classe_standard_id", referencedColumnName = "id_classe_standard")
 	private ClasseStandard classeStandard;
+	
+	@OneToOne
+	@JoinColumn(name = "proprietaire_id", referencedColumnName = "id")
+	private Personne proprio;
 
 	public BienImmobilier() {
 

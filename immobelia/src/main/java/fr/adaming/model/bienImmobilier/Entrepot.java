@@ -2,7 +2,11 @@ package fr.adaming.model.bienImmobilier;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity(name="entrepot")
+@Table(name="entrepots")
 @DiscriminatorValue("entrepot")
 public class Entrepot extends BienImmobilier{
 
