@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity(name="client")
 @Table(name="clients")
-public class Clients {
+public class Client {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Clients {
 	/**
 	 * ctor vide
 	 */
-	public Clients() {
+	public Client() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -46,7 +46,7 @@ public class Clients {
 	 * @param adresse
 	 * @param bienRecherche
 	 */
-	public Clients(int id_client, String nom, String telephone,
+	public Client(int id_client, String nom, String telephone,
 			Adresse adresse, List<ClasseStandard> bienRecherche) {
 		super();
 		this.id_client = id_client;
@@ -63,7 +63,7 @@ public class Clients {
 	 * @param adresse
 	 * @param bienRecherche
 	 */
-	public Clients(String nom, String telephone, Adresse adresse,
+	public Client(String nom, String telephone, Adresse adresse,
 			List<ClasseStandard> bienRecherche) {
 		super();
 		this.nom = nom;
