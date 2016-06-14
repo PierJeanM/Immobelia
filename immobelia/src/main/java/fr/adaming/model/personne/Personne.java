@@ -10,8 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity(name="personne")
-@Table(name="personnes")
+@Entity(name = "personne")
+@Table(name = "personnes")
 public abstract class Personne {
 
 	/****************************************************************************/
@@ -19,25 +19,22 @@ public abstract class Personne {
 	/****************************************************************************/
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_personne")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_personne")
 	private int id_personne;
-	
-	@Column(name="nom")
+
+	@Column(name = "nom")
 	private String nom;
-	
-	@Column(name="prenom")
+
+	@Column(name = "prenom")
 	private String prenom;
-	
-	@Column(name="telephone")
+
+	@Column(name = "telephone")
 	private String telephone;
-	
-	@Column(name="adresse")
-	private Adresse adresse;
-	
+
 	@ManyToOne
-	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
-	private Personne personne;
+	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
+	private Adresse adresse;
 
 	/****************************************************************************/
 	/****************************** CONSTRUCTEURS *******************************/
