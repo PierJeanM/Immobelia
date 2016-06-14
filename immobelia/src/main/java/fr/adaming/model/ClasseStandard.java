@@ -1,14 +1,31 @@
 package fr.adaming.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import fr.adaming.model.bienImmobilier.Offre;
 
+@Entity(name="classe_standard")
+@Table(name="classes_standards")
 public class ClasseStandard {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_classe_standard")
 	private Integer idClasseStandard;
+	@Column(name="superficie_min")
 	private Double superficieMin;
+	@Column(name="prix_max")
 	private Double prixMax;
+	@Column(name="nombre_chambres")
 	private int nombreChambres;
+	@Column(name="type_offre")
 	private Offre typeOffre;
+	@Column(name="type_bien")
 	private Class<?> typeBien;
 	
 	public ClasseStandard() {
