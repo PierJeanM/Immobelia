@@ -1,4 +1,4 @@
-package fr.adaming.model;
+package fr.adaming.model.personne;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

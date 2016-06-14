@@ -1,4 +1,4 @@
-package fr.adaming.model;
+package fr.adaming.model.bienImmobilier;
 
 import javax.persistence.DiscriminatorValue;
 

@@ -1,4 +1,4 @@
-package fr.adaming.model;
+package fr.adaming.model.bienImmobilier;
 
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -14,6 +14,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.personne.Client;
 
 /**
  * 

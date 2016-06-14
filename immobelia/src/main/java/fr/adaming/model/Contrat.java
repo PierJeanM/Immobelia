@@ -9,6 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import fr.adaming.model.bienImmobilier.BienImmobilier;
+import fr.adaming.model.personne.Client;
+import fr.adaming.model.personne.ConseillerImmobilier;
+
 @Entity(name = "contrat")
 @Table(name = "contrats")
 public class Contrat {

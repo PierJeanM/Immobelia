@@ -1,5 +1,7 @@
 package fr.adaming.model;
 
+import fr.adaming.model.bienImmobilier.Offre;
+
 public class ClasseStandard {
 	
 	private Integer idClasseStandard;

@@ -1,4 +1,4 @@
-package fr.adaming.model;
+package fr.adaming.model.personne;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import fr.adaming.model.Visite;
 
 @Entity(name="conseillerImmobilier")
 @Table(name="conseillersImmobilier")

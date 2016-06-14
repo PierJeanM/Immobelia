@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import fr.adaming.model.personne.ConseillerImmobilier;
+
 @Entity(name = "visite")
 @Table(name = "visites")
 public class Visite {
