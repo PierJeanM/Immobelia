@@ -59,6 +59,7 @@ public abstract class BienImmobilier {
 	@OneToOne
 	@JoinColumn(name = "type_offre", referencedColumnName = "id_offre")
 	private Offre typeOffre;
+	
 	@Column(name = "superficie")
 	private Double superficie;
 
