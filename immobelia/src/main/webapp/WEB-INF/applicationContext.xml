@@ -24,8 +24,8 @@
 
 	<!-- Définition du sessionFactory avec ref au bean dataSource -->
 	<!-- BEWARE if you use Hibernate 3, use instead class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean -->
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="fr.adaming.model" />
 		<property name="hibernateProperties">
@@ -44,8 +44,8 @@
 	<!-- Définition du gestionnaire de transaction avec ref au bean sessionFactory -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
+		<property name="entityManagerFactory">
+			<ref bean="entityManagerFactory" />
 		</property>
 
 	</bean>
