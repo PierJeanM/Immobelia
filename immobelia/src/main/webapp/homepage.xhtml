@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:form="http://www.springframework.org/tags/form"
+      xmlns:spring="http://www.springframework.org/tags"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>Bienvenue dans la Homepage!</h:head> 
+<h:body> 
+
+
+
+
+<p:layout style="min-width:400px;min-height:200px;">
+		<p:layoutUnit position="west" resizable="true" size="100"
+			minSize="200" maxSize="300">
+			<p:panel header="Information conseiller">
+				<p:panelGrid>
+
+					<p:column>
+						
+						<p:row>
+							<h:outputLabel for="nom" value="Nom :" style="font-weight:bold" />
+							<h:outputText value="#{conseillerMB.conseillerImmobilier.nom}" />
+						</p:row>
+						<p:row>
+							<h:outputLabel for="prenom" value="Prenom :"
+								style="font-weight:bold" />
+							<h:outputText value="#{conseillerMB.conseillerImmobilier.prenom}" />
+						</p:row>
+						<p:row>
+							<h:outputLabel for="motDePasse" value="MotDePasse :"
+								style="font-weight:bold" />
+							<h:outputText value="#{conseillerMB.conseillerImmobilier.motDePasse}" />
+						</p:row>
+					</p:column>
+
+				</p:panelGrid>
+			</p:panel>
+		</p:layoutUnit>
+	</p:layout>
+
+
+
+
+
+
+
+
+
+
+</h:body> 
+</html>
