@@ -34,8 +34,7 @@ public class ConseillerMB {
 		listeConseillers = conseillerService.getAll();
 
 		for (ConseillerImmobilier cons : listeConseillers) {
-			if (cons.getPrenom().equals(conseillerImmobilier.getPrenom())
-					&& cons.getNom().equals(conseillerImmobilier.getNom())
+			if (cons.getId_personne()==conseillerImmobilier.getId_personne()	
 					&& cons.getMotDePasse().equals(
 							conseillerImmobilier.getMotDePasse())) {
 				setConseillerImmobilier(cons);
