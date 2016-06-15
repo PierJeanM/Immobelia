@@ -1,15 +1,20 @@
 package fr.adaming.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import fr.adaming.model.bienImmobilier.Offre;
+import fr.adaming.model.personne.Client;
 
 @Entity(name="classe_standard")
 @Table(name="classes_standards")
@@ -31,6 +36,10 @@ public class ClasseStandard {
 	private Offre typeOffre;
 	@Column(name="type_bien")
 	private Class<?> typeBien;
+	
+	@ManyToMany
+	@JoinTable(name="client_classeStandard", joinColumns = {@JoinColumn(name="id_classestandard")},inverseJoinColumns={@JoinColumn(name="id_client")})
+	private List<Client> listClients;
 	
 	public ClasseStandard() {
 		// TODO Auto-generated constructor stub
