@@ -11,6 +11,9 @@ import javax.persistence.Table;
 public class Appartement extends BienImmobilier {
 	@Column(name = "balcon")
 	private boolean balcon;
+	
+	public Appartement() {
+	}
 
 	/**
 	 * @param balcon

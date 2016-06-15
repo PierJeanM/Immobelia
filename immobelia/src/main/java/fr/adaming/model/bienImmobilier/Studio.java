@@ -12,6 +12,9 @@ public class Studio extends BienImmobilier{
  
 	@Column(name = "mezzanine")
 	private boolean mezzanine;
+	
+	public Studio() {
+	}
 
 	/**
 	 * @param mezzanine

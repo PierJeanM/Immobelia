@@ -12,6 +12,9 @@ public class Maison extends BienImmobilier {
 
 	@Column(name = "jardin")
 	private boolean jardin;
+	
+	public Maison() {
+	}
 
 	/**
 	 * @param jardin

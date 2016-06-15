@@ -12,6 +12,9 @@ public class Entrepot extends BienImmobilier{
 
 	@Column(name = "preau")
 	private boolean preau;
+	
+	public Entrepot() {
+	}
 
 	/**
 	 * @param preau

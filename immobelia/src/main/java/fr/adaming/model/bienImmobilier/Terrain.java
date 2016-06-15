@@ -11,6 +11,9 @@ import javax.persistence.Table;
 public class Terrain extends BienImmobilier {
 	@Column(name = "etang")
 	private boolean etang;
+	
+	public Terrain() {
+	}
 
 	/**
 	 * @param etang

@@ -23,7 +23,6 @@ public class Proprietaire extends Personne{
 	 * ctor vide
 	 */
 	public Proprietaire() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

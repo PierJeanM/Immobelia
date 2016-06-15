@@ -66,13 +66,11 @@ public abstract class BienImmobilier {
 	@JoinColumn(name = "classe_standard_id", referencedColumnName = "id_classe_standard")
 	private ClasseStandard classeStandard;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "proprietaire_id", referencedColumnName = "id")
 	private Proprietaire proprio;
 
 	public BienImmobilier() {
-
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
