@@ -3,6 +3,8 @@ package fr.adaming.model.personne;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -12,7 +14,7 @@ import fr.adaming.model.ClasseStandard;
 @Table(name="clients")
 public class Client extends Personne{
 	
-	@OneToMany
+	@ManyToMany(mappedBy="listClients")
 	private List<ClasseStandard> bienRecherche;
 	
 	/**
