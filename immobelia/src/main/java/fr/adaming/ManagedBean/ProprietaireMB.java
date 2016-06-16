@@ -3,12 +3,15 @@ package fr.adaming.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import fr.adaming.ManagedBean.ConseillerMB;
 import fr.adaming.model.personne.Proprietaire;
 import fr.adaming.service.ProprietaireService;
 
@@ -28,11 +31,26 @@ public class ProprietaireMB {
 		listeProprietaire=new ArrayList<Proprietaire>();
 	}
 
-	public List<Proprietaire> getByConseiller(int id) {
+	public List<Proprietaire> getByConseiller() {
+
+		System.out.println("===========================GETBYCONSEILLER===================="
+						+ proprietaireService);
+		
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
+		
+		int id = conseillerMB.getConseillerImmobilier().getId_personne();
+		
+		
 
 		return proprietaireService.getByConseiller(id);
+
 	}
 
+	/****************************
+	 * GET & SET
+	 * 
+	 ***************************/
 	public ProprietaireService getProprietaireService() {
 		return proprietaireService;
 	}
@@ -56,6 +74,5 @@ public class ProprietaireMB {
 	public void setListeProprietaire(List<Proprietaire> listeProprietaire) {
 		this.listeProprietaire = listeProprietaire;
 	}
-	
-	
+
 }

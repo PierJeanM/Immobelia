@@ -8,24 +8,52 @@
 <h:head>Bienvenue dans la page GestionProprietaire</h:head>
 <body>
 
-	<h3>Basic</h3>
-	<p:panelGrid columns="2">
-		<f:facet name="header">
-			<p:graphicImage name="demo/images/misc/kobe.png" />
-		</f:facet>
+	<h:form id="form">
+		<p:dataList value="#{proprietaireMB.getByConseiller()}" var="proprietaire" type="ordered">
+			<f:facet name="header">
+            Liste de Proprietaires
+        </f:facet>
+        #{proprietaire.nom}, #{proprietaire.prenom}
 
-		<h:outputText value="Name:" />
-		<h:outputText value="#{proprietaireMB.getByConseiller}" />
-
-		<h:outputText value="Team:" />
-		<h:outputText value="Los Angeles Lakers" />
-
-		<h:outputText value="Position:" />
-		<h:outputText value="Shooting Guard" />
-
-		<h:outputText value="Number:" />
-		<h:outputText value="24" />
-	</p:panelGrid>
-
+		</p:dataList>
+		
+		
+		<p:dataList value="#{dataListView.cars3}" var="car" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
+        <f:facet name="header">
+            Paginator
+        </f:facet>
+        <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+            <f:setPropertyActionListener value="#{car}" target="#{dataListView.selectedCar}" />
+            <h:outputText value="#{car.brand}, #{car.year}" />
+        </p:commandLink>
+        <h:outputText value="#{car.brand}, #{car.year}" style="display:inline-block"/>
+    </p:dataList>
+ 
+<!--     <p:dialog header="Info Proprietaires" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false"> -->
+<!--         <p:outputPanel id="carDetail" style="text-align:center;"> -->
+<!--             <p:panelGrid  columns="2" rendered="#{not empty dataListView.selectedCar}" columnClasses="label,value"> -->
+<!--                 <f:facet name="header"> -->
+<!--                     <p:graphicImage name="demo/images/car/#{dataListView.selectedCar.brand}-big.gif"/>  -->
+<!--                 </f:facet> -->
+ 
+<!--                 <h:outputText value="Id:" /> -->
+<!--                 <h:outputText value="#{dataListView.selectedCar.id}" /> -->
+ 
+<!--                 <h:outputText value="Year" /> -->
+<!--                 <h:outputText value="#{dataListView.selectedCar.year}" /> -->
+ 
+<!--                 <h:outputText value="Color:" /> -->
+<!--                 <h:outputText value="#{dataListView.selectedCar.color}" style="color:#{dataListView.selectedCar.color}"/> -->
+ 
+<!--                 <h:outputText value="Price" /> -->
+<!--                 <h:outputText value="$#{dataListView.selectedCar.price}" /> -->
+<!--             </p:panelGrid> -->
+<!--         </p:outputPanel> -->
+<!--     </p:dialog> -->
+		
+		
+		
+		
+	</h:form>
 </body>
 </html>

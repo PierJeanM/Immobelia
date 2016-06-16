@@ -18,6 +18,8 @@ public class ProprietaireService {
 	}
 
 	public List<Proprietaire> getByConseiller(int id) {
+		
+		System.out.println("======================GETBY====================="+proprietaireDAO);
 		return proprietaireDAO.getByConseiller(id);
 
 	}
