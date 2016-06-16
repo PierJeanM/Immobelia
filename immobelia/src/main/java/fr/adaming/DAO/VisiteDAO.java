@@ -37,4 +37,10 @@ public class VisiteDAO {
 	public void update(Visite visite) {
 		entityManager.merge(visite);
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Visite> getVisitesOfConseiller(Integer id_cons) {
+		String req = "FROM visite v WHERE v.conseiller = :consID";
+		return entityManager.createQuery(req).setParameter("consID", id_cons).getResultList();
+	}
 }

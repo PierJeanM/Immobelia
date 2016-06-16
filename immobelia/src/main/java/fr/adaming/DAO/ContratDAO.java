@@ -40,7 +40,9 @@ public class ContratDAO {
 	public void updateContrat(Contrat contrat){
 		entityManager.merge(contrat);
 	}
-	
-	
-	
+
+	public List<Contrat> getContratsOfConseiller(Integer id_cons) {
+		String req = "FROM contrat c WHERE c.conseiller = :consID";
+		return entityManager.createQuery(req).setParameter("consID", id_cons).getResultList();
+	}
 }

@@ -33,4 +33,8 @@ public class ContratService {
 	public void updateContrat(Contrat contrat){
 		contratDAO.updateContrat(contrat);
 	}
+	
+	public List<Contrat> getContratsOfConseiller(Integer id_cons) {
+		return contratDAO.getContratsOfConseiller(id_cons);
+	}
 }
