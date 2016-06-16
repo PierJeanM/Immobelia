@@ -24,6 +24,12 @@ public class ProprietaireDAO {
 		return p;
 	}
 
+	public List<Proprietaire> getByConseiller(int id){
+		String requeteHqlGetByConseiller="FROM proprietaire p WHERE p.conseiller_id = :pID";
+		
+		return entityManager.createQuery(requeteHqlGetByConseiller).setParameter("pID", id).getResultList();
+	}
+	
 	public List<Proprietaire> getAll() {
 		String hqlGetAll = "FROM proprietaire";
 		return entityManager.createQuery(hqlGetAll).getResultList();
