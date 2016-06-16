@@ -18,38 +18,38 @@
 		</p:dataList>
 		
 		
-		<p:dataList value="#{dataListView.cars3}" var="car" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
+		<p:dataList value="#{proprietaireMB.getByConseiller()}" var="proprietaire" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
         <f:facet name="header">
             Paginator
         </f:facet>
-        <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+        <p:commandLink oncomplete="PF('carDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
             <f:setPropertyActionListener value="#{car}" target="#{dataListView.selectedCar}" />
-            <h:outputText value="#{car.brand}, #{car.year}" />
+            <h:outputText value="#{proprietaire.nom}, #{proprietaire.prenom}" />
         </p:commandLink>
-        <h:outputText value="#{car.brand}, #{car.year}" style="display:inline-block"/>
+        <h:outputText value="#{proprietaire.nom}, #{proprietaire.prenom}" style="display:inline-block"/>
     </p:dataList>
  
-<!--     <p:dialog header="Info Proprietaires" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false"> -->
-<!--         <p:outputPanel id="carDetail" style="text-align:center;"> -->
-<!--             <p:panelGrid  columns="2" rendered="#{not empty dataListView.selectedCar}" columnClasses="label,value"> -->
-<!--                 <f:facet name="header"> -->
-<!--                     <p:graphicImage name="demo/images/car/#{dataListView.selectedCar.brand}-big.gif"/>  -->
-<!--                 </f:facet> -->
+    <p:dialog header="Info Proprietaires" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty dataListView.selectedCar}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage name="demo/images/car/#{dataListView.selectedCar.brand}-big.gif"/> 
+                </f:facet>
  
-<!--                 <h:outputText value="Id:" /> -->
-<!--                 <h:outputText value="#{dataListView.selectedCar.id}" /> -->
+                <h:outputText value="Id:" />
+                <h:outputText value="#{dataListView.selectedCar.id}" />
  
-<!--                 <h:outputText value="Year" /> -->
-<!--                 <h:outputText value="#{dataListView.selectedCar.year}" /> -->
+                <h:outputText value="Year" />
+                <h:outputText value="#{dataListView.selectedCar.year}" />
  
-<!--                 <h:outputText value="Color:" /> -->
-<!--                 <h:outputText value="#{dataListView.selectedCar.color}" style="color:#{dataListView.selectedCar.color}"/> -->
+                <h:outputText value="Color:" />
+                <h:outputText value="#{dataListView.selectedCar.color}" style="color:#{dataListView.selectedCar.color}"/>
  
-<!--                 <h:outputText value="Price" /> -->
-<!--                 <h:outputText value="$#{dataListView.selectedCar.price}" /> -->
-<!--             </p:panelGrid> -->
-<!--         </p:outputPanel> -->
-<!--     </p:dialog> -->
+                <h:outputText value="Price" />
+                <h:outputText value="$#{dataListView.selectedCar.price}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
 		
 		
 		
