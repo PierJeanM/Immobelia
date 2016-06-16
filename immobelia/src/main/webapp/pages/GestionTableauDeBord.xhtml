@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
 
 	<h:head>
 		<title>Tableau de bord</title>
@@ -11,9 +13,29 @@
 	
 	
 	<h:body> 
+		<h:form>
+			<p:dataList value="#{tableauBordMB.contratsOfConseiller}" var="contrat" type="definition">
+		        <f:facet name="header">
+		            Contrats
+		        </f:facet>
+		        Client: #{contrat.client.nom} #{contrat.client.prenom}, Bien: #{contrat.bienImmobilier.classeStandard.typeBien.toString()}
+		    </p:dataList>
+		</h:form>
 		
-		
-		
+		<h:form>           		 
+		    <h3 style="margin-top:0">Classes Standards de biens immobiliers</h3>
+		    <p:accordionPanel>
+		    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
+			        <p:tab title="Clients intéressés par la classe #{classe.idClasseStandard}">
+			            <h:panelGrid columns="2" cellpadding="10">
+							<p:dataList value="#{class.listClients}" var="client" type="definition">
+						       	Client: #{client.nom} #{client.prenom}
+						    </p:dataList>
+			            </h:panelGrid>
+			        </p:tab>
+				</c:forEach>
+		    </p:accordionPanel>
+		</h:form>
 	</h:body> 
 	
 </html>

@@ -42,7 +42,7 @@ public class ContratDAO {
 	}
 
 	public List<Contrat> getContratsOfConseiller(Integer id_cons) {
-		String req = "FROM contrat c WHERE c.conseiller = :consID";
+		String req = "FROM contrat c WHERE c.conseiller.id = :consID";
 		return entityManager.createQuery(req).setParameter("consID", id_cons).getResultList();
 	}
 }

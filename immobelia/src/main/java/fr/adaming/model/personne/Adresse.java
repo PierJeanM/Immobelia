@@ -29,7 +29,7 @@ public class Adresse {
 	private int numero;
 
 	@Column(name = "codePostal")
-	private int codePostal;
+	private String codePostal;
 
 	@Column(name = "ville")
 	private String ville;	
@@ -51,7 +51,7 @@ public class Adresse {
 	 * @param codePostal
 	 * @param ville
 	 */
-	public Adresse(int idAdresse, String rue, int numero, int codePostal,
+	public Adresse(int idAdresse, String rue, int numero, String codePostal,
 			String ville) {
 		super();
 		this.idAdresse = idAdresse;
@@ -69,7 +69,7 @@ public class Adresse {
 	 * @param codePostal
 	 * @param ville
 	 */
-	public Adresse(String rue, int numero, int codePostal, String ville) {
+	public Adresse(String rue, int numero, String codePostal, String ville) {
 		super();
 		this.rue = rue;
 		this.numero = numero;
@@ -107,11 +107,11 @@ public class Adresse {
 		this.numero = numero;
 	}
 
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
 
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 

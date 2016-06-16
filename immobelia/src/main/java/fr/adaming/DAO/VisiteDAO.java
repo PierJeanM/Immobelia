@@ -40,7 +40,7 @@ public class VisiteDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Visite> getVisitesOfConseiller(Integer id_cons) {
-		String req = "FROM visite v WHERE v.conseiller = :consID";
+		String req = "FROM visite v WHERE v.conseiller.id = :consID";
 		return entityManager.createQuery(req).setParameter("consID", id_cons).getResultList();
 	}
 }
