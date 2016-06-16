@@ -33,4 +33,8 @@ public class VisiteService {
 	public void update(Visite visite) {
 		visiteDAO.update(visite);
 	}
+
+	public List<Visite> getVisitesOfConseiller(Integer id_cons) {
+		return visiteDAO.getVisitesOfConseiller(id_cons);
+	}
 }
