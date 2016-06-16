@@ -3,10 +3,8 @@ package fr.adaming.model.bienImmobilier;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity(name="appartement")
-@Table(name="appartements")
 @DiscriminatorValue("appartement")
 public class Appartement extends BienImmobilier {
 	@Column(name = "balcon")
