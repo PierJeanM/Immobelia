@@ -16,10 +16,18 @@ INSERT into conseillersimmobilier values (2, "Duck", "Donald", "0100000001", "23
 INSERT into clients values (1, "Jacky", "Michel", "0200000000", 3 , 1);
 INSERT into clients values (2, "Rasta", "Philippe", "0200000001", 4 , 1);
 INSERT into clients values (3, "Agile", "Frantz", "0200000002", 5 , 2);
-INSERT into clients values (4, "Rasta", "Philippe", "0200000001", 6, 2);
+INSERT into clients values (4, "Dupont", "Raoul", "0200000001", 6, 2);
  
  
 INSERT into proprietaires values (1, "Fripouille", "Jacquouille", "0200000081", "0270000081", 7, 1);
 INSERT into proprietaires values (2, "Montmirail", "Hubert", "0200980081", "0272300081", 8, 1);
 INSERT into proprietaires values (3, "Rabbit", "Roger", "0265000081", "0270000081", 9, 2);
 INSERT into proprietaires values (4, "Snow", "Jon", "0200009081", "0270500081", 10, 2);
+
+
+
+INSERT into classes_standards values (1, 2, 100000, 40, "appartement", 1);
+
+INSERT into bienimmobiliers values("appartement", 1, 01/01/16, 23/12/15, 99000, 1200, true, 53, null, 0100000000, "habitation", null, null, false, null, null, null, 1, 1, 1);
+
+INSERT into aacheter values (1, 1, "correct");

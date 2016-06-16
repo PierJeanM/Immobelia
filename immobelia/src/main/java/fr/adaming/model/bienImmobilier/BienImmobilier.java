@@ -44,8 +44,6 @@ public abstract class BienImmobilier {
 	@Column(name = "revenu_cadastral")
 	private Double revenuCadastral;
 	
-	@Column(name = "date_visite")
-	private GregorianCalendar dateVisite;
 	@Column(name = "tel_client")
 	private String telClient; // Client acquereur ou locataire, a instancier
 								// avec creation contrat
@@ -94,7 +92,7 @@ public abstract class BienImmobilier {
 	 */
 	public BienImmobilier(boolean statut, ClasseStandard classeStandard,
 			GregorianCalendar dateSoumission,
-			GregorianCalendar dateMiseDisposition, Double revenuCadastral, GregorianCalendar dateVisite,
+			GregorianCalendar dateMiseDisposition, Double revenuCadastral,
 			String telClient, String telConseiller, Double prix, String typeBail,
 			Offre typeOffre, Double superficie) {
 		super();
@@ -103,7 +101,6 @@ public abstract class BienImmobilier {
 		this.dateSoumission = dateSoumission;
 		this.dateMiseDisposition = dateMiseDisposition;
 		this.revenuCadastral = revenuCadastral;
-		this.dateVisite = dateVisite;
 		this.telClient = telClient;
 		this.telConseiller = telConseiller;
 		this.prix = prix;
@@ -133,7 +130,7 @@ public abstract class BienImmobilier {
 	 */
 	public BienImmobilier(Integer idBien, boolean statut,
 			ClasseStandard classeStandard, GregorianCalendar dateSoumission,
-			GregorianCalendar dateMiseDisposition, Double revenuCadastral, GregorianCalendar dateVisite,
+			GregorianCalendar dateMiseDisposition, Double revenuCadastral,
 			String telClient, String telConseiller, Double prix, String typeBail,
 			Offre typeOffre, Double superficie) {
 		super();
@@ -143,7 +140,6 @@ public abstract class BienImmobilier {
 		this.dateSoumission = dateSoumission;
 		this.dateMiseDisposition = dateMiseDisposition;
 		this.revenuCadastral = revenuCadastral;
-		this.dateVisite = dateVisite;
 		this.telClient = telClient;
 		this.telConseiller = telConseiller;
 		this.prix = prix;
@@ -202,14 +198,6 @@ public abstract class BienImmobilier {
 
 	public void setRevenuCadastral(Double revenuCadastral) {
 		this.revenuCadastral = revenuCadastral;
-	}
-
-	public GregorianCalendar getDateVisite() {
-		return dateVisite;
-	}
-
-	public void setDateVisite(GregorianCalendar dateVisite) {
-		this.dateVisite = dateVisite;
 	}
 
 	public String getTelClient() {

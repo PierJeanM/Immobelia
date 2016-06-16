@@ -1,5 +1,7 @@
 package fr.adaming.model;
 
+import java.util.GregorianCalendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,8 +36,8 @@ public class Contrat {
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private BienImmobilier bienImmobilier;
 
-	@Column(name = "validationContrat")
-	private boolean validationContrat;
+	@Column(name = "date")
+	private GregorianCalendar date;
 	
 	/**
 	 * ctor vide
@@ -47,24 +49,24 @@ public class Contrat {
 	
 	public Contrat(int idContrat, ConseillerImmobilier conseiller,
 			Client client, BienImmobilier bienImmobilier,
-			boolean validationContrat) {
+			GregorianCalendar date) {
 		super();
 		this.idContrat = idContrat;
 		this.conseiller = conseiller;
 		this.client = client;
 		this.bienImmobilier = bienImmobilier;
-		this.validationContrat = validationContrat;
+		this.date = date;
 	}
 
 
 
 	public Contrat(ConseillerImmobilier conseiller, Client client,
-			BienImmobilier bienImmobilier, boolean validationContrat) {
+			BienImmobilier bienImmobilier, GregorianCalendar date) {
 		super();
 		this.conseiller = conseiller;
 		this.client = client;
 		this.bienImmobilier = bienImmobilier;
-		this.validationContrat = validationContrat;
+		this.date = date;
 	}
 
 	public int getIdContrat() {
@@ -99,11 +101,11 @@ public class Contrat {
 		this.bienImmobilier = bienImmobilier;
 	}
 
-	public boolean isValidationContrat() {
-		return validationContrat;
+	public GregorianCalendar getDate() {
+		return date;
 	}
 
-	public void setValidationContrat(boolean validationContrat) {
-		this.validationContrat = validationContrat;
+	public void setDate(GregorianCalendar date) {
+		this.date = date;
 	}
 }
