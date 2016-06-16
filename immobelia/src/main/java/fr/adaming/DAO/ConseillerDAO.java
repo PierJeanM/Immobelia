@@ -26,6 +26,9 @@ public class ConseillerDAO {
 
 	public List<ConseillerImmobilier> getAll() {
 		String hqlGetAll = "FROM conseillerImmobilier";
+		System.out.println("====================> ACCES DAO");
+		System.out.println("====================> ENTITTY MANAGER"+entityManager);
+
 		return entityManager.createQuery(hqlGetAll).getResultList();
 	}
 
