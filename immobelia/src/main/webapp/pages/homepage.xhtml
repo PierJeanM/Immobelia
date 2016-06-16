@@ -10,37 +10,6 @@
 <h:head>Bienvenue dans la Homepage!</h:head>
 <h:body>
 
-
-
-	<p:layout style="min-width:400px;min-height:200px;">
-
-		<h:form>
-			<p:panel header="Information conseiller">
-
-
-				<p:column>
-
-					<p:row>
-						<h:outputLabel value="Nom :" style="font-weight:bold" />
-						<h:outputText value="#{conseillerMB.conseillerImmobilier.nom}" />
-					</p:row>
-					<p:row>
-						<h:outputLabel value="Prenom :" style="font-weight:bold" />
-						<h:outputText value="#{conseillerMB.conseillerImmobilier.prenom}" />
-					</p:row>
-					<p:row>
-						<h:outputLabel value="MDP :" style="font-weight:bold" />
-						<h:outputText
-							value="#{conseillerMB.conseillerImmobilier.motDePasse}" />
-					</p:row>
-				</p:column>
-
-
-			</p:panel>
-		</h:form>
-
-	</p:layout>
-
 	<h:form>
 		<p:tabMenu activeIndex="#{param.i}">
 			<p:menuitem value="Gestion Proprietaire"
