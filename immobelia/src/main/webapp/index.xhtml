@@ -13,7 +13,6 @@
 		<h:form id="adminLoginForm">
 			<p:panel header="Connection conseiller"
 				style="width:650px; margin: 0 auto;">
-				<p:messages autoUpdate="true" />
 
 				<h:panelGrid id="grid" columns="4" cellpadding="5" style="margin: 0 auto;">
 				
@@ -23,7 +22,7 @@
 						value="#{conseillerMB.conseillerImmobilier.id_personne}" required="true"/>
 						<h:outputLabel value="Mot de Passe :"
 						style="font-weight:bold" />
-					<p:inputText id="mdp"
+					<p:inputText id="mdp" type="password"
 						value="#{conseillerMB.conseillerImmobilier.motDePasse}" required="true"/>
 					<h:outputText value="#{validationView.text}" />
 					
