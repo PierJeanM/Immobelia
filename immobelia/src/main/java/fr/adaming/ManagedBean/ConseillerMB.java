@@ -38,7 +38,7 @@ public class ConseillerMB {
 					&& cons.getMotDePasse().equals(
 							conseillerImmobilier.getMotDePasse())) {
 				setConseillerImmobilier(cons);
-				return "/pages/homepage.xhtml?faces-redirect=true";
+				return "/WEB-INF/pages/homepage.xhtml?faces-redirect=true";
 			}
 		}
 		FacesContext.getCurrentInstance().addMessage(null,
