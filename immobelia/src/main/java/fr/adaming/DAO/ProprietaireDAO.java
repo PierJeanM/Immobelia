@@ -46,5 +46,13 @@ public class ProprietaireDAO {
 	public void updateProprietaire(Proprietaire proprietaire){
 		entityManager.merge(proprietaire);
 	}
+
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 	
 }

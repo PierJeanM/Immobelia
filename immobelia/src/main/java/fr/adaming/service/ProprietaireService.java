@@ -21,4 +21,13 @@ public class ProprietaireService {
 		return proprietaireDAO.getByConseiller(id);
 
 	}
+
+	public ProprietaireDAO getProprietaireDAO() {
+		return proprietaireDAO;
+	}
+
+	public void setProprietaireDAO(ProprietaireDAO proprietaireDAO) {
+		this.proprietaireDAO = proprietaireDAO;
+	}
+	
 }

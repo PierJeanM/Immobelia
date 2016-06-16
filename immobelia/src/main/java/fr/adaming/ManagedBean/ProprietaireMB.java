@@ -32,4 +32,30 @@ public class ProprietaireMB {
 
 		return proprietaireService.getByConseiller(id);
 	}
+
+	public ProprietaireService getProprietaireService() {
+		return proprietaireService;
+	}
+
+	public void setProprietaireService(ProprietaireService proprietaireService) {
+		this.proprietaireService = proprietaireService;
+	}
+
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+
+	public void setProprietaire(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+
+	public List<Proprietaire> getListeProprietaire() {
+		return listeProprietaire;
+	}
+
+	public void setListeProprietaire(List<Proprietaire> listeProprietaire) {
+		this.listeProprietaire = listeProprietaire;
+	}
+	
+	
 }
