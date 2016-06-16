@@ -28,6 +28,10 @@ INSERT into proprietaires values (4, "Snow", "Jon", "0200009081", "0270500081", 
 
 INSERT into classes_standards values (1, 2, 100000, 40, "appartement", 1);
 
-INSERT into bienimmobiliers values("appartement", 1, 01/01/16, 23/12/15, 99000, 1200, true, 53, null, 0100000000, "habitation", null, null, false, null, null, null, 1, 1, 1);
+INSERT into bienimmobiliers values("appartement", 1, '2016-01-01 00:00:00', '2015-12-23 00:00:00', 99000, 1200, true, 53, null, 0100000000, "habitation", null, null, false, null, null, null, 1, 1, 1);
 
 INSERT into aacheter values (1, 1, "correct");
+
+INSERT into contrats values (1, '2016-02-01 00:00:00', 1, 1, 1);
+
+INSERT into client_classestandard values (1,4);

@@ -24,14 +24,12 @@
 		
 		<h:form>           		 
 		    <h3 style="margin-top:0">Classes Standards de biens immobiliers</h3>
-		    <p:accordionPanel>
+		    <p:accordionPanel activeIndex="">
 		    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
 			        <p:tab title="Clients intéressés par la classe #{classe.idClasseStandard}">
-			            <h:panelGrid columns="2" cellpadding="10">
-							<p:dataList value="#{class.listClients}" var="client" type="definition">
-						       	Client: #{client.nom} #{client.prenom}
-						    </p:dataList>
-			            </h:panelGrid>
+						<p:dataList value="#{classe.listClients}" var="client" type="definition">
+					       	Client: #{client.nom} #{client.prenom}
+					    </p:dataList>
 			        </p:tab>
 				</c:forEach>
 		    </p:accordionPanel>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,14 +36,13 @@ public class ClasseStandard {
 	@JoinColumn(name = "type_offre", referencedColumnName = "id_offre")
 	private Offre typeOffre;
 	@Column(name="type_bien")
-	private Class<?> typeBien;
+	private String typeBien;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="client_classeStandard", joinColumns = {@JoinColumn(name="id_classestandard")},inverseJoinColumns={@JoinColumn(name="id_client")})
 	private List<Client> listClients;
 	
 	public ClasseStandard() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class ClasseStandard {
 	 * @param typeBien
 	 */
 	public ClasseStandard(Integer idClasseStandard, Double superficieMin,
-			Double prixMax, int nombreChambres, Offre typeOffre, Class<?> typeBien) {
+			Double prixMax, int nombreChambres, Offre typeOffre, String typeBien) {
 		super();
 		this.idClasseStandard = idClasseStandard;
 		this.superficieMin = superficieMin;
@@ -72,7 +72,7 @@ public class ClasseStandard {
 	 * @param typeBien
 	 */
 	public ClasseStandard(Double superficieMin, Double prixMax,
-			int nombreChambres, Offre typeOffre, Class<?> typeBien) {
+			int nombreChambres, Offre typeOffre, String typeBien) {
 		super();
 		this.superficieMin = superficieMin;
 		this.prixMax = prixMax;
@@ -154,7 +154,7 @@ public class ClasseStandard {
 	/**
 	 * @return the typeBien
 	 */
-	public Class<?> getTypeBien() {
+	public String getTypeBien() {
 		return typeBien;
 	}
 
@@ -163,11 +163,15 @@ public class ClasseStandard {
 	 * 
 	 * @param typeBien the typeBien to set
 	 */
-	public void setTypeBien(Class<?> typeBien) {
+	public void setTypeBien(String typeBien) {
 		this.typeBien = typeBien;
 	}
-	
-	
-	
 
+	public List<Client> getListClients() {
+		return listClients;
+	}
+
+	public void setListClients(List<Client> listClients) {
+		this.listClients = listClients;
+	}
 }

@@ -30,6 +30,9 @@ public class TableauBordMB {
 	@Autowired
 	private ClasseStandardService classeStandardService;
 	
+	public TableauBordMB() {
+	}
+	
 	
 	/**
 	 * Méthode retournant la liste des visites effectuées par le conseiller connecté,
