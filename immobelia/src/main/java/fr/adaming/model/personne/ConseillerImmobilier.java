@@ -9,29 +9,30 @@ import javax.persistence.Table;
 
 import fr.adaming.model.Visite;
 
-@Entity(name="conseillerImmobilier")
-@Table(name="conseillersImmobilier")
+@Entity(name = "conseillerImmobilier")
+@Table(name = "conseillersImmobilier")
 public class ConseillerImmobilier extends Personne {
 
 	/****************************************************************************/
 	/****************************** DECLARATIONS ********************************/
 	/****************************************************************************/
-	
+
 	/****************************************************************************/
 
-	@Column(name="password")
+	@Column(name = "password")
 	private String motDePasse;
 
 	/*************************** Declaration_associations *************************/
-	@OneToMany(mappedBy="conseiller")
+	@OneToMany(mappedBy = "conseiller")
 	private List<Visite> listVisites;
-	
+
 	/****************************************************************************/
 	/****************************** CONSTRUCTEURS *******************************/
 	/****************************************************************************/
-	
+
 	/**
 	 * Constructeur Chargé
+	 * 
 	 * @param nom
 	 * @param prenom
 	 * @param id_personne
@@ -40,7 +41,7 @@ public class ConseillerImmobilier extends Personne {
 	 * @param id_conseiller
 	 * @param motDePasse
 	 */
-	public ConseillerImmobilier(int id_personne, String nom, String prenom, 
+	public ConseillerImmobilier(int id_personne, String nom, String prenom,
 			String telephone, Adresse adresse, int id_conseiller,
 			String motDePasse, List<Visite> listVisites) {
 		super(id_personne, nom, prenom, telephone, adresse);
@@ -50,6 +51,7 @@ public class ConseillerImmobilier extends Personne {
 
 	/**
 	 * Constructeur sans Id
+	 * 
 	 * @param nom
 	 * @param prenom
 	 * @param id_personne
@@ -57,8 +59,8 @@ public class ConseillerImmobilier extends Personne {
 	 * @param adresse
 	 * @param motDePasse
 	 */
-	public ConseillerImmobilier(String nom, String prenom,
-			String telephone, Adresse adresse, String motDePasse, List<Visite> listVisites) {
+	public ConseillerImmobilier(String nom, String prenom, String telephone,
+			Adresse adresse, String motDePasse, List<Visite> listVisites) {
 		super(nom, prenom, telephone, adresse);
 		this.motDePasse = motDePasse;
 		this.listVisites = listVisites;
@@ -75,7 +77,6 @@ public class ConseillerImmobilier extends Personne {
 	/****************************************************************************/
 	/****************************** GETTERS_SETTERS *****************************/
 	/****************************************************************************/
-	
 
 	public String getMotDePasse() {
 		return motDePasse;
@@ -84,5 +85,5 @@ public class ConseillerImmobilier extends Personne {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-		
+
 } // Fin classe ConseillerImmobilier
