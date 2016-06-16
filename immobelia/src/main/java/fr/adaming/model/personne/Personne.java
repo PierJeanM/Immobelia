@@ -19,7 +19,7 @@ public abstract class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 
 	@Column(name = "nom")
 	private String nom;
@@ -47,7 +47,7 @@ public abstract class Personne {
 	 * @param telephone
 	 * @param adresse
 	 */
-	public Personne(int id, String nom, String prenom,
+	public Personne(Integer id, String nom, String prenom,
 			String telephone, Adresse adresse) {
 		super();
 		this.nom = nom;
@@ -110,11 +110,11 @@ public abstract class Personne {
 		this.prenom = prenom;
 	}
 
-	public int getId_personne() {
+	public Integer getId_personne() {
 		return id;
 	}
 
-	public void setId_personne(int id_personne) {
+	public void setId_personne(Integer id_personne) {
 		this.id = id_personne;
 	}
 
