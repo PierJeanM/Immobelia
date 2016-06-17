@@ -26,6 +26,12 @@ public class BienImmoDAO {
 		return entityManager.createQuery("FROM bienImmobilier").getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<BienImmobilier> getByProprio(){
+		return entityManager.createQuery("FROM bienImmobilier b WHERE b.proprietaire.id= :bID").getResultList();
+	}
+		
+		
 	public void add(BienImmobilier bien){
 		entityManager.persist(bien);
 	}

@@ -9,51 +9,51 @@
 <body>
 
 	<h:form id="form">
-		<p:dataList value="#{proprietaireMB.getByConseiller()}" var="proprietaire" type="ordered">
-			<f:facet name="header">
-            Liste de Proprietaires
-        </f:facet>
-        #{proprietaire.nom}, #{proprietaire.prenom}
 
-		</p:dataList>
-		
-		
-		<p:dataList value="#{proprietaireMB.getByConseiller()}" var="proprietaire" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
-        <f:facet name="header">
-            Paginator
+		<p:dataList value="#{proprietaireMB.getByConseiller()}"
+			var="proprietaire" type="ordered" itemType="none" paginator="true"
+			rows="10" styleClass="paginated">
+			<f:facet name="header">
+            Liste des propriétaires
         </f:facet>
-        <p:commandLink oncomplete="PF('carDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
-            <f:setPropertyActionListener value="#{car}" target="#{dataListView.selectedCar}" />
-            <h:outputText value="#{proprietaire.nom}, #{proprietaire.prenom}" />
-        </p:commandLink>
-        <h:outputText value="#{proprietaire.nom}, #{proprietaire.prenom}" style="display:inline-block"/>
-    </p:dataList>
- 
-    <p:dialog header="Info Proprietaires" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
-        <p:outputPanel id="carDetail" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty dataListView.selectedCar}" columnClasses="label,value">
-                <f:facet name="header">
-                    <p:graphicImage name="demo/images/car/#{dataListView.selectedCar.brand}-big.gif"/> 
-                </f:facet>
- 
-                <h:outputText value="Id:" />
-                <h:outputText value="#{dataListView.selectedCar.id}" />
- 
-                <h:outputText value="Year" />
-                <h:outputText value="#{dataListView.selectedCar.year}" />
- 
-                <h:outputText value="Color:" />
-                <h:outputText value="#{dataListView.selectedCar.color}" style="color:#{dataListView.selectedCar.color}"/>
- 
-                <h:outputText value="Price" />
-                <h:outputText value="$#{dataListView.selectedCar.price}" />
-            </p:panelGrid>
-        </p:outputPanel>
-    </p:dialog>
-		
-		
-		
-		
+			<p:commandLink oncomplete="PF('infosProprio').show()"
+				title="Detail des proprietaires" styleClass="ui-icon ui-icon-search"
+				style="float:left;margin-right:10px">
+				<f:setPropertyActionListener value="#{proprietaire}"
+					target="#{proprietaireMB.byConseiller}" />
+				<h:outputText value="#{proprietaire.nom}, #{proprietaire.prenom}" />
+			</p:commandLink>
+			<h:outputText value="#{proprietaire.nom}, #{proprietaire.prenom}"
+				style="display:inline-block" />
+		</p:dataList>
+
+		<p:dialog header="Informations detaillées du proprietaire" widgetVar="infosProprio"
+			modal="true" showEffect="blind" hideEffect="explode"
+			resizable="false">
+			<p:outputPanel id="carDetail" style="text-align:center;">
+				<p:panelGrid columns="2"
+					rendered="#{not empty proprietaireMB.byConseiller}"
+					columnClasses="label,value">
+					
+
+					<h:outputText value="Nom : " />
+					<h:outputText value="#{proprietaireMB.proprietaire.nom}" />
+
+					<h:outputText value="Prenom : " />
+					<h:outputText value="#{proprietaireMB.proprietaire.prenom}" />
+
+					<h:outputText value="Nombre Biens : " />
+					<h:outputText value="#{bienImmobilierMB.nombreBiens()}" />
+
+					<h:outputText value="Montant total Biens" />
+					<h:outputText value="$#{proprietaireMB.proprietaire.telTravail}" />
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+
+
+
+
 	</h:form>
 </body>
 </html>

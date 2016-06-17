@@ -31,6 +31,7 @@ public class ProprietaireMB {
 		listeProprietaire=new ArrayList<Proprietaire>();
 	}
 
+	
 	public List<Proprietaire> getByConseiller() {
 
 		System.out.println("===========================GETBYCONSEILLER===================="
