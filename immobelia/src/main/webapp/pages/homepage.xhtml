@@ -7,28 +7,12 @@
 	xmlns:spring="http://www.springframework.org/tags"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>Bienvenue dans la Homepage!</h:head>
-<h:body>
-
-	<h:form>
-		<p:tabMenu>
-			<p:menuitem value="Gestion Proprietaire"
-				outcome="/pages/GestionProprietaire.xhtml" icon="ui-icon-document">
-			</p:menuitem>
-			<p:menuitem value="Gestion Client"
-				outcome="/pages/GestionClient.xhtml" icon="ui-icon-document">
-			</p:menuitem>
-			<p:menuitem value="Gestion Bien Immobilier"
-				outcome="/pages/GestionBienImmobilier.xhtml" icon="ui-icon-document">
-			</p:menuitem>
-			<p:menuitem value="Gestion Tableau De Bord"
-				outcome="/pages/GestionTableauDeBord.xhtml" icon="ui-icon-document">
-			</p:menuitem>
-
-		</p:tabMenu>
-	</h:form>
-
-
-
-</h:body>
+	<h:head>
+		<title>Page d'accueil</title>
+	</h:head>
+	<h:body>
+		<ui:composition template="/template/layout.xhtml">
+			<ui:define name="content"></ui:define>
+		</ui:composition>
+	</h:body>
 </html>

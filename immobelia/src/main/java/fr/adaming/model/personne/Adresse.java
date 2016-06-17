@@ -124,7 +124,7 @@ public class Adresse {
 	 */
 	@Override
 	public String toString() {
-		return numero + " rue " + rue + ", " + codePostal + ", " + ville;
+		return numero + " " + rue + ", " + codePostal + " " + ville;
 	}
 
 	public void setVille(String ville) {

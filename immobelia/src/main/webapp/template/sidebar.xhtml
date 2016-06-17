@@ -14,14 +14,10 @@
 		<ui:composition>
 			<h:form>
 				<p:panel header="Information conseiller">	
-					<p:column>
-						<p:row>
-							<h:outputText value="#{conseillerMB.conseillerImmobilier.prenom} " />
-						</p:row>
-						<p:row>
-							<h:outputText value="#{conseillerMB.conseillerImmobilier.nom}" />
-						</p:row>
-					</p:column>
+					<h:outputText value="#{conseillerMB.conseillerImmobilier.prenom} " />
+					<h:outputText value="#{conseillerMB.conseillerImmobilier.nom}" /><br/>
+					<h:outputText value="Tél : #{conseillerMB.conseillerImmobilier.telephone}" /><br/>
+					<h:outputText value="Adresse : #{conseillerMB.conseillerImmobilier.adresse}" />
 				</p:panel>
 			</h:form>
 		</ui:composition>
