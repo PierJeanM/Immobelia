@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import fr.adaming.model.personne.ConseillerImmobilier;
 import fr.adaming.service.ConseillerService;
 
@@ -44,6 +45,15 @@ public class ConseillerMB {
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage("Identification incorrecte"));
 		return null;
+	}
+	
+	/** 
+	 * Logout du conseiller
+	 * @return 
+	 */
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/index.xhtml?faces-redirect=true";
 	}
 
 	public ConseillerService getConseillerService() {

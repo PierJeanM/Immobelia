@@ -12,7 +12,18 @@
     <h:body>
 		
 		<ui:composition>
-			
+			<h:form>
+				<p:panel header="Information conseiller">	
+					<p:column>
+						<p:row>
+							<h:outputText value="#{conseillerMB.conseillerImmobilier.prenom} " />
+						</p:row>
+						<p:row>
+							<h:outputText value="#{conseillerMB.conseillerImmobilier.nom}" />
+						</p:row>
+					</p:column>
+				</p:panel>
+			</h:form>
 		</ui:composition>
     </h:body>
 </html>

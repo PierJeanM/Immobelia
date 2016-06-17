@@ -12,13 +12,27 @@
     <h:body>
 		
 		<ui:composition>
-			<ul class="nav nav-pills">
-			  <li role="presentation"><a href="../pages/homepage.xhtml">Page d'accueil</a></li>
-			  <li role="presentation"><a href="../pages/GestionProprietaire.xhtml">Propriétaires</a></li>
-			  <li role="presentation"><a href="../pages/GestionClient.xhtml">Clients</a></li>
-			  <li role="presentation"><a href="../pages/GestionBienImmobilier.xhtml">Biens</a></li>
-			  <li role="presentation" class="active"><a href="../pages/GestionTableauDeBord.xhtml">Tableau de bord</a></li>
-			</ul>
+			<h:form>
+				<p:tabMenu activeIndex="#{param.i}">
+					<p:menuitem value="Propriétaires"
+						outcome="/pages/GestionProprietaire.xhtml" icon="ui-icon-document">
+						<f:param name="i" value="0" />
+					</p:menuitem>
+					<p:menuitem value="Clients"
+						outcome="/pages/GestionClient.xhtml" icon="ui-icon-document">
+						<f:param name="i" value="1" />
+					</p:menuitem>
+					<p:menuitem value="Biens"
+						outcome="/pages/GestionBienImmobilier.xhtml" icon="ui-icon-document">
+						<f:param name="i" value="2" />
+					</p:menuitem>
+					<p:menuitem value="Tableau De Bord"
+						outcome="/pages/GestionTableauDeBord.xhtml" icon="ui-icon-document">
+						<f:param name="i" value="3" />
+					</p:menuitem>
+					<p:menuitem value="Déconnexion" action="#{conseillerMB.logout}" styleClass="ui-priority-primary" />
+				</p:tabMenu>
+			</h:form>
 		</ui:composition>
 		
     </h:body>
