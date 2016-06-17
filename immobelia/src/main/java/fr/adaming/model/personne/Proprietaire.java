@@ -71,6 +71,13 @@ public class Proprietaire extends Personne {
 		this.biensImmos = biensImmos;
 	}
 
+	
+	public Proprietaire(Integer id, String nom, String prenom,
+			String telephone, Adresse adresse) {
+		super(id, nom, prenom, telephone, adresse);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**************************
 	 * GETTERS & SETTERS
 	 *

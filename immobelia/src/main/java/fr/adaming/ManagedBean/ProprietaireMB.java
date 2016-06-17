@@ -22,7 +22,7 @@ public class ProprietaireMB {
 
 	@Autowired
 	private ProprietaireService proprietaireService;
-
+	
 	private Proprietaire proprietaire;
 	private List<Proprietaire> listeProprietaire;
 
@@ -45,9 +45,13 @@ public class ProprietaireMB {
 		
 
 		return proprietaireService.getByConseiller(id);
-
+		
 	}
-
+	
+	public void addProprietaire(Proprietaire proprietaire){
+		proprietaireService.addProprietaire(proprietaire);
+	}
+	
 	/****************************
 	 * GET & SET
 	 * 
@@ -61,6 +65,7 @@ public class ProprietaireMB {
 	}
 
 	public Proprietaire getProprietaire() {
+		System.out.println("==============================VALEUR PROPRIEAIRE========================="+proprietaire);
 		return proprietaire;
 	}
 

@@ -23,6 +23,7 @@ public class BienImmobilierService {
 		return bienImmoDAO.getByProprio();
 	}
 	
+	
 	public BienImmoDAO getBienImmoDAO() {
 		return bienImmoDAO;
 	}

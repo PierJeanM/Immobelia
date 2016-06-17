@@ -10,6 +10,13 @@
 
 	<h:form id="form">
 
+<p:dataList value="#{bienImmobilierMB.listeBienImmobilier}" var="bien" type="ordered">
+        <f:facet name="header">
+            Basic
+        </f:facet>
+        #{bien.idBien}, #{bien.prix}
+    </p:dataList>
+
 		<p:dataList value="#{proprietaireMB.getByConseiller()}"
 			var="proprietaire" type="ordered" itemType="none" paginator="true"
 			rows="10" styleClass="paginated">
@@ -42,8 +49,8 @@
 					<h:outputText value="Prenom : " />
 					<h:outputText value="#{proprietaireMB.proprietaire.prenom}" />
 
-					<h:outputText value="Nombre Biens : " />
-					<h:outputText value="#{bienImmobilierMB.nombreBiens()}" />
+<!-- 					<h:outputText value="Nombre Biens : " /> -->
+<!-- 					<h:outputText value="#{bienImmobilierMB.nombreBiensByProprio()}" /> -->
 
 					<h:outputText value="Montant total Biens" />
 					<h:outputText value="$#{proprietaireMB.proprietaire.telTravail}" />

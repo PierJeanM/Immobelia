@@ -39,7 +39,7 @@ public class BienImmobilierMB {
 	public BienImmobilierMB() {
 	bienImmobilier=new BienImmobilier() {
 	};
-	listeBienImmobilier=new ArrayList<BienImmobilier>();	
+	listeBienImmobilier=new ArrayList<BienImmobilier>()	;
 	}
 	
 public List<BienImmobilier> getByProprio(){
@@ -54,9 +54,11 @@ public List<BienImmobilier> getByProprio(){
 	public int nombreBiensByProprio(){
 		System.out.println("======================Nombre Bien par proprio======================"+bienImmobilierService);
 		ELContext context=FacesContext.getCurrentInstance().getELContext();
-		BienImmobilierMB bienImmobilierMB=(BienImmobilierMB) context.getELResolver().getValue(context, null, "BienImmobilierMB");
-		
-		int id=bienImmobilierMB.getBienImmobilier().getIdBien();
+		System.out.println("===============context====================================="+context);
+		ProprietaireMB proprietaireMB=(ProprietaireMB) context.getELResolver().getValue(context, null, "proprietaireMB");
+		System.out.println("===============proprioMB====================================="+proprietaireMB);
+		int id=proprietaireMB.getProprietaire().getId_personne();
+		System.out.println("========================ID====================================="+id);
 		List<BienImmobilier> listeBiensByProprio= new ArrayList<BienImmobilier>();
 		listeBiensByProprio=bienImmobilierService.getByProprio(id);
 		System.out.println("========================Nombre de biens======================="+listeBiensByProprio.size());
@@ -79,6 +81,7 @@ public List<BienImmobilier> getByProprio(){
 		this.bienImmobilier = bienImmobilier;
 	}
 	public List<BienImmobilier> getListeBienImmobilier() {
+		System.out.println("====================LISTE BIENS IMMOS======================="+listeBienImmobilier);
 		return listeBienImmobilier;
 	}
 	public void setListeBienImmobilier(List<BienImmobilier> listeBienImmobilier) {

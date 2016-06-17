@@ -24,6 +24,11 @@ public class ProprietaireService {
 
 	}
 
+	public void addProprietaire(Proprietaire proprietaire){
+		proprietaireDAO.addProprietaire(proprietaire);
+	}
+	
+	
 	public ProprietaireDAO getProprietaireDAO() {
 		return proprietaireDAO;
 	}
@@ -31,5 +36,7 @@ public class ProprietaireService {
 	public void setProprietaireDAO(ProprietaireDAO proprietaireDAO) {
 		this.proprietaireDAO = proprietaireDAO;
 	}
+	
+
 	
 }
