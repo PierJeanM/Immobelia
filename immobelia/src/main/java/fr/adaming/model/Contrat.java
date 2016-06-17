@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.persistence.Column;
@@ -103,6 +104,10 @@ public class Contrat {
 
 	public GregorianCalendar getDate() {
 		return date;
+	}
+	
+	public String getDateToString(){
+		return date.get(Calendar.DAY_OF_MONTH)+"/"+(date.get(Calendar.MONTH)+1)+"/"+date.get(Calendar.YEAR);
 	}
 
 	public void setDate(GregorianCalendar date) {

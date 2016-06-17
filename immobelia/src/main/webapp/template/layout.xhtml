@@ -16,19 +16,19 @@
     </h:head>
     <h:body>
 		<p:layout>
-			<p:layoutUnit position="north" id="header">
+			<p:layoutUnit position="north" id="header" style="border:none;">
 				<ui:insert name="header">
 					<ui:include src="/template/header.xhtml" />
 				</ui:insert>
 			</p:layoutUnit>
 			
-			<p:layoutUnit position="west" id="sidebar" size="25%">
+			<p:layoutUnit position="west" id="sidebar" size="25%" style="border:none;">
 				<ui:insert name="sidebar">
 					<ui:include src="/template/sidebar.xhtml" />
 				</ui:insert>
 			</p:layoutUnit>
 			
-			<p:layoutUnit position="center" id="content">
+			<p:layoutUnit position="center" id="content" style="border:none;">
 				<ui:insert name="content">
 					<ui:include src="/template/content.xhtml" />
 				</ui:insert>

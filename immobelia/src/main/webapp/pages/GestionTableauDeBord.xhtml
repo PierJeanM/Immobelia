@@ -16,15 +16,17 @@
 		<ui:composition template="/template/layout.xhtml">
 			<ui:define name="content">
 				<h:form>
-					<p:dataList value="#{tableauBordMB.contratsOfConseiller}" var="contrat" type="definition">
+					<p:dataList value="#{tableauBordMB.contratsOfConseiller}" var="contrat" type="ordered">
 				        <f:facet name="header">
 				            Contrats
 				        </f:facet>
-				        Client: #{contrat.client.nom} #{contrat.client.prenom}, Bien: #{contrat.bienImmobilier.classeStandard.typeBien.toString()}
+				        <strong>Client :</strong> #{contrat.client.nom} #{contrat.client.prenom}, 
+				        <strong>Bien :</strong> #{contrat.bienImmobilier.classeStandard.typeBien.toString()},
+				        #{contrat.bienImmobilier.prix} &euro; , #{contrat.dateToString}
 				    </p:dataList>
 				</h:form>
 				
-				<h:form>           		 
+				<h:form> 
 				    <h3 style="margin-top:0">Classes Standards de biens immobiliers</h3>
 				    <p:accordionPanel activeIndex="">
 				    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
