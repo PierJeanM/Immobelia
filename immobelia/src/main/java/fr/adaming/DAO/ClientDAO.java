@@ -37,4 +37,17 @@ public class ClientDAO {
 	public void update(Client client) {
 		entityManager.merge(client);
 	}
+	
+
+	@SuppressWarnings("unchecked")
+	public List<Client> getClientByIDConseiller(int idCons){
+	
+		String hqlByConseiller = "FROM client c WHERE c.conseillerImmobilier.id = :consID";
+		return entityManager.createQuery(hqlByConseiller).setParameter("consID", idCons).getResultList();
+		
+	}
+	
+	
+	
+	
 }

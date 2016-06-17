@@ -32,9 +32,9 @@ public class ClasseStandard {
 	@Column(name="nombre_chambres")
 	private int nombreChambres;
 
-	@ManyToOne
-	@JoinColumn(name = "type_offre", referencedColumnName = "id_offre")
-	private Offre typeOffre;
+	@Column(name="type_offre")
+	private String typeOffre;
+	
 	@Column(name="type_bien")
 	private String typeBien;
 	
@@ -54,7 +54,7 @@ public class ClasseStandard {
 	 * @param typeBien
 	 */
 	public ClasseStandard(Integer idClasseStandard, Double superficieMin,
-			Double prixMax, int nombreChambres, Offre typeOffre, String typeBien) {
+			Double prixMax, int nombreChambres, String typeOffre, String typeBien) {
 		super();
 		this.idClasseStandard = idClasseStandard;
 		this.superficieMin = superficieMin;
@@ -72,7 +72,7 @@ public class ClasseStandard {
 	 * @param typeBien
 	 */
 	public ClasseStandard(Double superficieMin, Double prixMax,
-			int nombreChambres, Offre typeOffre, String typeBien) {
+			int nombreChambres, String typeOffre, String typeBien) {
 		super();
 		this.superficieMin = superficieMin;
 		this.prixMax = prixMax;
@@ -140,14 +140,14 @@ public class ClasseStandard {
 	/**
 	 * @return the typeOffre
 	 */
-	public Offre getTypeOffre() {
+	public String getTypeOffre() {
 		return typeOffre;
 	}
 
 	/**
 	 * @param typeOffre the typeOffre to set
 	 */
-	public void setTypeOffre(Offre typeOffre) {
+	public void setTypeOffre(String typeOffre) {
 		this.typeOffre = typeOffre;
 	}
 

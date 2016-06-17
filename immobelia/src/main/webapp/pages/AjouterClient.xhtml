@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+	<ui:composition template="/template/layout.xhtml">
+
+		<ui:define name="content">
+			<h:form>
+    <p:panel header="Validate">
+        <p:messages autoUpdate="true"/>
+ 
+        <h:panelGrid id="grid" columns="4" cellpadding="5">
+            <h:outputLabel for="nom" value="Nom :" style="font-weight:bold"/>                    
+            <p:inputText id="nom" value="#{validationView.text}" required="true" label="Nom"/>
+            <p:message for="nom" />
+            <h:outputText value="#{validationView.text}" />
+ 
+            <h:outputLabel for="prenom" value="Prenom:" style="font-weight:bold"/>                    
+            <p:inputText id="prenom" value="#{validationView.text}" label="Prenom">
+                <f:validateDoubleRange minimum="5" maximum="8" />
+            </p:inputText>
+            <p:message for="prenom" />
+            <h:outputText value="#{validationView.text}" />
+ 
+            <h:outputLabel for="telephone" value="Telephone :" style="font-weight:bold"/>                    
+            <p:inputText id="telephone" value="#{validationView.text}" label="Telephone">
+                <f:validateDoubleRange minimum="5" maximum="8" />
+            </p:inputText>
+            <p:message for="telephone" />
+            <h:outputText value="#{validationView.text}" />
+            
+            <h:outputLabel for="adresse" value="Adresse :" style="font-weight:bold"/>                    
+            <p:inputText id="adresse" value="#{validationView.text}" label="Adresse">
+                <f:validateDoubleRange minimum="5" maximum="8" />
+            </p:inputText>
+            <p:message for="adresse" />
+            <h:outputText value="#{validationView.text}" />
+        </h:panelGrid>
+ 
+        <p:commandButton value="Ajouter" action="#{clientMB.}" validateClient="true" style="margin-right:10px"/>
+        
+    </p:panel>
+</h:form>
+		</ui:define>
+
+
+	</ui:composition>
+
+
+
+
+</h:body>
+</html>

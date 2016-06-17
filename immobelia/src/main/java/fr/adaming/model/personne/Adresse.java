@@ -32,9 +32,8 @@ public class Adresse {
 	private String codePostal;
 
 	@Column(name = "ville")
-	private String ville;	
+	private String ville;
 
-	
 	/**
 	 * ctor vide
 	 */
@@ -76,7 +75,6 @@ public class Adresse {
 		this.codePostal = codePostal;
 		this.ville = ville;
 	}
-	
 
 	/**************************
 	 * GETTERS & SETTERS
@@ -117,6 +115,16 @@ public class Adresse {
 
 	public String getVille() {
 		return ville;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return numero + " rue " + rue + ", " + codePostal + ", " + ville;
 	}
 
 	public void setVille(String ville) {
