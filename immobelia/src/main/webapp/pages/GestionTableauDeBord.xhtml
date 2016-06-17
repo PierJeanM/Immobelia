@@ -38,6 +38,22 @@
 						</c:forEach>
 				    </p:accordionPanel>
 				</h:form>
+			
+			
+			</ui:define>
+			
+			<ui:define name="sidebar">
+				<h:form>
+					<p:panel header="Information conseiller">	
+						<h:outputText value="#{conseillerMB.conseillerImmobilier.prenom} " />
+						<h:outputText value="#{conseillerMB.conseillerImmobilier.nom}" /><br/>
+						<h:outputText value="Tél : #{conseillerMB.conseillerImmobilier.telephone}" /><br/>
+						<h:outputText value="Adresse : #{conseillerMB.conseillerImmobilier.adresse}" />
+					</p:panel>
+				</h:form>
+				<h:form>
+					<p:calendar mode="inline"/>
+				</h:form>
 			</ui:define>
 		</ui:composition>
 	</h:body> 
