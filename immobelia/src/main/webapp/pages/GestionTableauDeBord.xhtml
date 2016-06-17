@@ -13,27 +13,31 @@
 	
 	
 	<h:body> 
-		<h:form>
-			<p:dataList value="#{tableauBordMB.contratsOfConseiller}" var="contrat" type="definition">
-		        <f:facet name="header">
-		            Contrats
-		        </f:facet>
-		        Client: #{contrat.client.nom} #{contrat.client.prenom}, Bien: #{contrat.bienImmobilier.classeStandard.typeBien.toString()}
-		    </p:dataList>
-		</h:form>
-		
-		<h:form>           		 
-		    <h3 style="margin-top:0">Classes Standards de biens immobiliers</h3>
-		    <p:accordionPanel activeIndex="">
-		    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
-			        <p:tab title="Clients intéressés par la classe #{classe.idClasseStandard}">
-						<p:dataList value="#{classe.listClients}" var="client" type="definition">
-					       	Client: #{client.nom} #{client.prenom}
-					    </p:dataList>
-			        </p:tab>
-				</c:forEach>
-		    </p:accordionPanel>
-		</h:form>
+		<ui:composition template="/template/layout.xhtml">
+			<ui:define name="content">
+				<h:form>
+					<p:dataList value="#{tableauBordMB.contratsOfConseiller}" var="contrat" type="definition">
+				        <f:facet name="header">
+				            Contrats
+				        </f:facet>
+				        Client: #{contrat.client.nom} #{contrat.client.prenom}, Bien: #{contrat.bienImmobilier.classeStandard.typeBien.toString()}
+				    </p:dataList>
+				</h:form>
+				
+				<h:form>           		 
+				    <h3 style="margin-top:0">Classes Standards de biens immobiliers</h3>
+				    <p:accordionPanel activeIndex="">
+				    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
+					        <p:tab title="Clients intéressés par la classe #{classe.idClasseStandard}">
+								<p:dataList value="#{classe.listClients}" var="client" type="definition">
+							       	Client: #{client.nom} #{client.prenom}
+							    </p:dataList>
+					        </p:tab>
+						</c:forEach>
+				    </p:accordionPanel>
+				</h:form>
+			</ui:define>
+		</ui:composition>
 	</h:body> 
 	
 </html>
