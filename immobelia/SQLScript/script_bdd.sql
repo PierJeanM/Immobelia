@@ -26,7 +26,18 @@ INSERT into proprietaires values (4, "Snow", "Jon", "0200009081", "0270500081", 
 
 
 
-INSERT into classes_standards values (1, 2, 100000, 40, "appartement", 1);
+INSERT into classes_standards values (1, 2, 100000, 40, "appartement", "achat");
+INSERT into classes_standards values (2, 4, 300000, 70, "appartement", "achat");
+INSERT into classes_standards values (3, 2, 100000, 40, "appartement", "location");
+INSERT into classes_standards values (4, 4, 300000, 70, "appartement", "location");
+INSERT into classes_standards values (5, 2, 100000, 40, "maison", "achat");
+INSERT into classes_standards values (6, 4, 300000, 70, "maison", "achat");
+INSERT into classes_standards values (7, 2, 100000, 40, "maison", "location");
+INSERT into classes_standards values (8, 4, 300000, 70, "maison", "location");
+
+
+
+
 
 INSERT into bienimmobiliers values("appartement", 1, '2016-01-01 00:00:00', '2015-12-23 00:00:00', 99000, 1200, true, 53, null, 0100000000, "habitation", null, null, false, null, null, null, 1, 1, 1);
 

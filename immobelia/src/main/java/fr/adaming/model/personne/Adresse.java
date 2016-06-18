@@ -98,6 +98,7 @@ public class Adresse {
 	}
 
 	public int getNumero() {
+		System.out.println("======> NUMERO *** GET");
 		return numero;
 	}
 

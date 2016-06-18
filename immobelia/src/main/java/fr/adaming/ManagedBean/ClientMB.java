@@ -15,7 +15,7 @@ import fr.adaming.model.personne.ConseillerImmobilier;
 import fr.adaming.service.ClientService;
 
 @ManagedBean
-@SessionScoped
+@SessionScoped  
 @Component
 public class ClientMB {
 
@@ -23,6 +23,11 @@ public class ClientMB {
 	private ClientService clientService;
 	
 	private Client client;
+	
+	private String[] selectedClassesStandard;   
+	
+	
+
 	private ConseillerImmobilier conseillerImmobilier;
 
 	public ClientMB() {
@@ -35,20 +40,79 @@ public class ClientMB {
 
 		// Recupere le managedbean conseiller pour que le nouveau client y soit
 		// associe
-		//ELContext context = FacesContext.getCurrentInstance().getELContext();
-		//ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
 		
 		//Recup id du conseiller connecté
-		int idCons = 1;
-		//int idCons = conseillerMB.getConseillerImmobilier().getId_personne();
+		//int idCons = 1;
+		int idCons = conseillerMB.getConseillerImmobilier().getId_personne();
 		
 		//requete
 		return clientService.getClientByIdConseiller(idCons);
 	}
 	
 	public void addClient(Client clt){
-		clt =client;
+		client = clt;
 		clientService.addClient(clt);
+	}
+	
+	/**
+	 * @return the selectedClassesStandard
+	 */
+	public String[] getSelectedClassesStandard() {
+		return selectedClassesStandard;
+	}
+
+	/**
+	 * @param selectedClassesStandard the selectedClassesStandard to set
+	 */
+	public void setSelectedClassesStandard(String[] selectedClassesStandard) {
+		this.selectedClassesStandard = selectedClassesStandard;
+	}
+
+	/**
+	 * @return the clientService
+	 */
+	public ClientService getClientService() {
+		return clientService;
+	}
+
+	/**
+	 * @param clientService the clientService to set
+	 */
+	public void setClientService(ClientService clientService) {
+		this.clientService = clientService;
+	}
+
+	/**
+	 * @return the client
+	 */
+	public Client getClient() {
+		System.out.println("======> CLIENT MB *** GET");
+
+		return client;
+	}
+
+	/**
+	 * @param client the client to set
+	 */
+	public void setClient(Client client) {
+		System.out.println("======> CLIENT MB");
+		this.client = client;
+	}
+
+	/**
+	 * @return the conseillerImmobilier
+	 */
+	public ConseillerImmobilier getConseillerImmobilier() {
+		return conseillerImmobilier;
+	}
+
+	/**
+	 * @param conseillerImmobilier the conseillerImmobilier to set
+	 */
+	public void setConseillerImmobilier(ConseillerImmobilier conseillerImmobilier) {
+		this.conseillerImmobilier = conseillerImmobilier;
 	}
 
 }

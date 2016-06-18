@@ -11,16 +11,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import fr.adaming.model.bienImmobilier.Offre;
 import fr.adaming.model.personne.Client;
 
 @Entity(name="classe_standard")
 @Table(name="classes_standards")
 public class ClasseStandard {
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ClasseStandard [superficieMin=" + superficieMin + ", prixMax="
+				+ prixMax + ", nombreChambres=" + nombreChambres
+				+ ", typeOffre=" + typeOffre + ", typeBien=" + typeBien + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_classe_standard")
