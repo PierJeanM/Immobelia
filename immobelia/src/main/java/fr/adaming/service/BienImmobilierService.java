@@ -32,6 +32,8 @@ public class BienImmobilierService {
 		this.bienImmoDAO = bienImmoDAO;
 	}
 	
-	
+	public List<BienImmobilier> getAll(){
+		return bienImmoDAO.getAll();
+	}
 	
 }

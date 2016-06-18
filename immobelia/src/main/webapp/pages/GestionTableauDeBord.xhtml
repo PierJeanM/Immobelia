@@ -14,48 +14,113 @@
 	
 	<h:body> 
 		<ui:composition template="/template/layout.xhtml">
-			<ui:define name="content">
-				<h:form>
-					<p:dataList value="#{tableauBordMB.contratsOfConseiller}" var="contrat" type="ordered">
-				        <f:facet name="header">
-				            Contrats
-				        </f:facet>
-				        <strong>Client :</strong> #{contrat.client.nom} #{contrat.client.prenom}, 
-				        <strong>Bien :</strong> #{contrat.bienImmobilier.classeStandard.typeBien.toString()},
-				        #{contrat.bienImmobilier.prix} &euro; , #{contrat.dateToString}
-				    </p:dataList>
-				</h:form>
-				
+			<ui:define name="content">				
 				<h:form> 
-				    <h3 style="margin-top:0">Classes Standards de biens immobiliers</h3>
-				    <p:accordionPanel activeIndex="">
-				    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
-					        <p:tab title="Clients intéressés par la classe #{classe.idClasseStandard}">
-								<p:dataList value="#{classe.listClients}" var="client" type="definition">
-							       	Client: #{client.nom} #{client.prenom}
-							    </p:dataList>
-					        </p:tab>
-						</c:forEach>
-				    </p:accordionPanel>
+				    <p:panel header="Classes Standards de biens immobiliers">
+					    <p:accordionPanel activeIndex="">
+					    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
+						        <p:tab title="Clients intéressés par la classe #{classe.idClasseStandard}">
+									<p:dataList value="#{classe.listClients}" var="client" type="definition">
+								       	Client: #{client.nom} #{client.prenom}
+								    </p:dataList>
+						        </p:tab>
+							</c:forEach>
+					    </p:accordionPanel>
+				    </p:panel>
+					<br/><br/>
+				    <h:form>
+				    	<p:growl id="messages" showDetail="true" />
+				    	<p:panel header="Calendrier des visites" toggleable="true" collapsed="true">
+							<p:schedule id="planning" mode="inline" locale="fr" aspectRatio="2.6" value="#{scheduleView.eventModel}" widgetVar="myplanning" timeZone="GMT+2">
+								<p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+					            <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+					            <p:ajax event="eventMove" listener="#{scheduleView.onEventMove}" update="messages" />
+					            <p:ajax event="eventResize" listener="#{scheduleView.onEventResize}" update="messages" />
+							</p:schedule>
+						</p:panel>
+						
+						
+						<p:dialog widgetVar="eventDialog" header="Ajouter une visite" showEffect="clip" hideEffect="clip" resizable="false" draggable="false">
+					        <h:panelGrid id="eventDetails" columns="2">
+					        
+					            <p:outputLabel value="Client :" />
+					            <p:selectOneMenu id="client" value="#{scheduleView.visite.client}" effect="fold" >
+						            <f:selectItem itemLabel="Choisir" itemValue="" />
+						            <f:selectItems value="#{scheduleView.listeClients}" />
+						        </p:selectOneMenu>
+					            
+					            <p:outputLabel value="Bien : " />
+					            <p:selectOneMenu id="bien" value="#{scheduleView.visite.bienImmobilier}" effect="fold">
+						            <f:selectItem itemLabel="Choisir" itemValue="" />
+						            <f:selectItems value="#{scheduleView.listeBiens}" />
+						        </p:selectOneMenu>
+					 
+					            <p:outputLabel value="Date : " />
+					            <p:calendar id="date" value="#{scheduleView.visite.dateVisite}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+					 
+					            <p:commandButton type="reset" value="Reset" />
+					            <p:commandButton id="addButton" value="Ajouter" actionListener="#{scheduleView.addEvent}"  />
+					        	<p:messages autoUpdate="true" />
+					        </h:panelGrid>
+					    </p:dialog> 
+					    <p:messages autoUpdate="true"/>
+					</h:form>
+					<script type="text/javascript">
+						PrimeFaces.locales['fr'] = { closeText: 'Fermer', prevText: 'Précédent', nextText: 'Suivant',
+						 monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',
+						'Octobre', 'Novembre', 'Décembre' ], monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul',
+						'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ], dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 
+						'Vendredi', 'Samedi'], dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'], dayNamesMin:
+						['D', 'L', 'M', 'M', 'J', 'V', 'S'], weekHeader: 'Semaine', firstDay: 1, isRTL: false, 
+						showMonthAfterYear: false, yearSuffix:'', timeOnlyTitle: 'Choisir l\'heure', timeText: 'Heure',
+						hourText: 'Heures', minuteText: 'Minutes', secondText: 'Secondes', currentText: 'Maintenant', 
+						ampm: false, month: 'Mois', week: 'Semaine', day: 'Jour', allDayText: 'Toute la journée' };
+					</script>
 				</h:form>
 			
 			
 			</ui:define>
 			
 			<ui:define name="sidebar">
-				<h:form>
-					<p:panel header="Information conseiller">	
-						<h:outputText value="#{conseillerMB.conseillerImmobilier.prenom} " />
-						<h:outputText value="#{conseillerMB.conseillerImmobilier.nom}" /><br/>
-						<h:outputText value="Tél : #{conseillerMB.conseillerImmobilier.telephone}" /><br/>
-						<h:outputText value="Adresse : #{conseillerMB.conseillerImmobilier.adresse}" />
-					</p:panel>
-				</h:form>
-				<h:form>
-					<p:calendar mode="inline"/>
+				<ui:include src="/template/sidebar.xhtml" />
+				<h:form id="contrats">
+					<p:dataList value="#{tableauBordMB.contratsOfConseiller}" var="contrat" type="unordered">
+				        <f:facet name="header">
+				            Contrats signés
+				        </f:facet>
+				        <p:commandLink update=":contrats:details" oncomplete="PF('contratDialog').show()" title="Détails" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+				            <f:setPropertyActionListener value="#{contrat}" target="#{tableauBordMB.contrat}" />
+				        </p:commandLink>
+				        #{contrat.client.nom} #{contrat.client.prenom}, #{contrat.date}
+				    </p:dataList>
+				    
+				<!-- details du contrat selectionne -->
+				    <p:dialog header="Détails du contrat" widgetVar="contratDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false" draggable="false" appendToBody = "true">
+				        <p:outputPanel id="details" style="text-align:center;">
+				            <p:panelGrid  columns="2" rendered="#{not empty tableauBordMB.contrat}" columnClasses="label,value">
+			 
+				                <h:outputText value="Client" />
+				                <h:outputText value="#{tableauBordMB.contrat.client.prenom} #{tableauBordMB.contrat.client.nom}" />
+				 
+				                <h:outputText value="Date" />
+				                <h:outputText value="#{tableauBordMB.contrat.date}" />
+				 
+				                <h:outputText value="Type de bien" />
+				                <h:outputText value="#{tableauBordMB.contrat.bienImmobilier.classeStandard.typeBien}"/>
+				 
+				                <h:outputText value="Prix" />
+				                <h:outputText value="#{tableauBordMB.contrat.bienImmobilier.prix} &euro;" />
+				                
+				                <h:outputText value="Propriétaire" />
+				                <h:outputText value="#{tableauBordMB.contrat.bienImmobilier.proprio.prenom} #{tableauBordMB.contrat.bienImmobilier.proprio.nom}"/>
+				            </p:panelGrid>
+				        </p:outputPanel>
+				    </p:dialog>
 				</h:form>
 			</ui:define>
 		</ui:composition>
+		
+		
 	</h:body> 
 	
 </html>

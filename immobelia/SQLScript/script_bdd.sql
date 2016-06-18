@@ -39,7 +39,7 @@ INSERT into classes_standards values (8, 4, 300000, 70, "maison", "location");
 
 
 
-INSERT into bienimmobiliers values("appartement", 1, '2016-01-01 00:00:00', '2015-12-23 00:00:00', 99000, 1200, true, 53, null, 0100000000, "habitation", null, null, false, null, null, null, 1, 1, 1);
+INSERT into bienimmobiliers values("appartement", 1, '2016-01-01 00:00:00', '2015-12-23 00:00:00', 99000, 1200, true, 53, null, 0100000000, "habitation", null, null, false, null, null, null, 1, 1, 1, 1);
 
 INSERT into aacheter values (1, 1, "correct");
 

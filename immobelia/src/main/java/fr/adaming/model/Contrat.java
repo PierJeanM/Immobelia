@@ -1,7 +1,6 @@
 package fr.adaming.model;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +37,7 @@ public class Contrat {
 	private BienImmobilier bienImmobilier;
 
 	@Column(name = "date")
-	private GregorianCalendar date;
+	private Date date;
 	
 	/**
 	 * ctor vide
@@ -50,7 +49,7 @@ public class Contrat {
 	
 	public Contrat(int idContrat, ConseillerImmobilier conseiller,
 			Client client, BienImmobilier bienImmobilier,
-			GregorianCalendar date) {
+			Date date) {
 		super();
 		this.idContrat = idContrat;
 		this.conseiller = conseiller;
@@ -62,7 +61,7 @@ public class Contrat {
 
 
 	public Contrat(ConseillerImmobilier conseiller, Client client,
-			BienImmobilier bienImmobilier, GregorianCalendar date) {
+			BienImmobilier bienImmobilier, Date date) {
 		super();
 		this.conseiller = conseiller;
 		this.client = client;
@@ -102,15 +101,11 @@ public class Contrat {
 		this.bienImmobilier = bienImmobilier;
 	}
 
-	public GregorianCalendar getDate() {
+	public Date getDate() {
 		return date;
 	}
-	
-	public String getDateToString(){
-		return date.get(Calendar.DAY_OF_MONTH)+"/"+(date.get(Calendar.MONTH)+1)+"/"+date.get(Calendar.YEAR);
-	}
 
-	public void setDate(GregorianCalendar date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 }

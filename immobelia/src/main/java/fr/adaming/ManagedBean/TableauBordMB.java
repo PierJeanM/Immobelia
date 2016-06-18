@@ -30,6 +30,8 @@ public class TableauBordMB {
 	@Autowired
 	private ClasseStandardService classeStandardService;
 	
+	private Contrat contrat;
+	
 	public TableauBordMB() {
 	}
 	
@@ -60,5 +62,15 @@ public class TableauBordMB {
 	
 	public List<ClasseStandard> getClassesStandards(){
 		return classeStandardService.getAll();
+	}
+
+
+	public Contrat getContrat() {
+		return contrat;
+	}
+
+
+	public void setContrat(Contrat contrat) {
+		this.contrat = contrat;
 	}
 }

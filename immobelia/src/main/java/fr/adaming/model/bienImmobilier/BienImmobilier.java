@@ -1,6 +1,6 @@
 package fr.adaming.model.bienImmobilier;
 
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.personne.Adresse;
 import fr.adaming.model.personne.Proprietaire;
 
 /**
@@ -38,9 +39,9 @@ public abstract class BienImmobilier {
 	@Column(name = "statut")
 	private boolean statut;
 	@Column(name = "date_soumission")
-	private GregorianCalendar dateSoumission;
+	private Date dateSoumission;
 	@Column(name = "date_mise_disposition")
-	private GregorianCalendar dateMiseDisposition;
+	private Date dateMiseDisposition;
 	@Column(name = "revenu_cadastral")
 	private Double revenuCadastral;
 	
@@ -68,6 +69,11 @@ public abstract class BienImmobilier {
 	@ManyToOne
 	@JoinColumn(name = "proprietaire_id", referencedColumnName = "id")
 	private Proprietaire proprio;
+	
+	@ManyToOne
+	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
+	private Adresse adresse;
+
 
 	public BienImmobilier() {
 	}
@@ -91,8 +97,8 @@ public abstract class BienImmobilier {
 	 * @param superficie
 	 */
 	public BienImmobilier(boolean statut, ClasseStandard classeStandard,
-			GregorianCalendar dateSoumission,
-			GregorianCalendar dateMiseDisposition, Double revenuCadastral,
+			Date dateSoumission,
+			Date dateMiseDisposition, Double revenuCadastral,
 			String telClient, String telConseiller, Double prix, String typeBail,
 			Offre typeOffre, Double superficie) {
 		super();
@@ -129,8 +135,8 @@ public abstract class BienImmobilier {
 	 * @param superficie
 	 */
 	public BienImmobilier(Integer idBien, boolean statut,
-			ClasseStandard classeStandard, GregorianCalendar dateSoumission,
-			GregorianCalendar dateMiseDisposition, Double revenuCadastral,
+			ClasseStandard classeStandard, Date dateSoumission,
+			Date dateMiseDisposition, Double revenuCadastral,
 			String telClient, String telConseiller, Double prix, String typeBail,
 			Offre typeOffre, Double superficie) {
 		super();
@@ -176,19 +182,19 @@ public abstract class BienImmobilier {
 		this.classeStandard = classeStandard;
 	}
 
-	public GregorianCalendar getDateSoumission() {
+	public Date getDateSoumission() {
 		return dateSoumission;
 	}
 
-	public void setDateSoumission(GregorianCalendar dateSoumission) {
+	public void setDateSoumission(Date dateSoumission) {
 		this.dateSoumission = dateSoumission;
 	}
 
-	public GregorianCalendar getDateMiseDisposition() {
+	public Date getDateMiseDisposition() {
 		return dateMiseDisposition;
 	}
 
-	public void setDateMiseDisposition(GregorianCalendar dateMiseDisposition) {
+	public void setDateMiseDisposition(Date dateMiseDisposition) {
 		this.dateMiseDisposition = dateMiseDisposition;
 	}
 
@@ -248,4 +254,49 @@ public abstract class BienImmobilier {
 		this.superficie = superficie;
 	}
 
+	public Proprietaire getProprio() {
+		return proprio;
+	}
+
+	public void setProprio(Proprietaire proprio) {
+		this.proprio = proprio;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	@Override
+	public String toString() {
+		return classeStandard.getTypeOffre() + " " +adresse.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idBien == null) ? 0 : idBien.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BienImmobilier other = (BienImmobilier) obj;
+		if (idBien == null) {
+			if (other.idBien != null)
+				return false;
+		} else if (!idBien.equals(other.idBien))
+			return false;
+		return true;
+	}
 }
