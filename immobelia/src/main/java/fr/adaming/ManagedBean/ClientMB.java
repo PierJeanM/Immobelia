@@ -69,7 +69,7 @@ public class ClientMB {
 	}
 	
 	public void addClient(){
-		System.out.println("=======> ADD CLIENT MB");
+		System.out.println("=======> ADD CLIENT MB" + this.client);
 		this.client.setAdresse(adresseClient);
 		clientService.addClient(this.client);
 	}
