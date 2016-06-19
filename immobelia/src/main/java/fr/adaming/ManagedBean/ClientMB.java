@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import fr.adaming.model.personne.Adresse;
 import fr.adaming.model.personne.Client;
 import fr.adaming.model.personne.ConseillerImmobilier;
 import fr.adaming.service.ClientService;
@@ -23,7 +24,23 @@ public class ClientMB {
 	private ClientService clientService;
 	
 	private Client client;
+	private Adresse adresseClient;
 	
+	
+	/**
+	 * @return the adresseClient
+	 */
+	public Adresse getAdresseClient() {
+		return adresseClient;
+	}
+
+	/**
+	 * @param adresseClient the adresseClient to set
+	 */
+	public void setAdresseClient(Adresse adresseClient) {
+		this.adresseClient = adresseClient;
+	}
+
 	private String[] selectedClassesStandard;   
 	
 	
@@ -31,8 +48,8 @@ public class ClientMB {
 	private ConseillerImmobilier conseillerImmobilier;
 
 	public ClientMB() {
-	
 		client = new Client();
+		adresseClient = new Adresse();
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -51,9 +68,10 @@ public class ClientMB {
 		return clientService.getClientByIdConseiller(idCons);
 	}
 	
-	public void addClient(Client clt){
-		client = clt;
-		clientService.addClient(clt);
+	public void addClient(){
+		System.out.println("=======> ADD CLIENT MB");
+		this.client.setAdresse(adresseClient);
+		clientService.addClient(this.client);
 	}
 	
 	/**

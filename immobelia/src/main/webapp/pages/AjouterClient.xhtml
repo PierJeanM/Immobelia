@@ -14,6 +14,7 @@
 		<ui:define name="content">
 			<h:form>
     <p:panel header="Validate">
+
  
         <h:panelGrid id="grid" columns="2" cellpadding="9">
             <h:outputLabel for="nom" value="Nom :" style="font-weight:bold"/>                    
@@ -30,22 +31,22 @@
             </p:inputText>
             
             <h:outputLabel for="numrue" value="Numero de rue :" style="font-weight:bold"/>                    
-            <p:inputText id="numrue" value="#{clientMB.client.adresse.numero}" label="numrue">
+            <p:inputText id="numrue" value="#{clientMB.adresseClient.numero}" label="numrue">
                 <f:validateDoubleRange minimum="5" maximum="8" />
             </p:inputText>
             
             <h:outputLabel for="nomrue" value="Nom de la rue :" style="font-weight:bold"/>                    
-            <p:inputText id="nomrue" value="#{clientMB.client.adresse.rue}" label="nomrue">
+            <p:inputText id="nomrue" value="#{clientMB.adresseClient.rue}" label="nomrue">
                 <f:validateDoubleRange minimum="5" maximum="8" />
             </p:inputText>
             
             <h:outputLabel for="ville" value="Ville :" style="font-weight:bold"/>                    
-            <p:inputText id="ville" value="#{clientMB.client.adresse.ville}" label="ville">
+            <p:inputText id="ville" value="#{clientMB.adresseClient.ville}" label="ville">
                 <f:validateDoubleRange minimum="5" maximum="8" />
             </p:inputText>
             
             <h:outputLabel for="codepostal" value="Code postal :" style="font-weight:bold"/>                    
-            <p:inputText id="codepostal" value="#{clientMB.client.adresse.codePostal}" label="codepostal">
+            <p:inputText id="codepostal" value="#{clientMB.adresseClient.codePostal}" label="codepostal">
                 <f:validateDoubleRange minimum="5" maximum="8" />
             </p:inputText>                   
             
@@ -58,11 +59,11 @@
 			        </p:selectCheckboxMenu>
 			     
 		    	</h:panelGrid>
+	         <p:commandButton value="Ajouter" action="#{clientMB.addClient}" validateClient="true" style="margin-right:10px"/>
 	 
 
         </h:panelGrid>
  
-        <p:commandButton value="Ajouter" action="#{clientMB.addClient}" validateClient="true" style="margin-right:10px"/>
         
     </p:panel>
 </h:form>
