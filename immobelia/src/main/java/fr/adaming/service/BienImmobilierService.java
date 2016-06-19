@@ -36,4 +36,8 @@ public class BienImmobilierService {
 		return bienImmoDAO.getAll();
 	}
 	
+	public BienImmobilier getById(int id){
+		return bienImmoDAO.getById(id);
+	}
+	
 }

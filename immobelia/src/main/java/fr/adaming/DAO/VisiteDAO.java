@@ -31,7 +31,7 @@ public class VisiteDAO {
 	}
 	
 	public void remove(Visite visite){
-		entityManager.refresh(visite);
+		entityManager.remove(entityManager.find(Visite.class, visite.getIdVisite()));
 	}
 	
 	public void update(Visite visite) {

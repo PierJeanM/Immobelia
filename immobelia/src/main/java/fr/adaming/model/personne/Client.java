@@ -78,5 +78,4 @@ public class Client extends Personne {
 			ConseillerImmobilier conseillerImmobilier) {
 		this.conseillerImmobilier = conseillerImmobilier;
 	}
-
 }

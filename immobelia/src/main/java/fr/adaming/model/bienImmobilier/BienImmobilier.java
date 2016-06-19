@@ -272,7 +272,7 @@ public abstract class BienImmobilier {
 
 	@Override
 	public String toString() {
-		return classeStandard.getTypeOffre() + " " +adresse.toString();
+		return classeStandard.getTypeBien() + " " +adresse.toString();
 	}
 
 	@Override

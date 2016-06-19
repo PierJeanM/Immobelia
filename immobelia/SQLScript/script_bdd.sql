@@ -46,3 +46,5 @@ INSERT into aacheter values (1, 1, "correct");
 INSERT into contrats values (1, '2016-02-01 00:00:00', 1, 1, 1);
 
 INSERT into client_classestandard values (1,4);
+
+INSERT into visites values (1, '2016-06-18 00:00:00', 1, 1, 1);

@@ -27,56 +27,71 @@
 							</c:forEach>
 					    </p:accordionPanel>
 				    </p:panel>
-					<br/><br/>
-				    <h:form>
-				    	<p:growl id="messages" showDetail="true" />
-				    	<p:panel header="Calendrier des visites" toggleable="true" collapsed="true">
-							<p:schedule id="planning" mode="inline" locale="fr" aspectRatio="2.6" value="#{scheduleView.eventModel}" widgetVar="myplanning" timeZone="GMT+2">
-								<p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-					            <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-					            <p:ajax event="eventMove" listener="#{scheduleView.onEventMove}" update="messages" />
-					            <p:ajax event="eventResize" listener="#{scheduleView.onEventResize}" update="messages" />
-							</p:schedule>
-						</p:panel>
-						
-						
-						<p:dialog widgetVar="eventDialog" header="Ajouter une visite" showEffect="clip" hideEffect="clip" resizable="false" draggable="false">
-					        <h:panelGrid id="eventDetails" columns="2">
-					        
-					            <p:outputLabel value="Client :" />
-					            <p:selectOneMenu id="client" value="#{scheduleView.visite.client}" effect="fold" >
-						            <f:selectItem itemLabel="Choisir" itemValue="" />
-						            <f:selectItems value="#{scheduleView.listeClients}" />
-						        </p:selectOneMenu>
-					            
-					            <p:outputLabel value="Bien : " />
-					            <p:selectOneMenu id="bien" value="#{scheduleView.visite.bienImmobilier}" effect="fold">
-						            <f:selectItem itemLabel="Choisir" itemValue="" />
-						            <f:selectItems value="#{scheduleView.listeBiens}" />
-						        </p:selectOneMenu>
-					 
-					            <p:outputLabel value="Date : " />
-					            <p:calendar id="date" value="#{scheduleView.visite.dateVisite}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
-					 
-					            <p:commandButton type="reset" value="Reset" />
-					            <p:commandButton id="addButton" value="Ajouter" actionListener="#{scheduleView.addEvent}"  />
-					        	<p:messages autoUpdate="true" />
-					        </h:panelGrid>
-					    </p:dialog> 
-					    <p:messages autoUpdate="true"/>
-					</h:form>
-					<script type="text/javascript">
-						PrimeFaces.locales['fr'] = { closeText: 'Fermer', prevText: 'Précédent', nextText: 'Suivant',
-						 monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',
-						'Octobre', 'Novembre', 'Décembre' ], monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul',
-						'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ], dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 
-						'Vendredi', 'Samedi'], dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'], dayNamesMin:
-						['D', 'L', 'M', 'M', 'J', 'V', 'S'], weekHeader: 'Semaine', firstDay: 1, isRTL: false, 
-						showMonthAfterYear: false, yearSuffix:'', timeOnlyTitle: 'Choisir l\'heure', timeText: 'Heure',
-						hourText: 'Heures', minuteText: 'Minutes', secondText: 'Secondes', currentText: 'Maintenant', 
-						ampm: false, month: 'Mois', week: 'Semaine', day: 'Jour', allDayText: 'Toute la journée' };
-					</script>
 				</h:form>
+				<br/><br/>
+			    <h:form>
+			    	<p:growl id="messages" showDetail="true" />
+			    	<p:panel header="Calendrier des visites" toggleable="true" collapsed="true">
+						<p:schedule id="planning" mode="inline" locale="fr" aspectRatio="2.6" value="#{gestionCalendrierMB.eventModel}" widgetVar="myplanning" timeZone="GMT+2" draggable="false">
+							<p:ajax event="dateSelect" listener="#{gestionCalendrierMB.onDateSelect}" update="eventDetails" oncomplete="PF('addVisite').show();" />
+				            <p:ajax event="eventSelect" listener="#{gestionCalendrierMB.onEventSelect}" update="eventDetailsModif" oncomplete="PF('changeVisite').show();" />
+						</p:schedule>
+					</p:panel>
+					
+					
+					<p:dialog widgetVar="addVisite" header="Ajouter une visite" showEffect="clip" hideEffect="clip" resizable="false" draggable="false">
+				        <h:panelGrid id="eventDetails" columns="2">
+				        
+				            <p:outputLabel value="Client :" />
+				            <p:selectOneMenu id="client" value="#{gestionCalendrierMB.idClient}" effect="fold">
+					            <f:selectItem itemLabel="Choisir" />
+					            <f:selectItems value="#{gestionCalendrierMB.listeClients}" var="client" itemValue="#{client.id_personne}" itemLabel="#{client.prenom} #{client.nom}"/>
+					        </p:selectOneMenu>
+				            
+				            <p:outputLabel value="Bien : " />
+				            <p:selectOneMenu id="bien" value="#{gestionCalendrierMB.idBien}" effect="fold">
+					            <f:selectItem itemLabel="Choisir" />
+					            <f:selectItems value="#{gestionCalendrierMB.listeBiens}" var="bien" itemValue="#{bien.idBien}" itemLabel="#{bien.classeStandard.typeBien} #{bien.adresse}"/>
+					        </p:selectOneMenu>
+				 
+				            <p:outputLabel value="Date : " />
+				            <p:calendar id="date" value="#{gestionCalendrierMB.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+				 
+				            <p:commandButton id="addButton" value="Ajouter" actionListener="#{gestionCalendrierMB.addEvent}" oncomplete="PF('myplanning').update();PF('addVisite').hide();"/>
+				        </h:panelGrid>
+				    </p:dialog>
+				    
+				    
+				    <p:dialog widgetVar="changeVisite" header="Modifier une visite" showEffect="clip" hideEffect="clip" resizable="false" draggable="false">
+				        <h:panelGrid id="eventDetailsModif" columns="2">
+				        
+				            <p:outputLabel value="Client :" />
+				            <h:outputText value="#{gestionCalendrierMB.visite.client}" />
+				            
+				            <p:outputLabel value="Bien : " />
+				            <h:outputText value="#{gestionCalendrierMB.visite.bienImmobilier}" />
+				 
+				            <p:outputLabel value="Date : " />
+				            <p:calendar id="dateModif" value="#{gestionCalendrierMB.visite.dateVisite}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+				 
+				            <p:commandButton id="removeButton" value="Supprimer" actionListener="#{gestionCalendrierMB.removeEvent}" oncomplete="PF('myplanning').update();PF('changeVisite').hide();"/>
+				            <p:commandButton id="addButtonModif" value="Modifier" actionListener="#{gestionCalendrierMB.addEvent}" oncomplete="PF('myplanning').update();PF('changeVisite').hide();"/>
+				        </h:panelGrid>
+				    </p:dialog>
+				    <h:messages autoUpdate="true"/>
+				</h:form>
+				<script type="text/javascript">
+					PrimeFaces.locales['fr'] = { closeText: 'Fermer', prevText: 'Précédent', nextText: 'Suivant',
+					 monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',
+					'Octobre', 'Novembre', 'Décembre' ], monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul',
+					'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ], dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 
+					'Vendredi', 'Samedi'], dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'], dayNamesMin:
+					['D', 'L', 'M', 'M', 'J', 'V', 'S'], weekHeader: 'Semaine', firstDay: 1, isRTL: false, 
+					showMonthAfterYear: false, yearSuffix:'', timeOnlyTitle: 'Choisir l\'heure', timeText: 'Heure',
+					hourText: 'Heures', minuteText: 'Minutes', secondText: 'Secondes', currentText: 'Maintenant', 
+					ampm: false, month: 'Mois', week: 'Semaine', day: 'Jour', allDayText: 'Toute la journée' };
+				</script>
+				
 			
 			
 			</ui:define>
@@ -95,7 +110,7 @@
 				    </p:dataList>
 				    
 				<!-- details du contrat selectionne -->
-				    <p:dialog header="Détails du contrat" widgetVar="contratDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false" draggable="false" appendToBody = "true">
+				    <p:dialog header="Détails du contrat" widgetVar="contratDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false" draggable="false" appendTo="@(body)">
 				        <p:outputPanel id="details" style="text-align:center;">
 				            <p:panelGrid  columns="2" rendered="#{not empty tableauBordMB.contrat}" columnClasses="label,value">
 			 
