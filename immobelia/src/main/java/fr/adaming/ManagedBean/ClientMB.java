@@ -115,7 +115,7 @@ public class ClientMB {
 	 * @param client the client to set
 	 */
 	public void setClient(Client client) {
-		System.out.println("======> CLIENT MB");
+		System.out.println("======> CLIENT MB *** SET" + client);
 		this.client = client;
 	}
 

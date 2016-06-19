@@ -94,8 +94,6 @@ public abstract class Personne {
 	/****************************************************************************/
 
 	public String getNom() {
-		System.out.println("======> NOM *** GET");
-
 		return nom;
 	}
 
@@ -128,8 +126,6 @@ public abstract class Personne {
 	}
 
 	public Adresse getAdresse() {
-		System.out.println("======> PERSONNE *** GET ADRESSE");
-
 		return adresse;
 	}
 
