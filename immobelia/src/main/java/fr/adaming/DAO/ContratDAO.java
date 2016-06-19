@@ -34,7 +34,7 @@ public class ContratDAO {
 	}
 	
 	public void removeContrat(Contrat contrat){
-		entityManager.remove(contrat);
+		entityManager.remove(entityManager.find(Contrat.class, contrat.getIdContrat()));
 	}
 	
 	public void updateContrat(Contrat contrat){

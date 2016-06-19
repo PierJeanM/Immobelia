@@ -31,7 +31,7 @@ public class ClientDAO {
 	}
 	
 	public void remove(Client client){
-		entityManager.refresh(client);
+		entityManager.remove(entityManager.find(Client.class, client.getId_personne()));
 	}
 	
 	public void update(Client client) {

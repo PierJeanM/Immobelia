@@ -31,13 +31,12 @@ public class BienImmoDAO {
 		return entityManager.createQuery("FROM bienImmobilier b WHERE b.proprietaire.id= :bID").getResultList();
 	}
 		
-		
 	public void add(BienImmobilier bien){
 		entityManager.persist(bien);
 	}
 	
 	public void remove(BienImmobilier bien){
-		entityManager.refresh(bien);
+		entityManager.remove(entityManager.find(BienImmobilier.class, bien.getIdBien()));
 	}
 	
 	public void update(BienImmobilier bien) {

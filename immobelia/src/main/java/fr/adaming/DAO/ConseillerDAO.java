@@ -35,7 +35,7 @@ public class ConseillerDAO {
 	}
 	
 	public void removeConseiller(ConseillerImmobilier conseillerImmobilier){
-		entityManager.remove(conseillerImmobilier);
+		entityManager.remove(entityManager.find(ConseillerImmobilier.class, conseillerImmobilier.getId_personne()));
 	}
 	
 	public void update(ConseillerImmobilier conseillerImmobilier){

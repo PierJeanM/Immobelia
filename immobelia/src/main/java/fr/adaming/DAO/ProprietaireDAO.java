@@ -40,7 +40,7 @@ public class ProprietaireDAO {
 	}
 	
 	public void removeProprietaire(Proprietaire proprietaire){
-		entityManager.remove(proprietaire);
+		entityManager.remove(entityManager.find(Proprietaire.class, proprietaire.getId_personne()));
 	}
 	
 	public void updateProprietaire(Proprietaire proprietaire){
