@@ -18,9 +18,12 @@
 				    <p:accordionPanel activeIndex="">
 				    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
 					        <p:tab title="Bien appartenant à la classe #{classe.idClasseStandard}">
+					        
 								<p:dataList value="#{tableauBordMB.getBiensOfClasseStandard(classe.idClasseStandard)}" var="bien" type="definition">
-							       	Bien: #{bien.prix}
+							    
+							       	Bien N°#{bien.idBien} = Adresse: #{bien.adresse} , Superficie: #{bien.superficie} m², Prix: #{bien.prix} € , Type Bail: #{bien.typeBail} 
 							    </p:dataList>
+							  
 					        </p:tab>
 						</c:forEach>
 				    </p:accordionPanel>
