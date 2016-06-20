@@ -78,6 +78,14 @@ public class Proprietaire extends Personne {
 		super(id, nom, prenom, telephone, adresse);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public int getMontantTotal(){
+		int montant = 0;
+		for (BienImmobilier b : biensImmos) {
+			montant += b.getPrix();
+		}
+		return montant;
+	}
 
 	/**************************
 	 * GETTERS & SETTERS

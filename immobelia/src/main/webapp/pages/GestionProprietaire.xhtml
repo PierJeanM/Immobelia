@@ -5,62 +5,55 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>Bienvenue dans la page GestionProprietaire</h:head>
-<body>
+	<h:head>Gestion Propriétaires</h:head>
+	<h:body>
+		<ui:composition template="/template/layout.xhtml">
+			<ui:define name="content">
+				<h:form>
+					<p:dataTable id="tableProprios" var="proprio"
+						value="#{proprietaireMB.byConseiller}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+						paginator="true" rows="10" style="margin-bottom:20px">
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Id" />
+							</f:facet>
+							<h:outputText value="#{proprio.id_personne}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Nom" />
+							</f:facet>
+							<h:outputText value="#{proprio.nom}" />
+						</p:column>
+	
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Prenom" />
+							</f:facet>
+							<h:outputText value="#{proprio.prenom}" />
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Nombre de biens" />
+							</f:facet>
+							<h:outputText value="#{proprio.biensImmos.size()}" />
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Montant total des biens" />
+							</f:facet>
+							<h:outputText value="#{proprio.montantTotal} &euro;" />
+						</p:column>
+					</p:dataTable>
 
-	<h:form id="form">
-
-<p:dataList value="#{bienImmobilierMB.listeBienImmobilier}" var="bien" type="ordered">
-        <f:facet name="header">
-            Basic
-        </f:facet>
-        #{bien.idBien}, #{bien.prix}
-    </p:dataList>
-
-		<p:dataList value="#{proprietaireMB.getByConseiller()}"
-			var="proprietaire" type="ordered" itemType="none" paginator="true"
-			rows="10" styleClass="paginated">
-			<f:facet name="header">
-            Liste des propriétaires
-        </f:facet>
-			<p:commandLink oncomplete="PF('infosProprio').show()"
-				title="Detail des proprietaires" styleClass="ui-icon ui-icon-search"
-				style="float:left;margin-right:10px">
-				<f:setPropertyActionListener value="#{proprietaire}"
-					target="#{proprietaireMB.byConseiller}" />
-				<h:outputText value="#{proprietaire.nom}, #{proprietaire.prenom}" />
-			</p:commandLink>
-			<h:outputText value="#{proprietaire.nom}, #{proprietaire.prenom}"
-				style="display:inline-block" />
-		</p:dataList>
-
-		<p:dialog header="Informations detaillées du proprietaire" widgetVar="infosProprio"
-			modal="true" showEffect="blind" hideEffect="explode"
-			resizable="false">
-			<p:outputPanel id="carDetail" style="text-align:center;">
-				<p:panelGrid columns="2"
-					rendered="#{not empty proprietaireMB.byConseiller}"
-					columnClasses="label,value">
-					
-
-					<h:outputText value="Nom : " />
-					<h:outputText value="#{proprietaireMB.proprietaire.nom}" />
-
-					<h:outputText value="Prenom : " />
-					<h:outputText value="#{proprietaireMB.proprietaire.prenom}" />
-
-<!-- 					<h:outputText value="Nombre Biens : " /> -->
-<!-- 					<h:outputText value="#{bienImmobilierMB.nombreBiensByProprio()}" /> -->
-
-					<h:outputText value="Montant total Biens" />
-					<h:outputText value="$#{proprietaireMB.proprietaire.telTravail}" />
-				</p:panelGrid>
-			</p:outputPanel>
-		</p:dialog>
-
-
-
-
-	</h:form>
-</body>
+<!-- 					<p:commandButton action="/pages/AjouterClient.xhtml" value="Ajouter un Client"></p:commandButton> -->
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</h:body>
 </html>
