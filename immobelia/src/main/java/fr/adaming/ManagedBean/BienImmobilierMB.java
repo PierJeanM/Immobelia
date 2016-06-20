@@ -44,7 +44,10 @@ public class BienImmobilierMB {
 		return bienImmobilierService.getByProprio(id);
 	}
 
-	
+	public void addBienImmo(BienImmobilier bienImmobilier){
+		bienImmobilierService.addBien(bienImmobilier);
+		
+	}
 
 	public BienImmobilierService getBienImmobilierService() {
 		return bienImmobilierService;

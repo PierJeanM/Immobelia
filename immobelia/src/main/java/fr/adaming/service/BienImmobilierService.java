@@ -23,6 +23,10 @@ public class BienImmobilierService {
 		return bienImmoDAO.getByProprio();
 	}
 	
+	public void addBien(BienImmobilier bienImmobilier){
+		
+		bienImmoDAO.add(bienImmobilier);
+	}
 	
 	public BienImmoDAO getBienImmoDAO() {
 		return bienImmoDAO;

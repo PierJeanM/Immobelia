@@ -2,6 +2,8 @@ package fr.adaming.model.bienImmobilier;
 
 import java.util.Date;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -14,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.primefaces.event.SlideEndEvent;
 
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.personne.Adresse;
@@ -154,6 +158,31 @@ public abstract class BienImmobilier {
 		this.superficie = superficie;
 	}
 
+	public void slidePrix(SlideEndEvent event) {
+        FacesMessage message = new FacesMessage("Prix de Vente choisi", "Valeur: " + event.getValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    } 
+	
+	public void slideRevenu(SlideEndEvent event) {
+        FacesMessage message = new FacesMessage("Revenu Cadastral à posseder", "Valeur: " + event.getValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+	
+	public void slideSuperficie(SlideEndEvent event) {
+        FacesMessage message = new FacesMessage("Superficie indiquée", "Valeur: " + event.getValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+	
+	public void messageDisponibilité() {
+        String summary = statut ? "Disponible" : "Non disponible";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+    }
+	
+	public void messageOffre() {
+        String summary = statut ? "Achat" : "Location";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+    }
+	
 	/**********************************/
 	/********* GETTER AND SETTER ********/
 	/**********************************/
