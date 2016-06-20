@@ -56,8 +56,8 @@ public class ProprietaireMB {
 	}
 	
 	public void removeProprietaire(ActionEvent event){
-		Integer id = (Integer) ((UIParameter) event.getComponent().findComponent("deleteID")).getValue();;
-		proprietaireService.removeProprietaire(proprietaire);
+		Integer id = (Integer) ((UIParameter) event.getComponent().findComponent("deleteID")).getValue();
+		proprietaireService.removeProprietaire(id);
 	}
 	
 	/****************************

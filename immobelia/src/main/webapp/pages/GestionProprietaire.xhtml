@@ -89,8 +89,13 @@
 								</p:panelGrid>
 							</p:outputPanel>
 						</p:dialog>
-
-
+					</p:column>
+					
+					<p:column id="suppress">
+						<f:facet name="header">
+							<h:outputText value="Suppression" />
+							<p:commandButton actionListener="#{proprietaireMB.removeProprietaire}">Supprimer</p:commandButton>
+						</f:facet>
 					</p:column>
 				</p:dataTable>
 			</h:form>
