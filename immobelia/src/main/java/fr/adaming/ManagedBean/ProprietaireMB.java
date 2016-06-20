@@ -7,11 +7,14 @@ import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.faces.component.UIParameter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.adaming.ManagedBean.ConseillerMB;
+import fr.adaming.model.personne.Adresse;
 import fr.adaming.model.personne.Proprietaire;
 import fr.adaming.service.ProprietaireService;
 
@@ -28,54 +31,33 @@ public class ProprietaireMB {
 
 	public ProprietaireMB() {
 		proprietaire = new Proprietaire();
+		proprietaire.setAdresse(new Adresse());
 		listeProprietaire=new ArrayList<Proprietaire>();
 	}
 
 	
 	public List<Proprietaire> getByConseiller() {
-
-		System.out.println("===========================GETBYCONSEILLER===================="
-						+ proprietaireService);
 		
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
 		
 		int id = conseillerMB.getConseillerImmobilier().getId_personne();
-		
-		
-
-		return proprietaireService.getByConseiller(id);
-		
+		listeProprietaire = proprietaireService.getByConseiller(id);
+		return listeProprietaire;	
 	}
 	
-//	public int nombreBiensByProprio() {
-//		System.out
-//				.println("======================Nombre Bien par proprio======================"
-//						+ bienImmobilierService);
-//		ELContext context = FacesContext.getCurrentInstance().getELContext();
-//		System.out
-//				.println("===============context====================================="
-//						+ context);
-//		ProprietaireMB proprietaireMB = (ProprietaireMB) context
-//				.getELResolver().getValue(context, null, "proprietaireMB");
-//		System.out
-//				.println("===============proprioMB====================================="
-//						+ proprietaireMB);
-//		int id = proprietaireMB.getProprietaire().getId_personne();
-//		System.out
-//				.println("========================ID====================================="
-//						+ id);
-//		List<BienImmobilier> listeBiensByProprio = new ArrayList<BienImmobilier>();
-//		listeBiensByProprio = bienImmobilierService.getByProprio(id);
-//		System.out
-//				.println("========================Nombre de biens======================="
-//						+ listeBiensByProprio.size());
-//		return listeBiensByProprio.size();
-//
-//	}
-	
-	public void addProprietaire(Proprietaire proprietaire){
+	public void addProprietaire(){
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
+		
+		proprietaire.setConseillerImmobilier(conseillerMB.getConseillerImmobilier());
 		proprietaireService.addProprietaire(proprietaire);
+		proprietaire = new Proprietaire();
+	}
+	
+	public void removeProprietaire(ActionEvent event){
+		Integer id = (Integer) ((UIParameter) event.getComponent().findComponent("deleteID")).getValue();;
+		proprietaireService.removeProprietaire(proprietaire);
 	}
 	
 	/****************************
@@ -91,10 +73,6 @@ public class ProprietaireMB {
 	}
 
 	public Proprietaire getProprietaire() {
-		System.out.println("==============================VALEUR PROPRIETAIRE========================="+proprietaire);
-		System.out.println("==============================VALEUR PROPRIETAIRE========================="+proprietaire.getNom());
-		System.out.println("==============================VALEUR PROPRIETAIRE========================="+proprietaire.getPrenom());
-		
 		return proprietaire;
 	}
 

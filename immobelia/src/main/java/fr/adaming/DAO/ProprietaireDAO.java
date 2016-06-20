@@ -39,8 +39,8 @@ public class ProprietaireDAO {
 		entityManager.persist(proprietaire);
 	}
 	
-	public void removeProprietaire(int id){
-		entityManager.remove(entityManager.find(Proprietaire.class, id));
+	public void removeProprietaire(Proprietaire proprietaire){
+		entityManager.remove(entityManager.find(Proprietaire.class, proprietaire));
 	}
 	
 	public void updateProprietaire(Proprietaire proprietaire){

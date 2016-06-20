@@ -25,7 +25,7 @@ public class ProprietaireService {
 		proprietaireDAO.addProprietaire(proprietaire);
 	}
 	
-	public void removeProprietaire(int id){
-		proprietaireDAO.removeProprietaire(id);
+	public void removeProprietaire(Proprietaire proprietaire){
+		proprietaireDAO.removeProprietaire(proprietaire);
 	}
 }
