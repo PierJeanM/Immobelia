@@ -26,7 +26,7 @@ public class Adresse {
 	private String rue;
 
 	@Column(name = "numero")
-	private int numero;
+	private Integer numero;
 
 	@Column(name = "codePostal")
 	private String codePostal;
@@ -38,7 +38,6 @@ public class Adresse {
 	 * ctor vide
 	 */
 	public Adresse() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -50,7 +49,7 @@ public class Adresse {
 	 * @param codePostal
 	 * @param ville
 	 */
-	public Adresse(int idAdresse, String rue, int numero, String codePostal,
+	public Adresse(int idAdresse, String rue, Integer numero, String codePostal,
 			String ville) {
 		super();
 		this.idAdresse = idAdresse;
@@ -68,7 +67,7 @@ public class Adresse {
 	 * @param codePostal
 	 * @param ville
 	 */
-	public Adresse(String rue, int numero, String codePostal, String ville) {
+	public Adresse(String rue, Integer numero, String codePostal, String ville) {
 		super();
 		this.rue = rue;
 		this.numero = numero;
@@ -97,12 +96,11 @@ public class Adresse {
 		this.rue = rue;
 	}
 
-	public int getNumero() {
-		System.out.println("======> NUMERO *** GET");
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
@@ -118,11 +116,7 @@ public class Adresse {
 		return ville;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
+	
 	@Override
 	public String toString() {
 		return numero + " " + rue + ", " + codePostal + " " + ville;

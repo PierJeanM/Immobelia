@@ -22,7 +22,7 @@
 			            <h:outputLabel value="Telephone :" style="font-weight:bold"/>                    
 			            <p:inputText id="telephone" value="#{proprietaireMB.proprietaire.telephone}" label="Telephone"/>
 			            
-			            <h:outputLabel value="ADRESSE"/>
+			            <h:outputLabel value="ADRESSE" style="font-weight:bold; font-size:125%;"/>
 			            <h:outputText value="" />
 			            
 			            <h:outputLabel value="Numero de rue :" style="font-weight:bold"/>                    
@@ -38,7 +38,7 @@
 			            <p:inputText id="codepostal" value="#{proprietaireMB.proprietaire.adresse.codePostal}" label="codepostal"/>  
 					    	
 					    	
-					   	<p:commandButton value="Ajouter" actionListener="#{proprietaireMB.addProprietaire}" style="margin-right:10px"/>
+					   	<p:commandButton value="Ajouter" actionListener="#{proprietaireMB.addProprietaire}" action="GestionProprietaire.xhtml" style="margin-right:10px"/>
 					   
 			        </h:panelGrid>
 			        
