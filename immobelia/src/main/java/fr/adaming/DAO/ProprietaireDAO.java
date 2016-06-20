@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.model.bienImmobilier.BienImmobilier;
 import fr.adaming.model.personne.Proprietaire;
 
 
@@ -40,6 +41,11 @@ public class ProprietaireDAO {
 	}
 	
 	public void removeProprietaire(int id){
+		System.out.println(entityManager.find(Proprietaire.class, id));
+		List<BienImmobilier> listeBiens = entityManager.find(Proprietaire.class, id).getBiensImmos();
+		for (BienImmobilier b : listeBiens) {
+			b.setProprio(null);
+		}
 		entityManager.remove(entityManager.find(Proprietaire.class, id));
 	}
 	

@@ -11,7 +11,7 @@
 	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="content">
 			<h:form>
-				<p:dataTable id="tableProprios" var="proprio"
+				<p:dataTable id="tableProprios" var="proprio" 
 					value="#{proprietaireMB.byConseiller}"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
 					paginator="true" rows="4" style="margin-bottom:20px">
@@ -91,11 +91,13 @@
 						</p:dialog>
 					</p:column>
 					
-					<p:column id="suppress">
+					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Suppression" />
-							<p:commandButton actionListener="#{proprietaireMB.removeProprietaire}">Supprimer</p:commandButton>
 						</f:facet>
+						<p:commandButton value="Supprimer" actionListener="#{proprietaireMB.removeProprietaire}">
+							<f:param id="deleteID" name="id" value="#{proprio.id_personne}" />
+						</p:commandButton>
 					</p:column>
 				</p:dataTable>
 			</h:form>

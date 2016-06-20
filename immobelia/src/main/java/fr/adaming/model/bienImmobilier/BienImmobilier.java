@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -59,7 +60,7 @@ public abstract class BienImmobilier {
 	@Column(name = "type_bail")
 	private String typeBail;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "type_offre", referencedColumnName = "id_offre")
 	private Offre typeOffre;
 	

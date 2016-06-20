@@ -2,6 +2,7 @@ package fr.adaming.model.personne;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +20,7 @@ public class Proprietaire extends Personne {
 	@Column(name = "telTravail")
 	private String telTravail;
 
-	@OneToMany(mappedBy = "proprio", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "proprio", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<BienImmobilier> biensImmos;
 
 	@ManyToOne

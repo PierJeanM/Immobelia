@@ -37,7 +37,6 @@ public class ProprietaireMB {
 
 	
 	public List<Proprietaire> getByConseiller() {
-		
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
 		
@@ -45,6 +44,7 @@ public class ProprietaireMB {
 		listeProprietaire = proprietaireService.getByConseiller(id);
 		return listeProprietaire;	
 	}
+	
 	
 	public void addProprietaire(){
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
@@ -55,8 +55,10 @@ public class ProprietaireMB {
 		proprietaire = new Proprietaire();
 	}
 	
+	
 	public void removeProprietaire(ActionEvent event){
 		Integer id = (Integer) ((UIParameter) event.getComponent().findComponent("deleteID")).getValue();
+		System.out.println("COUCOU \n" + id);
 		proprietaireService.removeProprietaire(id);
 	}
 	

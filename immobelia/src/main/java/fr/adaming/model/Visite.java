@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,15 +34,15 @@ public class Visite {
 	@Column(name = "date")
 	private Date dateVisite;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "client_id", referencedColumnName="id")
 	private Client client;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "bien_id", referencedColumnName = "id_bien")
 	private BienImmobilier bienImmobilier;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "conseiller_id", referencedColumnName = "id")
 	private ConseillerImmobilier conseiller;
 
