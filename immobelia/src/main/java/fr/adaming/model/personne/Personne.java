@@ -1,6 +1,7 @@
 package fr.adaming.model.personne;
 
 // Imports
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,7 @@ public abstract class Personne {
 	@Column(name = "telephone")
 	private String telephone;
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
 	private Adresse adresse;
 

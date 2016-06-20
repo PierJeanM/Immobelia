@@ -18,25 +18,14 @@ public class ProprietaireService {
 	}
 
 	public List<Proprietaire> getByConseiller(int id) {
-		
-		System.out.println("======================GETBY====================="+proprietaireDAO);
 		return proprietaireDAO.getByConseiller(id);
-
 	}
 
 	public void addProprietaire(Proprietaire proprietaire){
 		proprietaireDAO.addProprietaire(proprietaire);
 	}
 	
-	
-	public ProprietaireDAO getProprietaireDAO() {
-		return proprietaireDAO;
+	public void removeProprietaire(int id){
+		proprietaireDAO.removeProprietaire(id);
 	}
-
-	public void setProprietaireDAO(ProprietaireDAO proprietaireDAO) {
-		this.proprietaireDAO = proprietaireDAO;
-	}
-	
-
-	
 }
