@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import fr.adaming.DAO.ClasseStandardDAO;
 import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.bienImmobilier.BienImmobilier;
 import fr.adaming.model.personne.Client;
 
 @Service
@@ -37,5 +38,9 @@ public class ClasseStandardService {
 	
 	public List<Client> getClientsInteresses(int id){
 		return classeStandardDAO.getClientsInteresses(id);
+	}
+	
+	public List<BienImmobilier> getBiensOfClasseStandard(int id){
+		return classeStandardDAO.getBiensOfClasseStandard(id);
 	}
 }

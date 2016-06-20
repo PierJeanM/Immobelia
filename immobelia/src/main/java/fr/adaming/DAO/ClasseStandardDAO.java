@@ -48,7 +48,7 @@ public class ClasseStandardDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<BienImmobilier> getBiensOfClasseStandard(int id){
-		String req = "FROM bienImmobilier b WHERE b.classeStandard = :csID";
+		String req = "FROM bienImmobilier b WHERE b.classeStandard.idClasseStandard = :csID";
 		return entityManager.createQuery(req).setParameter("csID", id).getResultList();
 	}
 }

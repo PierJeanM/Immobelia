@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -67,6 +68,11 @@ public class Contrat {
 		this.client = client;
 		this.bienImmobilier = bienImmobilier;
 		this.date = date;
+	}
+	
+	public String getDateToString(){
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		return df.format(date);
 	}
 
 	public int getIdContrat() {

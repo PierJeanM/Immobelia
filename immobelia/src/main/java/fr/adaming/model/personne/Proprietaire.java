@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,7 +19,7 @@ public class Proprietaire extends Personne {
 	@Column(name = "telTravail")
 	private String telTravail;
 
-	@OneToMany(mappedBy = "proprio")
+	@OneToMany(mappedBy = "proprio", fetch = FetchType.EAGER)
 	private List<BienImmobilier> biensImmos;
 
 	@ManyToOne

@@ -14,6 +14,7 @@ import fr.adaming.ManagedBean.ConseillerMB;
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Contrat;
 import fr.adaming.model.Visite;
+import fr.adaming.model.bienImmobilier.BienImmobilier;
 import fr.adaming.service.ClasseStandardService;
 import fr.adaming.service.ContratService;
 import fr.adaming.service.VisiteService;
@@ -62,6 +63,11 @@ public class TableauBordMB {
 	
 	public List<ClasseStandard> getClassesStandards(){
 		return classeStandardService.getAll();
+	}
+	
+	
+	public List<BienImmobilier> getBiensOfClasseStandard(int id_classe){
+		return classeStandardService.getBiensOfClasseStandard(id_classe);
 	}
 
 

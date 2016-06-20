@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,7 +24,7 @@ public class ConseillerImmobilier extends Personne {
 	private String motDePasse;
 
 	/*************************** Declaration_associations *************************/
-	@OneToMany(mappedBy = "conseiller")
+	@OneToMany(mappedBy = "conseiller", fetch = FetchType.EAGER)
 	private List<Visite> listVisites;
 
 	/****************************************************************************/

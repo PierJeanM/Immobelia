@@ -21,7 +21,7 @@
 					    	<c:forEach items="#{tableauBordMB.classesStandards}" var="classe" >
 						        <p:tab title="Clients intéressés par la classe #{classe.idClasseStandard}">
 									<p:dataList value="#{classe.listClients}" var="client" type="definition">
-								       	Client: #{client.nom} #{client.prenom}
+								       	Client: #{client.prenom} #{client.nom}
 								    </p:dataList>
 						        </p:tab>
 							</c:forEach>
@@ -106,7 +106,7 @@
 				        <p:commandLink update=":contrats:details" oncomplete="PF('contratDialog').show()" title="Détails" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
 				            <f:setPropertyActionListener value="#{contrat}" target="#{tableauBordMB.contrat}" />
 				        </p:commandLink>
-				        #{contrat.client.nom} #{contrat.client.prenom}, #{contrat.date}
+				        #{contrat.client.nom} #{contrat.client.prenom}, #{contrat.dateToString}
 				    </p:dataList>
 				    
 				<!-- details du contrat selectionne -->
@@ -118,7 +118,7 @@
 				                <h:outputText value="#{tableauBordMB.contrat.client.prenom} #{tableauBordMB.contrat.client.nom}" />
 				 
 				                <h:outputText value="Date" />
-				                <h:outputText value="#{tableauBordMB.contrat.date}" />
+				                <h:outputText value="#{tableauBordMB.contrat.dateToString}" />
 				 
 				                <h:outputText value="Type de bien" />
 				                <h:outputText value="#{tableauBordMB.contrat.bienImmobilier.classeStandard.typeBien}"/>
