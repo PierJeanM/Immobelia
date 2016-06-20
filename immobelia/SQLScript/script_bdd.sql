@@ -8,7 +8,8 @@ INSERT into adresses values (7, "44650", 0, "Boulevard des chevres", "PouleTown"
 INSERT into adresses values (8, "44950", 0, "Boulevard des chameaux", "Nullepart");
 INSERT into adresses values (9, "44000", 0, "Boulevard des dindons", "Nantes");
 INSERT into adresses values (10, "44000", 0, "Boulevard des poules", "Nantes");
-
+INSERT into adresses values (11, "42000", 91, "Avenue des Stephanois", "Saint-Etienne");
+INSERT into adresses values (12, "69000", 01, "Place des vilains", "Lyon");
 
 INSERT into conseillersimmobilier values (1, "Mouse", "Mickey", "0100000000", "1234", 1);
 INSERT into conseillersimmobilier values (2, "Duck", "Donald", "0100000001", "2345", 2);
@@ -34,12 +35,15 @@ INSERT into classes_standards values (5, 2, 100000, 40, "maison", "achat");
 INSERT into classes_standards values (6, 4, 300000, 70, "maison", "achat");
 INSERT into classes_standards values (7, 2, 100000, 40, "maison", "location");
 INSERT into classes_standards values (8, 4, 300000, 70, "maison", "location");
+INSERT into classes_standards values (9, 0, 1000000, 150, "entrepot", "location");
+INSERT into classes_standards values (10, 1, 100000, 35, "studio", "location");
 
 
 
-
-
-INSERT into bienimmobiliers values("appartement", 1, '2016-01-01 00:00:00', '2015-12-23 00:00:00', 99000, 1200, true, 53, null, 0100000000, "habitation", null, null, false, null, null, null, 1, 1, 1, 1);
+INSERT into bienimmobiliers values("appartement", 1, '2016-01-01 00:00:00', '2015-12-23 00:00:00', 80000, 1200, true, 53, null, 0100000000, "habitation", null, null, false, null, null, null, 11, 1, 1, 1);
+INSERT into bienimmobiliers values("maison", 2, '2016-04-02 12:00:00', '2015-03-29 00:00:00', 95000, 1300, true, 60, null, 0100000000, "habitation", null, null, null, true, null, null, 7, 5, 1, 1);
+INSERT into bienimmobiliers values("entrepot", 3, '2016-02-02 12:00:00', '2015-01-26 00:00:00', 850000, 2000, true, 250, null, 0200000000, "entreprise", true, null, null, null, null, null, 12, 9, 2, 2);
+INSERT into bienimmobiliers values("studio", 4, '2016-04-20 12:00:00', '2015-04-15 15:00:00', 60000, 1000, true, 40, null, 0200000000, "habitation", null, true, null, null, null, null, 8, 10, 2, 1);
 
 INSERT into aacheter values (1, 1, "correct");
 

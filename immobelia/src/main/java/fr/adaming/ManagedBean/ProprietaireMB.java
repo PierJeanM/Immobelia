@@ -48,6 +48,32 @@ public class ProprietaireMB {
 		
 	}
 	
+//	public int nombreBiensByProprio() {
+//		System.out
+//				.println("======================Nombre Bien par proprio======================"
+//						+ bienImmobilierService);
+//		ELContext context = FacesContext.getCurrentInstance().getELContext();
+//		System.out
+//				.println("===============context====================================="
+//						+ context);
+//		ProprietaireMB proprietaireMB = (ProprietaireMB) context
+//				.getELResolver().getValue(context, null, "proprietaireMB");
+//		System.out
+//				.println("===============proprioMB====================================="
+//						+ proprietaireMB);
+//		int id = proprietaireMB.getProprietaire().getId_personne();
+//		System.out
+//				.println("========================ID====================================="
+//						+ id);
+//		List<BienImmobilier> listeBiensByProprio = new ArrayList<BienImmobilier>();
+//		listeBiensByProprio = bienImmobilierService.getByProprio(id);
+//		System.out
+//				.println("========================Nombre de biens======================="
+//						+ listeBiensByProprio.size());
+//		return listeBiensByProprio.size();
+//
+//	}
+	
 	public void addProprietaire(Proprietaire proprietaire){
 		proprietaireService.addProprietaire(proprietaire);
 	}
@@ -65,7 +91,10 @@ public class ProprietaireMB {
 	}
 
 	public Proprietaire getProprietaire() {
-		System.out.println("==============================VALEUR PROPRIEAIRE========================="+proprietaire);
+		System.out.println("==============================VALEUR PROPRIETAIRE========================="+proprietaire);
+		System.out.println("==============================VALEUR PROPRIETAIRE========================="+proprietaire.getNom());
+		System.out.println("==============================VALEUR PROPRIETAIRE========================="+proprietaire.getPrenom());
+		
 		return proprietaire;
 	}
 
