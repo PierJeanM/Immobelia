@@ -159,6 +159,16 @@ public abstract class BienImmobilier {
 		this.superficie = superficie;
 	}
 
+	public void messageDisponibilité() {
+        String summary = statut ? "Disponible" : "Non disponible";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+    }
+	
+	public void messageOffre() {
+        String summary = statut ? "Achat" : "Location";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+    }
+	
 	public void slidePrix(SlideEndEvent event) {
         FacesMessage message = new FacesMessage("Prix de Vente choisi", "Valeur: " + event.getValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
@@ -172,16 +182,6 @@ public abstract class BienImmobilier {
 	public void slideSuperficie(SlideEndEvent event) {
         FacesMessage message = new FacesMessage("Superficie indiquée", "Valeur: " + event.getValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-	
-	public void messageDisponibilité() {
-        String summary = statut ? "Disponible" : "Non disponible";
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
-    }
-	
-	public void messageOffre() {
-        String summary = statut ? "Achat" : "Location";
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 	
 	/**********************************/

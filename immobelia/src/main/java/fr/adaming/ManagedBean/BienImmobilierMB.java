@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.el.ELContext;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.SlideEndEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -45,6 +47,10 @@ public class BienImmobilierMB {
 		return bienImmobilierService.getByProprio(id);
 	}
 
+	
+	
+	
+	
 	public void addBienImmo(BienImmobilier bienImmobilier){
 		bienImmobilierService.addBien(bienImmobilier);
 		
