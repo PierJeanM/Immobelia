@@ -6,7 +6,6 @@ import java.util.List;
 import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,8 @@ public class BienImmobilierMB {
 	private BienImmobilier bienImmobilier;
 	private List<BienImmobilier> listeBienImmobilier;
 
+	private String[] selectedClassesStandard;
+	
 	public BienImmobilierMB() {
 		bienImmobilier = new BienImmobilier() {
 		};
@@ -77,4 +78,14 @@ public class BienImmobilierMB {
 		this.listeBienImmobilier = listeBienImmobilier;
 	}
 
+	public String[] getSelectedClassesStandard() {
+		return selectedClassesStandard;
+	}
+
+	public void setSelectedClassesStandard(String[] selectedClassesStandard) {
+		this.selectedClassesStandard = selectedClassesStandard;
+	}
+
+	
+	
 }
