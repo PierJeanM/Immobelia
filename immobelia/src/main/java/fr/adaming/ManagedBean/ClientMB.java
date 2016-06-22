@@ -1,11 +1,14 @@
 package fr.adaming.ManagedBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIParameter;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,21 +27,20 @@ public class ClientMB {
 	private ClientService clientService;
 	
 	private Client client;
-	private Adresse adresseClient;
-	
+	private int IdClientDetails;
 	
 	/**
-	 * @return the adresseClient
+	 * @return the idClientDetails
 	 */
-	public Adresse getAdresseClient() {
-		return adresseClient;
+	public int getIdClientDetails() {
+		return IdClientDetails;
 	}
 
 	/**
-	 * @param adresseClient the adresseClient to set
+	 * @param idClientDetails the idClientDetails to set
 	 */
-	public void setAdresseClient(Adresse adresseClient) {
-		this.adresseClient = adresseClient;
+	public void setIdClientDetails(int idClientDetails) {
+		IdClientDetails = idClientDetails;
 	}
 
 	private String[] selectedClassesStandard;   
@@ -49,31 +51,56 @@ public class ClientMB {
 
 	public ClientMB() {
 		client = new Client();
-		adresseClient = new Adresse();
+		client.setAdresse(new Adresse());
 		// TODO Auto-generated constructor stub
 	}
 	
 	public List<Client> getClientByIdConseiller() {
 
-		// Recupere le managedbean conseiller pour que le nouveau client y soit
-		// associe
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
-		
-		//Recup id du conseiller connecté
-		//int idCons = 1;
-		int idCons = conseillerMB.getConseillerImmobilier().getId_personne();
-		
-		//requete
-		return clientService.getClientByIdConseiller(idCons);
+
+		return clientService.getClientByIdConseiller(conseillerMB.getConseillerImmobilier().getId_personne());
 	}
 	
 	public void addClient(){
-		System.out.println("=======> ADD CLIENT MB" + this.client);
-		this.client.setAdresse(adresseClient);
+		
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
+		
+		this.client.setConseillerImmobilier(conseillerMB.getConseillerImmobilier());
 		clientService.addClient(this.client);
+		client = new Client();
 	}
-	
+
+	public void detailsSetClient(ActionEvent event){
+		IdClientDetails = (Integer) ((UIParameter) event.getComponent().findComponent("idCLient")).getValue();
+		System.out.println("=============>" + IdClientDetails);
+	}
+
+	public List<Client> detailsGetClient(){
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ClientMB clientMB = (ClientMB) context.getELResolver().getValue(context, null, "clientMB");
+		System.out.println("==============> : " + clientMB.getClient());
+
+		List<Client> listeClientDetails = new ArrayList<Client>();
+		
+		listeClientDetails.add(clientMB.getClient());
+		
+		return listeClientDetails;
+//		List<String> listeDetails = new ArrayList<String>();
+//		
+//		String nom = client.getNom();
+//		String prenom = client.getPrenom();
+//		String telephone = client.getTelephone();
+//		
+//		listeDetails.add(nom);
+//		listeDetails.add(prenom);
+//		listeDetails.add(telephone);
+//		
+//		return listeDetails;
+	}
+
 	/**
 	 * @return the selectedClassesStandard
 	 */
@@ -87,7 +114,7 @@ public class ClientMB {
 	public void setSelectedClassesStandard(String[] selectedClassesStandard) {
 		this.selectedClassesStandard = selectedClassesStandard;
 	}
-
+ 
 	/**
 	 * @return the clientService
 	 */

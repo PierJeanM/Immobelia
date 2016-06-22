@@ -36,21 +36,21 @@
 
 						<h:outputLabel for="numrue" value="Numero de rue :"
 							style="font-weight:bold" />
-						<p:inputText id="numrue" value="#{clientMB.adresseClient.numero}"
+						<p:inputText id="numrue" value="#{clientMB.client.adresse.numero}"
 							label="numrue">
 							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<h:outputLabel for="nomrue" value="Nom de la rue :"
 							style="font-weight:bold" />
-						<p:inputText id="nomrue" value="#{clientMB.adresseClient.rue}"
+						<p:inputText id="nomrue" value="#{clientMB.client.adresse.rue}"
 							label="nomrue">
 							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<h:outputLabel for="ville" value="Ville :"
 							style="font-weight:bold" />
-						<p:inputText id="ville" value="#{clientMB.adresseClient.ville}"
+						<p:inputText id="ville" value="#{clientMB.client.adresse.ville}"
 							label="ville">
 							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
@@ -58,26 +58,11 @@
 						<h:outputLabel for="codepostal" value="Code postal :"
 							style="font-weight:bold" />
 						<p:inputText id="codepostal"
-							value="#{clientMB.adresseClient.codePostal}" label="codepostal">
+							value="#{clientMB.client.adresse.codePostal}" label="codepostal">
 							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
-
-						<h:panelGrid columns="3" cellpadding="5">
-							<h:outputLabel for="menu" value="Classes Standard :" />
-							<p:selectCheckboxMenu id="menu"
-								value="#{clientMB.selectedClassesStandard}"
-								label="Classes Standard" filter="true"
-								filterMatchMode="startsWith" panelStyle="width:250px">
-								<f:selectItems value="#{classeStandardMB.allClasseStandard}" />
-							</p:selectCheckboxMenu>
-
-						</h:panelGrid>
-
-
-						<p:commandButton value="Ajouter"
-							actionListener="#{clientMB.addClient}" action=""
-							style="margin-right:10px" />
+						<p:commandButton value="Ajouter" actionListener="#{clientMB.addClient}" style="margin-right:10px" />
 
 					</h:panelGrid>
 
