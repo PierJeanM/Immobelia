@@ -164,26 +164,6 @@ public abstract class BienImmobilier {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 	
-	public void messageOffre() {
-        String summary = statut ? "Achat" : "Location";
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
-    }
-	
-	public void slidePrix(SlideEndEvent event) {
-        FacesMessage message = new FacesMessage("Prix de Vente choisi", "Valeur: " + event.getValue());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    } 
-	
-	public void slideRevenu(SlideEndEvent event) {
-        FacesMessage message = new FacesMessage("Revenu Cadastral à posseder", "Valeur: " + event.getValue());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-	
-	public void slideSuperficie(SlideEndEvent event) {
-        FacesMessage message = new FacesMessage("Superficie indiquée", "Valeur: " + event.getValue());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-	
 	/**********************************/
 	/********* GETTER AND SETTER ********/
 	/**********************************/
@@ -221,6 +201,7 @@ public abstract class BienImmobilier {
 	}
 
 	public Date getDateMiseDisposition() {
+		System.out.println("=========================Date Mise Disposition===================="+dateMiseDisposition);
 		return dateMiseDisposition;
 	}
 

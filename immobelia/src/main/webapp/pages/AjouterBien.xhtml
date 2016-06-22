@@ -10,13 +10,16 @@
 	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="content">
 			<h:form>
-				<p:panel>
+
+				<p:panel header="Ajout d'un Bien Immobilier">
+
 					<p:growl id="msgs" showDetail="true" />
 
 					<h:panelGrid columns="2" cellpadding="5">
 
 						<p:outputLabel for="typeBien" value="Type de Bien:" />
-						<p:selectOneMenu id="typeBien" value="#{classeStandardMB.classeStandard.typeBien}"
+						<p:selectOneMenu id="typeBien"
+							value="#{classeStandardMB.classeStandard.typeBien}"
 							style="width:125px">
 							<f:selectItem itemLabel="Select One" itemValue="" />
 							<f:selectItem itemLabel="Appartement" itemValue="Appartement" />
@@ -30,34 +33,41 @@
 						<p:outputLabel for="dateMiseDispo"
 							value="Date de mise à à disposition" />
 						<p:calendar id="dateMiseDispo"
-							value="#{bienImmobilierMB.bienImmobilier.dateMiseDisposition}" mode="inline" />
+							value="#{bienImmobilierMB.bienImmobilier.dateMiseDisposition}"
+							mode="inline" />
 
 						<p:outputLabel for="dateSoumission" value="Date de soumission" />
 						<p:calendar id="dateSoumission"
-							value="#{bienImmobilierMB.bienImmobilier.dateSoumission}" mode="inline" />
+							value="#{bienImmobilierMB.bienImmobilier.dateSoumission}"
+							mode="inline" />
 
 					</h:panelGrid>
 					<h:panelGrid columns="3" cellpadding="5">
 
 						<p:outputLabel for="prixVenteLocation"
 							value="Prix de Vente/Location fixé" />
-						<p:inputText id="prixVenteLocation" value="#{bienImmobilierMB.bienImmobilier.prix}" />
-						<p:slider for="prixVenteLocation" maxValue="1000000" style="width:100px">
-							<p:ajax event="slideEnd" listener="#{bienImmobilierMB.bienImmobilier.slidePrix()}" />
+						<p:inputText id="prixVenteLocation"
+							value="#{bienImmobilierMB.bienImmobilier.prix}" />
+						<p:slider for="prixVenteLocation" maxValue="1000000"
+							style="width:100px">
+							<p:ajax event="slideEnd"
+								listener="#{bienImmobilierMB.slidePrix()}" />
 						</p:slider>
 
 						<p:outputLabel for="revenuDemande" value="Revenu minimum requis" />
 						<p:inputText id="revenuDemande"
 							value="#{bienImmobilierMB.bienImmobilier.revenuCadastral}" />
 						<p:slider for="revenuDemande" maxValue="10000" style="width:100px">
-							<p:ajax event="slideEnd" listener="#{bienImmobilierMB.bienImmobilier.slideRevenu()}" />
+							<p:ajax event="slideEnd"
+								listener="#{bienImmobilierMB.slideRevenu()}" />
 						</p:slider>
 
 						<p:outputLabel for="superficie" value="Superficie" />
-						<p:inputText id="superficie" value="#{bienImmobilierMB.bienImmobilier.superficie}" />
+						<p:inputText id="superficie"
+							value="#{bienImmobilierMB.bienImmobilier.superficie}" />
 						<p:slider for="superficie" maxValue="500" style="width:100px">
 							<p:ajax event="slideEnd"
-								listener="#{bienImmobilierMB.bienImmobilier.slideSuperficie()}" />
+								listener="#{bienImmobilierMB.slideSuperficie()}" />
 						</p:slider>
 
 					</h:panelGrid>
@@ -65,32 +75,36 @@
 
 						<p:outputLabel for="Disponibilite" value="Disponibilite:" />
 						<p:selectBooleanButton id="Disponibilite"
-							value="#{bienImmobilierMB.bienImmobilier.statut}" onLabel="Disponible"
-							offLabel="Non disponible" onIcon="ui-icon-check"
-							offIcon="ui-icon-close" style="width:100px">
+							value="#{bienImmobilierMB.bienImmobilier.statut}"
+							onLabel="Disponible" offLabel="Non disponible"
+							onIcon="ui-icon-check" offIcon="ui-icon-close"
+							style="width:100px">
 							<p:ajax update="msgs"
 								listener="#{bienImmobilierMB.bienImmobilier.messageDisponibilité()}" />
 						</p:selectBooleanButton>
 
-						
-						<p:outputLabel for="telephoneClient" value="Telephone du client:" />	
-						<p:inputText id="telephoneClient" value="#{bienImmobilierMB.bienImmobilier.telClient}" />
-						
+
+						<p:outputLabel for="telephoneClient" value="Telephone du client:" />
+						<p:inputText id="telephoneClient"
+							value="#{bienImmobilierMB.bienImmobilier.telClient}" />
+
 						<p:outputLabel for="typeBail" value="Type de Bail:" />
-						<p:selectOneMenu id="typeBail" value="#{bienImmobilierMB.bienImmobilier.typeBail}"
+						<p:selectOneMenu id="typeBail"
+							value="#{bienImmobilierMB.bienImmobilier.typeBail}"
 							style="width:125px">
 							<f:selectItem itemLabel="Select One" itemValue="" />
 							<f:selectItem itemLabel="Habitation" itemValue="Habitation" />
 							<f:selectItem itemLabel="Entreprise" itemValue="Entreprise" />
 						</p:selectOneMenu>
 
-						<h:outputText value="Offre" />
-						<p:selectBooleanButton id="typeOffre"
-							value="#{bienImmobilierMB.bienImmobilier.typeOffre}" onLabel="Achat"
-							offLabel="Location" onIcon="ui-icon-check"
-							offIcon="ui-icon-close" style="width:100px">
-							<p:ajax update="msgs" listener="#{bienImmobilierMB.bienImmobilier.messageOffre()}" />
-						</p:selectBooleanButton>
+						<h:outputText value="Offre" />						
+						<p:selectOneMenu id="typeOffre"
+							value="#{classeStandardMB.classeStandard.typeBien}"
+							style="width:125px">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="Location" itemValue="Location" />
+							<f:selectItem itemLabel="Achat" itemValue="Achat" />
+						</p:selectOneMenu>
 
 						<h:outputLabel for="classeStandard" value="Classes Standard :" />
 						<p:selectCheckboxMenu id="classeStandard"
@@ -102,18 +116,20 @@
 
 						<p:outputLabel for="numeroDeRue" value="Numero de la rue :" />
 						<p:inputText id="numeroDeRue"
-							value="#{proprietaireMB.proprietaire.adresse.numero}" label="numrue">
+							value="#{proprietaireMB.proprietaire.adresse.numero}"
+							label="numrue">
 							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<p:outputLabel for="nomDeRue" value="Nom de la rue :" />
-						<p:inputText id="nomDeRue" value="#{proprietaireMB.proprietaire.adresse.rue}"
-							label="nomrue">
+						<p:inputText id="nomDeRue"
+							value="#{proprietaireMB.proprietaire.adresse.rue}" label="nomrue">
 							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<p:outputLabel for="nomVille" value="Ville :" />
-						<p:inputText id="nomVille" value="#{proprietaireMB.proprietaire.adresse.ville}"
+						<p:inputText id="nomVille"
+							value="#{proprietaireMB.proprietaire.adresse.ville}"
 							label="ville">
 							<f:validateDoubleRange minimum="2" maximum="20" />
 						</p:inputText>
@@ -127,7 +143,8 @@
 
 						<p:outputLabel for="nomProprietaire" value="Nom du proprietaire :" />
 						<p:inputText id="nomProprietaire"
-							value="#{proprietaireMB.proprietaire.nom}" label="nomProprietaire">
+							value="#{proprietaireMB.proprietaire.nom}"
+							label="nomProprietaire">
 						</p:inputText>
 
 						<p:outputLabel for="prenomProprietaire"
@@ -137,16 +154,16 @@
 							label="prenomProprietaire">
 						</p:inputText>
 
-				
-					<p:outputLabel for="telephoneProprio" value="Telephone du proprietaire:" />
-					<p:inputText id="telephoneProprio"
-									value="#{proprietaireMB.proprietaire.telephone}" />
-					
+
+						<p:outputLabel for="telephoneProprio"
+							value="Telephone du proprietaire:" />
+						<p:inputText id="telephoneProprio"
+							value="#{proprietaireMB.proprietaire.telephone}" />
+
 
 						<p:commandButton value="Ajouter"
 							actionListener="#{bienImmobilierMB.addBienImmo}"
-							action="GestionBienImmobilier.xhtml"
-							style="margin-right:10px" />
+							action="GestionBienImmobilier.xhtml" style="margin-right:10px" />
 
 					</h:panelGrid>
 

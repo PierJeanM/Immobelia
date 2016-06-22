@@ -13,7 +13,11 @@ import org.primefaces.event.SlideEndEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.bienImmobilier.BienImmobilier;
+import fr.adaming.model.bienImmobilier.Offre;
+import fr.adaming.model.personne.Adresse;
+import fr.adaming.model.personne.Proprietaire;
 import fr.adaming.service.BienImmobilierService;
 
 
@@ -33,7 +37,11 @@ public class BienImmobilierMB {
 	public BienImmobilierMB() {
 		bienImmobilier = new BienImmobilier() {
 		};
-		
+		bienImmobilier.setAdresse(new Adresse());
+		bienImmobilier.setProprio(new Proprietaire());
+		bienImmobilier.setClasseStandard(new ClasseStandard());
+		bienImmobilier.setTypeOffre(new Offre() {
+		});
 		listeBienImmobilier = new ArrayList<BienImmobilier>();
 	}
 
@@ -47,12 +55,26 @@ public class BienImmobilierMB {
 		return bienImmobilierService.getByProprio(id);
 	}
 
+	public void slidePrix(SlideEndEvent event) {
+        FacesMessage message = new FacesMessage("Prix de Vente choisi", "Valeur: " + event.getValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    } 
 	
+	public void slideRevenu(SlideEndEvent event) {
+        FacesMessage message = new FacesMessage("Revenu Cadastral à posseder", "Valeur: " + event.getValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 	
-	
+	public void slideSuperficie(SlideEndEvent event) {
+        FacesMessage message = new FacesMessage("Superficie indiquée", "Valeur: " + event.getValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 	
 	public void addBienImmo(BienImmobilier bienImmobilier){
+	
 		bienImmobilierService.addBien(bienImmobilier);
+		bienImmobilier=new BienImmobilier() {
+		};
 		
 	}
 

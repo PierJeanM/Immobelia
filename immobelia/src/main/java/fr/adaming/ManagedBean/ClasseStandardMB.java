@@ -45,6 +45,7 @@ public class ClasseStandardMB {
 	}
 
 	public ClasseStandard getClasseStandard() {
+		System.out.println("==============VALEUR Classe standard======================"+classeStandard);
 		return classeStandard;
 	}
 
