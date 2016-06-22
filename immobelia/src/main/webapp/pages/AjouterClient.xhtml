@@ -13,53 +13,50 @@
 
 		<ui:define name="content">
 			<h:form>
+				<p:messages autoUpdate="true"/>
 				<p:panel header="Ajout d'un Client">
 
 					<h:panelGrid id="grid" columns="2" cellpadding="9">
 						<h:outputLabel for="nom" value="Nom :" style="font-weight:bold" />
 						<p:inputText id="nom" value="#{clientMB.client.nom}"
-							required="true" label="Nom" />
+							required="true" label="Nom" >
+						</p:inputText>
 
 						<h:outputLabel for="prenom" value="Prenom:"
 							style="font-weight:bold" />
 						<p:inputText id="prenom" value="#{clientMB.client.prenom}"
 							label="Prenom">
-							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<h:outputLabel for="telephone" value="Telephone :"
 							style="font-weight:bold" />
 						<p:inputText id="telephone" value="#{clientMB.client.telephone}"
 							label="Telephone">
-							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<h:outputLabel for="numrue" value="Numero de rue :"
 							style="font-weight:bold" />
 						<p:inputText id="numrue" value="#{clientMB.client.adresse.numero}"
 							label="numrue">
-							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<h:outputLabel for="nomrue" value="Nom de la rue :"
 							style="font-weight:bold" />
 						<p:inputText id="nomrue" value="#{clientMB.client.adresse.rue}"
 							label="nomrue">
-							<f:validateDoubleRange minimum="5" maximum="8" />
+							<f:validateDoubleRange minimum="2" />
 						</p:inputText>
 
 						<h:outputLabel for="ville" value="Ville :"
 							style="font-weight:bold" />
 						<p:inputText id="ville" value="#{clientMB.client.adresse.ville}"
 							label="ville">
-							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<h:outputLabel for="codepostal" value="Code postal :"
 							style="font-weight:bold" />
 						<p:inputText id="codepostal"
 							value="#{clientMB.client.adresse.codePostal}" label="codepostal">
-							<f:validateDoubleRange minimum="5" maximum="8" />
 						</p:inputText>
 
 						<p:commandButton value="Ajouter" actionListener="#{clientMB.addClient}" style="margin-right:10px" />

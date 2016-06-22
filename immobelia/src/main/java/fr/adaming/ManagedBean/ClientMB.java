@@ -63,25 +63,22 @@ public class ClientMB {
 		return clientService.getClientByIdConseiller(conseillerMB.getConseillerImmobilier().getId_personne());
 	}
 	
-	public void addClient(){
-		
+	public void addClient(ActionEvent event){
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
 		
-		this.client.setConseillerImmobilier(conseillerMB.getConseillerImmobilier());
-		clientService.addClient(this.client);
+		client.setConseillerImmobilier(conseillerMB.getConseillerImmobilier());
+		clientService.addClient(client);
 		client = new Client();
 	}
 
 	public void detailsSetClient(ActionEvent event){
 		IdClientDetails = (Integer) ((UIParameter) event.getComponent().findComponent("idCLient")).getValue();
-		System.out.println("=============>" + IdClientDetails);
 	}
 
 	public List<Client> detailsGetClient(){
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ClientMB clientMB = (ClientMB) context.getELResolver().getValue(context, null, "clientMB");
-		System.out.println("==============> : " + clientMB.getClient());
 
 		List<Client> listeClientDetails = new ArrayList<Client>();
 		
@@ -142,7 +139,6 @@ public class ClientMB {
 	 * @param client the client to set
 	 */
 	public void setClient(Client client) {
-		System.out.println("======> CLIENT MB *** SET" + client);
 		this.client = client;
 	}
 
