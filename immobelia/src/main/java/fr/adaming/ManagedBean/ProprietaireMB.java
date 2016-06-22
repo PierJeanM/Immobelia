@@ -45,7 +45,6 @@ public class ProprietaireMB {
 		return listeProprietaire;	
 	}
 	
-	
 	public void addProprietaire(){
 		ELContext context = FacesContext.getCurrentInstance().getELContext();
 		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
@@ -54,8 +53,7 @@ public class ProprietaireMB {
 		proprietaireService.addProprietaire(proprietaire);
 		proprietaire = new Proprietaire();
 	}
-	
-	
+		
 	public void removeProprietaire(ActionEvent event){
 		Integer id = (Integer) ((UIParameter) event.getComponent().findComponent("deleteID")).getValue();
 		System.out.println("COUCOU \n" + id);

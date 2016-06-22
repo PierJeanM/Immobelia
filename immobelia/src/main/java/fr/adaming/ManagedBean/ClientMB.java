@@ -1,6 +1,5 @@
 package fr.adaming.ManagedBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.el.ELContext;
@@ -75,28 +74,6 @@ public class ClientMB {
 	public void detailsSetClient(ActionEvent event){
 		IdClientDetails = (Integer) ((UIParameter) event.getComponent().findComponent("idCLient")).getValue();
 		client = clientService.getById(IdClientDetails);
-	}
-
-	public List<Client> detailsGetClient(){
-		ELContext context = FacesContext.getCurrentInstance().getELContext();
-		ClientMB clientMB = (ClientMB) context.getELResolver().getValue(context, null, "clientMB");
-
-		List<Client> listeClientDetails = new ArrayList<Client>();
-		
-		listeClientDetails.add(clientMB.getClient());
-		
-		return listeClientDetails;
-//		List<String> listeDetails = new ArrayList<String>();
-//		
-//		String nom = client.getNom();
-//		String prenom = client.getPrenom();
-//		String telephone = client.getTelephone();
-//		
-//		listeDetails.add(nom);
-//		listeDetails.add(prenom);
-//		listeDetails.add(telephone);
-//		
-//		return listeDetails;
 	}
 
 	/**

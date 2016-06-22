@@ -5,7 +5,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:spring="http://www.springframework.org/tags"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 	<h:head></h:head>
 
@@ -29,6 +30,35 @@
 				            <p:outputLabel value="Adresse :" />
 				            <h:outputText value="#{clientMB.client.adresse}" />
 				        </h:panelGrid>
+				        
+				        <p:accordionPanel>
+					        <p:tab title="Godfather Part I">
+					            <h:panelGrid columns="2" cellpadding="10">
+					                
+
+							<c:forEach items="#{clientMB.client.bienRecherche}" var="classe">
+								<p:tab
+									title="Bien appartenant à la classe #{classe.idClasseStandard}">
+	
+									<p:dataList
+										value="#{classe.listeBienImmobilier}"
+										var="bien" type="definition">
+								    
+								       	Bien N°#{bien.idBien} = Adresse: #{bien.adresse} , Superficie: #{bien.superficie} m², Prix: #{bien.prix} € , Type Bail: #{bien.typeBail} 
+								    </p:dataList>
+	
+								</p:tab>
+							</c:forEach>
+
+
+
+
+
+
+
+					            </h:panelGrid>
+					        </p:tab>
+    					</p:accordionPanel>
 				    </p:panel>
 				</h:form>
 			</ui:define>
