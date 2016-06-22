@@ -45,9 +45,5 @@ public class ClientDAO {
 		String hqlByConseiller = "FROM client c WHERE c.conseillerImmobilier.id = :consID";
 		return entityManager.createQuery(hqlByConseiller).setParameter("consID", idCons).getResultList();
 		
-	}
-	
-	
-	
-	
+	}	
 }

@@ -74,6 +74,7 @@ public class ClientMB {
 
 	public void detailsSetClient(ActionEvent event){
 		IdClientDetails = (Integer) ((UIParameter) event.getComponent().findComponent("idCLient")).getValue();
+		client = clientService.getById(IdClientDetails);
 	}
 
 	public List<Client> detailsGetClient(){

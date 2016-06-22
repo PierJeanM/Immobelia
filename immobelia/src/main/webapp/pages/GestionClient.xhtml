@@ -53,8 +53,9 @@
 					</p:column>
 					
 					<p:column>
-						<p:commandButton value="Details Client" action="/pages/DetailsClient.xhtml" actionListener="#{clientMB.detailsSetClient}"/>
-						<f:param id="idCLient" name="id" value="#{client.id_personne}" />
+						<p:commandButton value="Details Client" action="/pages/DetailsClient.xhtml?faces-redirect=true" actionListener="#{clientMB.detailsSetClient}">
+							<f:param id="idCLient" name="id" value="#{client.id_personne}" />
+						</p:commandButton>
 					</p:column>
 				</p:dataTable>
 
