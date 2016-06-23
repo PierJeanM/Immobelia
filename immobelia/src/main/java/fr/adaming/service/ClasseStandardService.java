@@ -43,4 +43,8 @@ public class ClasseStandardService {
 	public List<BienImmobilier> getBiensOfClasseStandard(int id){
 		return classeStandardDAO.getBiensOfClasseStandard(id);
 	}
+	
+	public List<ClasseStandard> getClasseStandByIdClient(int idClient){
+		return classeStandardDAO.getClasseStandByIdClient(idClient);
+	}
 }

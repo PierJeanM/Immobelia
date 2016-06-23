@@ -34,28 +34,17 @@
 				        <p:accordionPanel>
 					        <p:tab title="Godfather Part I">
 					            <h:panelGrid columns="2" cellpadding="10">
-					                
-
-							<c:forEach items="#{clientMB.client.bienRecherche}" var="classe">
-								<p:tab
-									title="Bien appartenant à la classe #{classe.idClasseStandard}">
-	
-									<p:dataList
-										value="#{classe.listeBienImmobilier}"
-										var="bien" type="definition">
-								    
-								       	Bien N°#{bien.idBien} = Adresse: #{bien.adresse} , Superficie: #{bien.superficie} m², Prix: #{bien.prix} € , Type Bail: #{bien.typeBail} 
-								    </p:dataList>
-	
-								</p:tab>
-							</c:forEach>
-
-
-
-
-
-
-
+									<c:forEach items="#{clientMB.client.bienRecherche}" var="classe">
+										<p:tab
+											title="Bien appartenant à la classe #{classe.idClasseStandard}">
+											<p:dataList
+												value="#{classeStandardMB.getClasseStandByIdClient(clientMB.client.id_personne)}"
+												var="bien" type="definition">
+										    
+										       	Nom classe standard #{bien.idClasseStandard}
+										    </p:dataList>
+										</p:tab>
+									</c:forEach>
 					            </h:panelGrid>
 					        </p:tab>
     					</p:accordionPanel>

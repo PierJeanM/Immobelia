@@ -51,4 +51,40 @@ public class ClasseStandardDAO {
 		String req = "FROM bienImmobilier b WHERE b.classeStandard.idClasseStandard = :csID";
 		return entityManager.createQuery(req).setParameter("csID", id).getResultList();
 	}
+	
+	
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<ClasseStandard> getClasseStandByIdClient(int idClient){
+		String req = "SELECT cs.id_classestandard FROM client_classestandard as cs JOIN cs.id_client = :clientID";
+		return entityManager.createQuery(req).setParameter("clientID", idClient).getResultList();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	
+//	select film
+//	from Film as film
+//	join film.realisateur as a
+//	where a.nom='Eastwood'
+	
+	
+	
+	
+	
+	
+	
+	
 }

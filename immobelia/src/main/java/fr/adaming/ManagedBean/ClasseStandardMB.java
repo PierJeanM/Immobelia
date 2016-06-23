@@ -3,8 +3,10 @@ package fr.adaming.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -61,7 +63,10 @@ public class ClasseStandardMB {
 		this.listeClasseStandard = listeClasseStandard;
 	}
 	
-	
+	public List<ClasseStandard> getClasseStandByIdClient(int idClient){
+
+		return classeStandardService.getClasseStandByIdClient(idClient);
+	}
 	
 	
 }

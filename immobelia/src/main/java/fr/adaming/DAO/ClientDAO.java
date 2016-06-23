@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.personne.Client;
 
 @Repository
@@ -38,7 +39,13 @@ public class ClientDAO {
 		entityManager.merge(client);
 	}
 	
-
+	@SuppressWarnings("unchecked")
+	public List<ClasseStandard> getClasseStandardByClient(int idClient){
+		String hqlByClient = "FROM client_classestandard c WHERE c.id_client = :clientID";
+		return entityManager.createQuery(hqlByClient).setParameter("clientID", idClient).getResultList();
+				
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Client> getClientByIDConseiller(int idCons){
 	
