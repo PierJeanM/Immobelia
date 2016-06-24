@@ -18,8 +18,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.primefaces.event.SlideEndEvent;
-
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.personne.Adresse;
 import fr.adaming.model.personne.Proprietaire;
@@ -41,12 +39,16 @@ public abstract class BienImmobilier {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_bien")
 	private Integer idBien;
+	
 	@Column(name = "statut")
 	private boolean statut;
+	
 	@Column(name = "date_soumission")
 	private Date dateSoumission;
+	
 	@Column(name = "date_mise_disposition")
 	private Date dateMiseDisposition;
+	
 	@Column(name = "revenu_cadastral")
 	private Double revenuCadastral;
 	
@@ -55,8 +57,10 @@ public abstract class BienImmobilier {
 								// avec creation contrat
 	@Column(name = "tel_conseiller")
 	private String telConseiller;
+	
 	@Column(name = "prix")
 	private Double prix;
+	
 	@Column(name = "type_bail")
 	private String typeBail;
 	
@@ -284,6 +288,10 @@ public abstract class BienImmobilier {
 	@Override
 	public String toString() {
 		return classeStandard.getTypeBien() + " " +adresse.toString();
+	}
+	
+	public boolean isTerrain(){
+		return this instanceof Terrain;
 	}
 
 	@Override

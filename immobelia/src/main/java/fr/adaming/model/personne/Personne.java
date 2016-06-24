@@ -31,7 +31,7 @@ public abstract class Personne {
 	@Column(name = "telephone")
 	private String telephone;
 
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
 	private Adresse adresse;
 

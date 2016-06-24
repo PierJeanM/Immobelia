@@ -28,4 +28,8 @@ public class ProprietaireService {
 	public void removeProprietaire(int id){
 		proprietaireDAO.removeProprietaire(id);
 	}
+
+	public Proprietaire getById(Integer id) {
+		return proprietaireDAO.getById(id);
+	}
 }
