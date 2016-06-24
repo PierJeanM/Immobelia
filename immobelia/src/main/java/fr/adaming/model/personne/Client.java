@@ -2,7 +2,9 @@ package fr.adaming.model.personne;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -14,7 +16,7 @@ import fr.adaming.model.ClasseStandard;
 @Table(name = "clients")
 public class Client extends Personne {
 
-	@ManyToMany(mappedBy = "listClients")
+	@ManyToMany(mappedBy = "listClients", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<ClasseStandard> bienRecherche;
 
 	@ManyToOne

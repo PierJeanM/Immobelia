@@ -32,7 +32,7 @@
 				        </h:panelGrid>
 				        
 				        <p:accordionPanel>
-					        <p:tab title="Godfather Part I">
+					        <p:tab title="Types de biens recherchés par le client : ">
 					            <h:panelGrid columns="2" cellpadding="10">
 									<c:forEach items="#{clientMB.client.bienRecherche}" var="classe">
 										<p:tab
@@ -41,7 +41,7 @@
 												value="#{classeStandardMB.getClasseStandByIdClient(clientMB.client.id_personne)}"
 												var="bien" type="definition">
 										    
-										       	Nom classe standard #{bien.idClasseStandard}
+										       	Identifiant de la classe standard  : #{bien.idClasseStandard}
 										    </p:dataList>
 										</p:tab>
 									</c:forEach>

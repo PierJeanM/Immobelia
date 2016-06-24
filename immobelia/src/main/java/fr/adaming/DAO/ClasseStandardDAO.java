@@ -57,7 +57,8 @@ public class ClasseStandardDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<ClasseStandard> getClasseStandByIdClient(int idClient){
-		String req = "SELECT cs.id_classestandard FROM client_classestandard as cs JOIN cs.id_client = :clientID";
+		System.out.println("=========> CLASSESTAND DAO, idClient : " +idClient);
+		String req = "SELECT cs.id_classestandard AS idclassestand FROM client_classeStandard cs WHERE cs.id_client = :clientID";
 		return entityManager.createQuery(req).setParameter("clientID", idClient).getResultList();
 	}
 	
