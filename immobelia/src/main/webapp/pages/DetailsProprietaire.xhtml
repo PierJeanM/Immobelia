@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<h:head>
+		<title>Détails Propriétaire</title>
+	</h:head>
+	
+	
+	<h:body>
+		<ui:composition template="/template/layout.xhtml">
+			<ui:define name="content">
+				
+				<h:form>
+					<p:panel header="Informations Propriétaire">
+						 <h:panelGrid columns="2" cellpadding="4">
+						 	<h:outputLabel value="Nom : " style="font-weight:bold;"/>
+						 	<h:outputText value="#{proprietaireMB.proprietaire.nom}" />
+						 	
+						 	<h:outputLabel value="Prénom : " style="font-weight:bold;"/>
+						 	<h:outputText value="#{proprietaireMB.proprietaire.prenom}" />
+						 	
+						 	<p:outputLabel value="Telephone :" style="font-weight:bold;"/>
+				            <h:outputText value="#{proprietaireMB.proprietaire.telephone}" />
+				            
+				            <p:outputLabel value="Telephone Pro :" style="font-weight:bold;"/>
+				            <h:outputText value="#{proprietaireMB.proprietaire.telTravail}" />
+				            
+				            <p:outputLabel value="Adresse :" style="font-weight:bold;"/>
+				            <h:outputText value="#{proprietaireMB.proprietaire.adresse}" />
+						 </h:panelGrid>
+					</p:panel>
+					
+					<p:panel header="Biens" style="margin-top:25px;">
+						<p:dataTable value="#{proprietaireMB.proprietaire.biensImmos}" var="bien" id="biensProprio">
+							<p:column>
+								<f:facet name="header">Type</f:facet>
+								<h:outputText value="#{bien.classeStandard.typeBien}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">Adresse</f:facet>
+								<h:outputText value="#{bien.adresse}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">Disponible</f:facet>
+								<h:outputText value="Oui" rendered="#{bien.statut}" />
+								<h:outputText value="Non" rendered="#{!bien.statut}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">Prix</f:facet>
+								<h:outputText value="#{bien.prix} &euro;"/>
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">Superficie</f:facet>
+								<h:outputText value="#{bien.superficie}"/>
+								<h:outputText value="m&#0178;" rendered="#{!bien.terrain}"/>
+								<h:outputText value="ares" rendered="#{bien.terrain}"/>
+							</p:column>
+							
+						</p:dataTable>
+					</p:panel>
+				</h:form>
+				
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</html>
