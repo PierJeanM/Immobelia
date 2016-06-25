@@ -15,7 +15,6 @@ public class ALouer extends Offre{
 	 * 
 	 */
 	public ALouer() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public ALouer(Integer id, Double montantCaution, Double montantCharges, boolean meuble) {

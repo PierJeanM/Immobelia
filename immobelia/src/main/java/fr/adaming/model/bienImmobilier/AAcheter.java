@@ -39,7 +39,4 @@ public class AAcheter extends Offre{
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
-	
-	
-	
 }

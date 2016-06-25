@@ -69,7 +69,7 @@
 							</p:commandButton>
 						</p:column>
 					</p:dataTable>
-					<p:button outcome="/pages/AjouterProprietaire.xhtml" value="Ajouter un propriétaire"/>
+					<p:commandButton action="/pages/AjouterProprietaire.xhtml?faces-redirect=true" actionListener="#{proprietaireMB.init}" value="Ajouter un propriétaire"/>
 				</h:form>
 			</ui:define>
 		</ui:composition>

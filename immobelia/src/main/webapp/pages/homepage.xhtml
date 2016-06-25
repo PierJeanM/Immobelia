@@ -15,6 +15,9 @@
 	<h:body> 
 		<ui:composition template="/template/layout.xhtml">
 			<ui:define name="content">
+				<f:metadata>
+			        <f:event type="preRenderView" listener="#{gestionCalendrierMB.chargementVisites}"/>
+				</f:metadata>
 			    <h:form>
 			    	<p:growl id="messages" showDetail="true" />
 			    	<p:panel header="Calendrier des visites" toggleable="true" collapsed="false">

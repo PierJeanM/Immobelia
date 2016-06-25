@@ -20,7 +20,7 @@ public class BienImmobilierService {
 
 	public List<BienImmobilier> getByProprio(int id){
 		
-		return bienImmoDAO.getByProprio();
+		return bienImmoDAO.getByProprio(id);
 	}
 	
 	public void addBien(BienImmobilier bienImmobilier){

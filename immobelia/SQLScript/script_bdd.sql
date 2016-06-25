@@ -45,7 +45,7 @@ INSERT into bienimmobiliers values("maison", 2, '2016-04-02 12:00:00', '2015-03-
 INSERT into bienimmobiliers values("entrepot", 3, '2016-02-02 12:00:00', '2015-01-26 00:00:00', 850000, 2000, true, 250, null, 0200000000, "entreprise", true, null, null, null, null, null, 12, 9, 2, 1);
 INSERT into bienimmobiliers values("studio", 4, '2016-04-20 12:00:00', '2015-04-15 15:00:00', 60000, 1000, true, 40, null, 0200000000, "habitation", null, true, null, null, null, null, 8, 10, 2, 1);
 
-INSERT into aacheter values (1, 1, "correct");
+INSERT into aacheter values (1, "correct");
 
 INSERT into contrats values (1, '2016-02-01 00:00:00', 1, 1, 1);
 

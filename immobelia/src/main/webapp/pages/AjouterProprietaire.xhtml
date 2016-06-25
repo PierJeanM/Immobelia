@@ -5,62 +5,79 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>Gestion Propriétaires</h:head>
-<h:body>
-	<ui:composition template="/template/layout.xhtml">
-		<ui:define name="content">
-			<h:form>
-				<p:panel header="Ajout d'un Proprietaire">
-
-					<h:panelGrid id="grid" columns="2" cellpadding="9">
-						<h:outputLabel value="Nom :" style="font-weight:bold" />
-						<p:inputText id="nom" value="#{proprietaireMB.proprietaire.nom}"
-							required="true" label="Nom" />
-
-						<h:outputLabel value="Prenom:" style="font-weight:bold" />
-						<p:inputText id="prenom"
-							value="#{proprietaireMB.proprietaire.prenom}" label="Prenom" />
-
-						<h:outputLabel value="Telephone :" style="font-weight:bold" />
-						<p:inputText id="telephone"
-							value="#{proprietaireMB.proprietaire.telephone}"
-							label="Telephone" />
-
-						<h:outputLabel value="ADRESSE"
-							style="font-weight:bold; font-size:125%;" />
-						<h:outputText value="" />
-
-						<h:outputLabel value="Numero de rue :" style="font-weight:bold" />
-						<p:inputText id="numrue"
-							value="#{proprietaireMB.proprietaire.adresse.numero}"
-							label="Numéro" />
-
-						<h:outputLabel value="Nom de la rue :" style="font-weight:bold" />
-						<p:inputText id="nomrue"
-							value="#{proprietaireMB.proprietaire.adresse.rue}" label="Rue" />
-
-						<h:outputLabel for="ville" value="Ville :"
-							style="font-weight:bold" />
-						<p:inputText id="ville"
-							value="#{proprietaireMB.proprietaire.adresse.ville}"
-							label="Ville" />
-
-						<h:outputLabel for="codepostal" value="Code postal :"
-							style="font-weight:bold" />
-						<p:inputText id="codepostal"
-							value="#{proprietaireMB.proprietaire.adresse.codePostal}"
-							label="codepostal" />
-
-
+	<h:head>
+		<title>Gestion Propriétaires</title>
+	</h:head>
+	<h:body>
+		<ui:composition template="/template/layout.xhtml">
+			<ui:define name="content">
+				<h:form>
+					<p:panel id="panel" header="Ajout d'un Proprietaire">	
+						<h:panelGrid id="grid" columns="3" cellpadding="9">
+						
+							<h:outputLabel for="nom" value="Nom :" style="font-weight:bold" />
+							<p:inputText id="nom" value="#{proprietaireMB.proprietaire.nom}" required="true" label="Nom" >
+								<f:validateLength minimum="1"/>
+							</p:inputText>
+							<p:message for="nom"/>
+	
+							<h:outputLabel for="prenom" value="Prenom:" style="font-weight:bold" />
+							<p:inputText id="prenom" value="#{proprietaireMB.proprietaire.prenom}" required="true" label="Prenom" >
+								<f:validateLength minimum="1"/>
+							</p:inputText>
+							<p:message for="prenom"/>
+	
+							<h:outputLabel for="telephone" value="Telephone :" style="font-weight:bold" />
+							<p:inputText id="telephone"	value="#{proprietaireMB.proprietaire.telephone}" required="true" label="Telephone" 
+									validatorMessage="La saisie n'est pas un numéro de téléphone correct" >
+								<f:validateRegex pattern="^0[1-68]([-. ]?[0-9]{2}){4}$"/>
+							</p:inputText>
+							<p:message for="telephone"/>
+							
+							<h:outputLabel for="telephonepro" value="Telephone Pro :" style="font-weight:bold" />
+							<p:inputText id="telephonepro"	value="#{proprietaireMB.proprietaire.telTravail}" label="Telephone Pro" 
+									validatorMessage="La saisie n'est pas un numéro de téléphone correct" >
+								<f:validateRegex pattern="^0[1-68]([-. ]?[0-9]{2}){4}$"/>
+							</p:inputText>
+							<p:message for="telephonepro"/>
+							
+							<h:outputLabel value="ADRESSE" style="font-weight:bold; font-size:125%;" />
+							<h:outputText value="" /><h:outputText value="" />
+	
+							<h:outputLabel for="numrue" value="Numero de rue :" style="font-weight:bold" />
+							<p:inputText id="numrue" value="#{proprietaireMB.proprietaire.adresse.numero}" required="true" label="Numéro" 
+								validatorMessage="La saisie ne correspond pas à un numéro correct">
+								<f:validateLength minimum="1"/>
+								<f:convertNumber integerOnly="true" minIntegerDigits="1"/>
+							</p:inputText>
+							<p:message for="numrue"/>
+	
+							<h:outputLabel for="nomrue" value="Nom de la rue :" style="font-weight:bold" />
+							<p:inputText id="nomrue" value="#{proprietaireMB.proprietaire.adresse.rue}" required="true" label="Rue" >
+								<f:validateLength minimum="1"/>
+							</p:inputText>
+							<p:message for="nomrue"/>
+	
+							<h:outputLabel for="ville" value="Ville :" style="font-weight:bold" />
+							<p:inputText id="ville" value="#{proprietaireMB.proprietaire.adresse.ville}" required="true" label="Ville" >
+								<f:validateLength minimum="1"/>
+							</p:inputText>
+							<p:message for="ville"/>
+	
+							<h:outputLabel for="codepostal" value="Code postal :" style="font-weight:bold" />
+							<p:inputText id="codepostal" value="#{proprietaireMB.proprietaire.adresse.codePostal}" required="true" label="codepostal" 
+							validatorMessage="La saisie ne correspond pas à un code postal." >
+								<f:validateRegex pattern="[0-9]{5}"/>
+							</p:inputText>
+							<p:message for="codepostal"/>
+	
+						</h:panelGrid>
 						<p:commandButton value="Ajouter"
-							actionListener="#{proprietaireMB.addProprietaire}"
-							action="GestionProprietaire.xhtml" style="margin-right:10px"/>
-
-					</h:panelGrid>
-
-				</p:panel>
-			</h:form>
-		</ui:define>
-	</ui:composition>
-</h:body>
+								actionListener="#{proprietaireMB.addProprietaire}"
+								action="GestionProprietaire.xhtml" style="margin-right:10px" update="panel"/>
+					</p:panel>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</h:body>
 </html>

@@ -57,17 +57,34 @@ public class GestionCalendrierMB {
 	public void init() {
 		eventModel = new DefaultScheduleModel(); // Nouveau schedule
 		visite = new Visite();
-		
+	}
+
+	
+	public void chargementVisites(){
 		listeVisites = visiteService.getAll(); // Recup des visites presentes dans la BDD
 		listeBiens = bienImmobilierService.getAll();
+		ELContext context = FacesContext.getCurrentInstance().getELContext();
+		ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
+		listeClients = clientService.getClientByIdConseiller(conseillerMB.getConseillerImmobilier().getId_personne());
 		
 		// Ajout des visites au schedule
 		for (Visite v : listeVisites) {
 			Date dateVisite = v.getDateVisite();
-			eventModel.addEvent(new DefaultScheduleEvent(v.getClient().getPrenom()+" "+v.getClient().getNom(), dateVisite, finVisite(dateVisite), v.getIdVisite()));
+			DefaultScheduleEvent eventVisite = new DefaultScheduleEvent(v.getClient().getPrenom()+" "+v.getClient().getNom(), dateVisite, finVisite(dateVisite), v.getIdVisite());
+			
+			if(!containsVisite(v))
+				eventModel.addEvent(eventVisite);
 		}
 	}
-
+	
+	
+	private boolean containsVisite(Visite v){
+		for (ScheduleEvent e : eventModel.getEvents())
+			if (((Integer) e.getData()).equals(v.getIdVisite()))
+				return true;
+		return false;
+	}
+	
 	
 	/**
 	 * Retourne la date de fin de visite (on considere qu'une visite dure une heure)
@@ -124,11 +141,6 @@ public class GestionCalendrierMB {
 	 * @param selectEvent
 	 */
 	public void onEventSelect(SelectEvent selectEvent) {
-		if (listeClients == null) {
-			ELContext context = FacesContext.getCurrentInstance().getELContext();
-			ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
-			listeClients = clientService.getClientByIdConseiller(conseillerMB.getConseillerImmobilier().getId_personne());
-		}
 		event = (DefaultScheduleEvent) selectEvent.getObject();
 		visite = visiteService.getById((Integer) event.getData());
 	}
@@ -138,11 +150,6 @@ public class GestionCalendrierMB {
 	 * @param selectEvent
 	 */
 	public void onDateSelect(SelectEvent selectEvent) {
-		if (listeClients == null) {
-			ELContext context = FacesContext.getCurrentInstance().getELContext();
-			ConseillerMB conseillerMB = (ConseillerMB) context.getELResolver().getValue(context, null, "conseillerMB");
-			listeClients = clientService.getClientByIdConseiller(conseillerMB.getConseillerImmobilier().getId_personne());
-		}
 		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
 	}
 	

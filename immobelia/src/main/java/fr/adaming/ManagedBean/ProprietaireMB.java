@@ -62,6 +62,10 @@ public class ProprietaireMB {
 		proprietaireService.removeProprietaire(id);
 	}
 	
+	public void init(ActionEvent event){
+		proprietaire = new Proprietaire();
+		proprietaire.setAdresse(new Adresse());
+	}
 	
 	/****************************
 	 * GET & SET
